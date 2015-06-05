@@ -1,0 +1,1084 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4539F8721A496E5900144B06 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4539F8711A496E5900144B06 /* Utility.m */; };
+		455DF3A31A47EADC00E9DE64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3A21A47EADC00E9DE64 /* main.m */; };
+		455DF3A61A47EADC00E9DE64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3A51A47EADC00E9DE64 /* AppDelegate.m */; };
+		455DF3A91A47EADC00E9DE64 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3A81A47EADC00E9DE64 /* SetupViewController.m */; };
+		455DF3AE1A47EADC00E9DE64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455DF3AD1A47EADC00E9DE64 /* Images.xcassets */; };
+		455DF3D41A47EB7600E9DE64 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3D31A47EB7600E9DE64 /* MenuViewController.m */; };
+		455DF3DB1A47EE2C00E9DE64 /* NCLWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3D81A47EE2C00E9DE64 /* NCLWrapper.m */; };
+		455DF3DC1A47EE2C00E9DE64 /* PasswordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3DA1A47EE2C00E9DE64 /* PasswordManager.m */; };
+		455DF3DF1A47EF1300E9DE64 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3DE1A47EF1300E9DE64 /* DiscoveryViewController.m */; };
+		455DF3E21A47EF4500E9DE64 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3E11A47EF4500E9DE64 /* ConfirmViewController.m */; };
+		4A226C181A6D2E6E00108815 /* WarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226C171A6D2E6E00108815 /* WarningViewController.m */; };
+		4A226C191A6D2E6E00108815 /* WarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A226C171A6D2E6E00108815 /* WarningViewController.m */; };
+		4A3DCB1D1A52D21200A15244 /* NEASearch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4A3DCB1C1A52D21200A15244 /* NEASearch.gif */; };
+		4A7B77311A8CE34A003E4492 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B772F1A8CE34A003E4492 /* Apache License.txt */; };
+		4A7B77321A8CE34A003E4492 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B772F1A8CE34A003E4492 /* Apache License.txt */; };
+		4A7B77331A8CE34A003E4492 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B77301A8CE34A003E4492 /* SIL Open Font License.txt */; };
+		4A7B77341A8CE34A003E4492 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B77301A8CE34A003E4492 /* SIL Open Font License.txt */; };
+		4A7B77381A8CE44D003E4492 /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B77371A8CE44D003E4492 /* PaddingLabel.m */; };
+		4A7B77391A8CE44D003E4492 /* PaddingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B77371A8CE44D003E4492 /* PaddingLabel.m */; };
+		4ABB9E741A551BEF0068BB4E /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E731A551BEF0068BB4E /* OptionsViewController.m */; };
+		4ABB9E9B1A5520940068BB4E /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E791A5520940068BB4E /* AESCrypt.m */; };
+		4ABB9E9C1A5520940068BB4E /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E7B1A5520940068BB4E /* NSData+Base64.m */; };
+		4ABB9E9D1A5520940068BB4E /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E7D1A5520940068BB4E /* NSData+CommonCrypto.m */; };
+		4ABB9E9E1A5520940068BB4E /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E7F1A5520940068BB4E /* NSString+Base64.m */; };
+		4ABB9E9F1A5520940068BB4E /* CAAnimation+PKIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E831A5520940068BB4E /* CAAnimation+PKIdentifier.m */; };
+		4ABB9EA01A5520940068BB4E /* CALayer+PKConvenienceAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E851A5520940068BB4E /* CALayer+PKConvenienceAnimations.m */; };
+		4ABB9EA11A5520940068BB4E /* NSObject+PKBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E871A5520940068BB4E /* NSObject+PKBlocks.m */; };
+		4ABB9EA21A5520940068BB4E /* UIViewController+PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E891A5520940068BB4E /* UIViewController+PKRevealController.m */; };
+		4ABB9EA31A5520940068BB4E /* PKRevealControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E8C1A5520940068BB4E /* PKRevealControllerView.m */; };
+		4ABB9EA41A5520940068BB4E /* PKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E911A5520940068BB4E /* PKAnimation.m */; };
+		4ABB9EA51A5520940068BB4E /* PKLayerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E931A5520940068BB4E /* PKLayerAnimator.m */; };
+		4ABB9EA61A5520940068BB4E /* PKSequentialAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E951A5520940068BB4E /* PKSequentialAnimation.m */; };
+		4ABB9EA71A5520940068BB4E /* PKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E981A5520940068BB4E /* PKLog.m */; };
+		4ABB9EA81A5520940068BB4E /* PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E9A1A5520940068BB4E /* PKRevealController.m */; };
+		4ABB9EAE1A5567030068BB4E /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9EAD1A5567030068BB4E /* AlertsViewController.m */; };
+		4ABB9EB41A556A850068BB4E /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9EB31A556A850068BB4E /* CustomTextField.m */; };
+		4ADA8A9A1A7176870088086A /* ShowNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA8A991A7176870088086A /* ShowNoAnimationSegue.m */; };
+		4ADA8A9B1A7176870088086A /* ShowNoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADA8A991A7176870088086A /* ShowNoAnimationSegue.m */; };
+		4ADE76CA1A64E292005E6519 /* PasswordVaultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE76C81A64E292005E6519 /* PasswordVaultTests.m */; };
+		4AE249F81A53C61700C44C1A /* ValidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE249F71A53C61700C44C1A /* ValidateViewController.m */; };
+		4AE24A211A53E3EE00C44C1A /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE24A201A53E3EE00C44C1A /* ContainerView.m */; };
+		4AEB416C1A693E67008D33A0 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E7F1A5520940068BB4E /* NSString+Base64.m */; };
+		4AEB416D1A693E67008D33A0 /* PasswordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3DA1A47EE2C00E9DE64 /* PasswordManager.m */; };
+		4AEB416E1A693E67008D33A0 /* PKSequentialAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E951A5520940068BB4E /* PKSequentialAnimation.m */; };
+		4AEB416F1A693E67008D33A0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3D31A47EB7600E9DE64 /* MenuViewController.m */; };
+		4AEB41701A693E67008D33A0 /* PKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E911A5520940068BB4E /* PKAnimation.m */; };
+		4AEB41711A693E67008D33A0 /* ValidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE249F71A53C61700C44C1A /* ValidateViewController.m */; };
+		4AEB41721A693E67008D33A0 /* PMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5AC1A5FA50C003675F5 /* PMTextField.m */; };
+		4AEB41741A693E67008D33A0 /* PKRevealControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E8C1A5520940068BB4E /* PKRevealControllerView.m */; };
+		4AEB41751A693E67008D33A0 /* UIViewController+PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E891A5520940068BB4E /* UIViewController+PKRevealController.m */; };
+		4AEB41761A693E67008D33A0 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3A81A47EADC00E9DE64 /* SetupViewController.m */; };
+		4AEB41771A693E67008D33A0 /* PMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5A71A5FA50C003675F5 /* PMAlertView.m */; };
+		4AEB41781A693E67008D33A0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9A83E1A528F2B00C77360 /* MainViewController.m */; };
+		4AEB41791A693E67008D33A0 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E7B1A5520940068BB4E /* NSData+Base64.m */; };
+		4AEB417A1A693E67008D33A0 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E7D1A5520940068BB4E /* NSData+CommonCrypto.m */; };
+		4AEB417B1A693E67008D33A0 /* PKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E981A5520940068BB4E /* PKLog.m */; };
+		4AEB417C1A693E67008D33A0 /* CAAnimation+PKIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E831A5520940068BB4E /* CAAnimation+PKIdentifier.m */; };
+		4AEB417D1A693E67008D33A0 /* PKLayerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E931A5520940068BB4E /* PKLayerAnimator.m */; };
+		4AEB417E1A693E67008D33A0 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9EB31A556A850068BB4E /* CustomTextField.m */; };
+		4AEB417F1A693E67008D33A0 /* PMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5AA1A5FA50C003675F5 /* PMButton.m */; };
+		4AEB41801A693E67008D33A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3A51A47EADC00E9DE64 /* AppDelegate.m */; };
+		4AEB41821A693E67008D33A0 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9A8411A528FCC00C77360 /* ItemCell.m */; };
+		4AEB41831A693E67008D33A0 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E791A5520940068BB4E /* AESCrypt.m */; };
+		4AEB41841A693E67008D33A0 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E731A551BEF0068BB4E /* OptionsViewController.m */; };
+		4AEB41851A693E67008D33A0 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4539F8711A496E5900144B06 /* Utility.m */; };
+		4AEB41861A693E67008D33A0 /* NCLWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3D81A47EE2C00E9DE64 /* NCLWrapper.m */; };
+		4AEB41871A693E67008D33A0 /* NSObject+PKBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E871A5520940068BB4E /* NSObject+PKBlocks.m */; };
+		4AEB41881A693E67008D33A0 /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE24A201A53E3EE00C44C1A /* ContainerView.m */; };
+		4AEB41891A693E67008D33A0 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3DE1A47EF1300E9DE64 /* DiscoveryViewController.m */; };
+		4AEB418A1A693E67008D33A0 /* CALayer+PKConvenienceAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E851A5520940068BB4E /* CALayer+PKConvenienceAnimations.m */; };
+		4AEB418B1A693E67008D33A0 /* PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9E9A1A5520940068BB4E /* PKRevealController.m */; };
+		4AEB418C1A693E67008D33A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3A21A47EADC00E9DE64 /* main.m */; };
+		4AEB418D1A693E67008D33A0 /* AddPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 868B0C5A1A5FBA28002A27BC /* AddPasswordViewController.m */; };
+		4AEB418E1A693E67008D33A0 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 455DF3E11A47EF4500E9DE64 /* ConfirmViewController.m */; };
+		4AEB418F1A693E67008D33A0 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB9EAD1A5567030068BB4E /* AlertsViewController.m */; };
+		4AEB41911A693E67008D33A0 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFC58481A512B2800FFE3F0 /* CoreBluetooth.framework */; };
+		4AEB41931A693E67008D33A0 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B5B21A5FADC3003675F5 /* Montserrat-Regular.ttf */; };
+		4AEB41941A693E67008D33A0 /* PMAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B5A81A5FA50C003675F5 /* PMAlertView.xib */; };
+		4AEB41961A693E67008D33A0 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B71A5BBA68007F6358 /* OpenSans-SemiboldItalic.ttf */; };
+		4AEB41971A693E67008D33A0 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B11A5BBA68007F6358 /* OpenSans-ExtraBoldItalic.ttf */; };
+		4AEB41981A693E67008D33A0 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B41A5BBA68007F6358 /* OpenSans-LightItalic.ttf */; };
+		4AEB41991A693E67008D33A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455DF3AD1A47EADC00E9DE64 /* Images.xcassets */; };
+		4AEB419A1A693E67008D33A0 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B21A5BBA68007F6358 /* OpenSans-Italic.ttf */; };
+		4AEB419B1A693E67008D33A0 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0AE1A5BBA68007F6358 /* OpenSans-Bold.ttf */; };
+		4AEB419C1A693E67008D33A0 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B01A5BBA68007F6358 /* OpenSans-ExtraBold.ttf */; };
+		4AEB419D1A693E67008D33A0 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0AF1A5BBA68007F6358 /* OpenSans-BoldItalic.ttf */; };
+		4AEB419E1A693E67008D33A0 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B5B11A5FADC3003675F5 /* Montserrat-Bold.ttf */; };
+		4AEB41A01A693E67008D33A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868B0C561A5FA9B4002A27BC /* Main.storyboard */; };
+		4AEB41A11A693E67008D33A0 /* NEASearch.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4A3DCB1C1A52D21200A15244 /* NEASearch.gif */; };
+		4AEB41A21A693E67008D33A0 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B31A5BBA68007F6358 /* OpenSans-Light.ttf */; };
+		4AEB41A31A693E67008D33A0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B51A5BBA68007F6358 /* OpenSans-Regular.ttf */; };
+		4AEB41A41A693E67008D33A0 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B61A5BBA68007F6358 /* OpenSans-Semibold.ttf */; };
+		4AEB41AB1A693E8C008D33A0 /* libNCLNetiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEB41691A693E4E008D33A0 /* libNCLNetiOS.a */; };
+		4AEB41AC1A693E8D008D33A0 /* libNCLNetiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEB41691A693E4E008D33A0 /* libNCLNetiOS.a */; };
+		4AEB41AD1A693E92008D33A0 /* libNCLiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEB41661A693E4E008D33A0 /* libNCLiOS.a */; };
+		4AEB41B01A695BEC008D33A0 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB41AF1A695BEC008D33A0 /* WelcomeViewController.m */; };
+		4AEB41B11A695BEC008D33A0 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB41AF1A695BEC008D33A0 /* WelcomeViewController.m */; };
+		4AF9A83F1A528F2B00C77360 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9A83E1A528F2B00C77360 /* MainViewController.m */; };
+		4AF9A8421A528FCC00C77360 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9A8411A528FCC00C77360 /* ItemCell.m */; };
+		4AFC58491A512B2800FFE3F0 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFC58481A512B2800FFE3F0 /* CoreBluetooth.framework */; };
+		84C5B5AD1A5FA50C003675F5 /* PMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5A71A5FA50C003675F5 /* PMAlertView.m */; };
+		84C5B5AE1A5FA50C003675F5 /* PMAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B5A81A5FA50C003675F5 /* PMAlertView.xib */; };
+		84C5B5AF1A5FA50C003675F5 /* PMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5AA1A5FA50C003675F5 /* PMButton.m */; };
+		84C5B5B01A5FA50C003675F5 /* PMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C5B5AC1A5FA50C003675F5 /* PMTextField.m */; };
+		84C5B5B41A5FADC3003675F5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B5B11A5FADC3003675F5 /* Montserrat-Bold.ttf */; };
+		84C5B5B51A5FADC3003675F5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84C5B5B21A5FADC3003675F5 /* Montserrat-Regular.ttf */; };
+		8679A0B91A5BBA68007F6358 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0AE1A5BBA68007F6358 /* OpenSans-Bold.ttf */; };
+		8679A0BA1A5BBA68007F6358 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0AF1A5BBA68007F6358 /* OpenSans-BoldItalic.ttf */; };
+		8679A0BB1A5BBA68007F6358 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B01A5BBA68007F6358 /* OpenSans-ExtraBold.ttf */; };
+		8679A0BC1A5BBA68007F6358 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B11A5BBA68007F6358 /* OpenSans-ExtraBoldItalic.ttf */; };
+		8679A0BD1A5BBA68007F6358 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B21A5BBA68007F6358 /* OpenSans-Italic.ttf */; };
+		8679A0BE1A5BBA68007F6358 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B31A5BBA68007F6358 /* OpenSans-Light.ttf */; };
+		8679A0BF1A5BBA68007F6358 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B41A5BBA68007F6358 /* OpenSans-LightItalic.ttf */; };
+		8679A0C01A5BBA68007F6358 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B51A5BBA68007F6358 /* OpenSans-Regular.ttf */; };
+		8679A0C11A5BBA68007F6358 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B61A5BBA68007F6358 /* OpenSans-Semibold.ttf */; };
+		8679A0C21A5BBA68007F6358 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8679A0B71A5BBA68007F6358 /* OpenSans-SemiboldItalic.ttf */; };
+		867C98921A6F840B00B4CC8A /* ContainerView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 867C98911A6F840B00B4CC8A /* ContainerView_iPad.m */; };
+		867C98931A6F840B00B4CC8A /* ContainerView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 867C98911A6F840B00B4CC8A /* ContainerView_iPad.m */; };
+		868B0C581A5FA9B4002A27BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 868B0C561A5FA9B4002A27BC /* Main.storyboard */; };
+		868B0C5B1A5FBA28002A27BC /* AddPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 868B0C5A1A5FBA28002A27BC /* AddPasswordViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		455DF3B71A47EADC00E9DE64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 455DF3951A47EADC00E9DE64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 455DF39C1A47EADC00E9DE64;
+			remoteInfo = PasswordManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4539F8701A496E5900144B06 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		4539F8711A496E5900144B06 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		455DF39D1A47EADC00E9DE64 /* Password Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		455DF3A11A47EADC00E9DE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		455DF3A21A47EADC00E9DE64 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		455DF3A41A47EADC00E9DE64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		455DF3A51A47EADC00E9DE64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		455DF3A71A47EADC00E9DE64 /* SetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		455DF3A81A47EADC00E9DE64 /* SetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
+		455DF3AD1A47EADC00E9DE64 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		455DF3B61A47EADC00E9DE64 /* PasswordVaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordVaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		455DF3D21A47EB7600E9DE64 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		455DF3D31A47EB7600E9DE64 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		455DF3D61A47EE2C00E9DE64 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		455DF3D71A47EE2C00E9DE64 /* NCLWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCLWrapper.h; sourceTree = "<group>"; };
+		455DF3D81A47EE2C00E9DE64 /* NCLWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCLWrapper.m; sourceTree = "<group>"; };
+		455DF3D91A47EE2C00E9DE64 /* PasswordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordManager.h; sourceTree = "<group>"; };
+		455DF3DA1A47EE2C00E9DE64 /* PasswordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordManager.m; sourceTree = "<group>"; };
+		455DF3DD1A47EF1300E9DE64 /* DiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryViewController.h; sourceTree = "<group>"; };
+		455DF3DE1A47EF1300E9DE64 /* DiscoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryViewController.m; sourceTree = "<group>"; };
+		455DF3E01A47EF4500E9DE64 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
+		455DF3E11A47EF4500E9DE64 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
+		4A226C161A6D2E6E00108815 /* WarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarningViewController.h; sourceTree = "<group>"; };
+		4A226C171A6D2E6E00108815 /* WarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarningViewController.m; sourceTree = "<group>"; };
+		4A3DCB1C1A52D21200A15244 /* NEASearch.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NEASearch.gif; sourceTree = "<group>"; };
+		4A7B772F1A8CE34A003E4492 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
+		4A7B77301A8CE34A003E4492 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		4A7B77361A8CE44D003E4492 /* PaddingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaddingLabel.h; path = CustomLabel/PaddingLabel.h; sourceTree = "<group>"; };
+		4A7B77371A8CE44D003E4492 /* PaddingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaddingLabel.m; path = CustomLabel/PaddingLabel.m; sourceTree = "<group>"; };
+		4ABB9E721A551BEF0068BB4E /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		4ABB9E731A551BEF0068BB4E /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		4ABB9E781A5520940068BB4E /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		4ABB9E791A5520940068BB4E /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
+		4ABB9E7A1A5520940068BB4E /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		4ABB9E7B1A5520940068BB4E /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		4ABB9E7C1A5520940068BB4E /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		4ABB9E7D1A5520940068BB4E /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		4ABB9E7E1A5520940068BB4E /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		4ABB9E7F1A5520940068BB4E /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		4ABB9E821A5520940068BB4E /* CAAnimation+PKIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+PKIdentifier.h"; sourceTree = "<group>"; };
+		4ABB9E831A5520940068BB4E /* CAAnimation+PKIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+PKIdentifier.m"; sourceTree = "<group>"; };
+		4ABB9E841A5520940068BB4E /* CALayer+PKConvenienceAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+PKConvenienceAnimations.h"; sourceTree = "<group>"; };
+		4ABB9E851A5520940068BB4E /* CALayer+PKConvenienceAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+PKConvenienceAnimations.m"; sourceTree = "<group>"; };
+		4ABB9E861A5520940068BB4E /* NSObject+PKBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PKBlocks.h"; sourceTree = "<group>"; };
+		4ABB9E871A5520940068BB4E /* NSObject+PKBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PKBlocks.m"; sourceTree = "<group>"; };
+		4ABB9E881A5520940068BB4E /* UIViewController+PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PKRevealController.h"; sourceTree = "<group>"; };
+		4ABB9E891A5520940068BB4E /* UIViewController+PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PKRevealController.m"; sourceTree = "<group>"; };
+		4ABB9E8B1A5520940068BB4E /* PKRevealControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealControllerView.h; sourceTree = "<group>"; };
+		4ABB9E8C1A5520940068BB4E /* PKRevealControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealControllerView.m; sourceTree = "<group>"; };
+		4ABB9E8F1A5520940068BB4E /* PKAnimating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAnimating.h; sourceTree = "<group>"; };
+		4ABB9E901A5520940068BB4E /* PKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAnimation.h; sourceTree = "<group>"; };
+		4ABB9E911A5520940068BB4E /* PKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKAnimation.m; sourceTree = "<group>"; };
+		4ABB9E921A5520940068BB4E /* PKLayerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLayerAnimator.h; sourceTree = "<group>"; };
+		4ABB9E931A5520940068BB4E /* PKLayerAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKLayerAnimator.m; sourceTree = "<group>"; };
+		4ABB9E941A5520940068BB4E /* PKSequentialAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSequentialAnimation.h; sourceTree = "<group>"; };
+		4ABB9E951A5520940068BB4E /* PKSequentialAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKSequentialAnimation.m; sourceTree = "<group>"; };
+		4ABB9E971A5520940068BB4E /* PKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKLog.h; sourceTree = "<group>"; };
+		4ABB9E981A5520940068BB4E /* PKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKLog.m; sourceTree = "<group>"; };
+		4ABB9E991A5520940068BB4E /* PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealController.h; sourceTree = "<group>"; };
+		4ABB9E9A1A5520940068BB4E /* PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealController.m; sourceTree = "<group>"; };
+		4ABB9EAC1A5567030068BB4E /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
+		4ABB9EAD1A5567030068BB4E /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
+		4ABB9EB21A556A850068BB4E /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		4ABB9EB31A556A850068BB4E /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		4ADA8A981A7176870088086A /* ShowNoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowNoAnimationSegue.h; path = SegueWithoutAnimation/ShowNoAnimationSegue.h; sourceTree = "<group>"; };
+		4ADA8A991A7176870088086A /* ShowNoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowNoAnimationSegue.m; path = SegueWithoutAnimation/ShowNoAnimationSegue.m; sourceTree = "<group>"; };
+		4ADE76C71A64E292005E6519 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ADE76C81A64E292005E6519 /* PasswordVaultTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordVaultTests.m; sourceTree = "<group>"; };
+		4AE249F61A53C61600C44C1A /* ValidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateViewController.h; sourceTree = "<group>"; };
+		4AE249F71A53C61700C44C1A /* ValidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateViewController.m; sourceTree = "<group>"; };
+		4AE24A1F1A53E3EE00C44C1A /* ContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView.h; sourceTree = "<group>"; };
+		4AE24A201A53E3EE00C44C1A /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
+		4AEB41661A693E4E008D33A0 /* libNCLiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNCLiOS.a; sourceTree = "<group>"; };
+		4AEB41671A693E4E008D33A0 /* ncl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ncl.h; sourceTree = "<group>"; };
+		4AEB41691A693E4E008D33A0 /* libNCLNetiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNCLNetiOS.a; sourceTree = "<group>"; };
+		4AEB41A91A693E67008D33A0 /* Password Vault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Vault.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AEB41AE1A695BEC008D33A0 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		4AEB41AF1A695BEC008D33A0 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		4AF9A83D1A528F2B00C77360 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		4AF9A83E1A528F2B00C77360 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		4AF9A8401A528FCC00C77360 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		4AF9A8411A528FCC00C77360 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
+		4AFC58481A512B2800FFE3F0 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		84C5B5A61A5FA50C003675F5 /* PMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAlertView.h; sourceTree = "<group>"; };
+		84C5B5A71A5FA50C003675F5 /* PMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAlertView.m; sourceTree = "<group>"; };
+		84C5B5A81A5FA50C003675F5 /* PMAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertView.xib; sourceTree = "<group>"; };
+		84C5B5A91A5FA50C003675F5 /* PMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMButton.h; sourceTree = "<group>"; };
+		84C5B5AA1A5FA50C003675F5 /* PMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMButton.m; sourceTree = "<group>"; };
+		84C5B5AB1A5FA50C003675F5 /* PMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTextField.h; sourceTree = "<group>"; };
+		84C5B5AC1A5FA50C003675F5 /* PMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTextField.m; sourceTree = "<group>"; };
+		84C5B5B11A5FADC3003675F5 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		84C5B5B21A5FADC3003675F5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		8679A0AE1A5BBA68007F6358 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		8679A0AF1A5BBA68007F6358 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		8679A0B01A5BBA68007F6358 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		8679A0B11A5BBA68007F6358 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		8679A0B21A5BBA68007F6358 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		8679A0B31A5BBA68007F6358 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		8679A0B41A5BBA68007F6358 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		8679A0B51A5BBA68007F6358 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		8679A0B61A5BBA68007F6358 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		8679A0B71A5BBA68007F6358 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		867C98901A6F840B00B4CC8A /* ContainerView_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerView_iPad.h; sourceTree = "<group>"; };
+		867C98911A6F840B00B4CC8A /* ContainerView_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView_iPad.m; sourceTree = "<group>"; };
+		868B0C571A5FA9B4002A27BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		868B0C591A5FBA28002A27BC /* AddPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPasswordViewController.h; sourceTree = "<group>"; };
+		868B0C5A1A5FBA28002A27BC /* AddPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPasswordViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		455DF39A1A47EADC00E9DE64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AFC58491A512B2800FFE3F0 /* CoreBluetooth.framework in Frameworks */,
+				4AEB41AB1A693E8C008D33A0 /* libNCLNetiOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		455DF3B31A47EADC00E9DE64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AEB41AC1A693E8D008D33A0 /* libNCLNetiOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AEB41901A693E67008D33A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AEB41911A693E67008D33A0 /* CoreBluetooth.framework in Frameworks */,
+				4AEB41AD1A693E92008D33A0 /* libNCLiOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		455DF3941A47EADB00E9DE64 = {
+			isa = PBXGroup;
+			children = (
+				4AFC58481A512B2800FFE3F0 /* CoreBluetooth.framework */,
+				455DF39F1A47EADC00E9DE64 /* PasswordVault */,
+				455DF39E1A47EADC00E9DE64 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		455DF39E1A47EADC00E9DE64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				455DF39D1A47EADC00E9DE64 /* Password Vault.app */,
+				455DF3B61A47EADC00E9DE64 /* PasswordVaultTests.xctest */,
+				4AEB41A91A693E67008D33A0 /* Password Vault.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		455DF39F1A47EADC00E9DE64 /* PasswordVault */ = {
+			isa = PBXGroup;
+			children = (
+				4AEB41641A693E4E008D33A0 /* Nymi */,
+				455DF3D51A47EE2C00E9DE64 /* Common */,
+				84C5B5A51A5FA50C003675F5 /* AlertComponents */,
+				8679A0AC1A5BBA68007F6358 /* Fonts */,
+				4ABB9E761A5520940068BB4E /* ExtLibraries */,
+				455DF3A41A47EADC00E9DE64 /* AppDelegate.h */,
+				455DF3A51A47EADC00E9DE64 /* AppDelegate.m */,
+				4AEB41AE1A695BEC008D33A0 /* WelcomeViewController.h */,
+				4AEB41AF1A695BEC008D33A0 /* WelcomeViewController.m */,
+				455DF3A71A47EADC00E9DE64 /* SetupViewController.h */,
+				455DF3A81A47EADC00E9DE64 /* SetupViewController.m */,
+				455DF3DD1A47EF1300E9DE64 /* DiscoveryViewController.h */,
+				455DF3DE1A47EF1300E9DE64 /* DiscoveryViewController.m */,
+				455DF3E01A47EF4500E9DE64 /* ConfirmViewController.h */,
+				455DF3E11A47EF4500E9DE64 /* ConfirmViewController.m */,
+				4AE249F61A53C61600C44C1A /* ValidateViewController.h */,
+				4AE249F71A53C61700C44C1A /* ValidateViewController.m */,
+				4AE24A1F1A53E3EE00C44C1A /* ContainerView.h */,
+				4AE24A201A53E3EE00C44C1A /* ContainerView.m */,
+				867C98901A6F840B00B4CC8A /* ContainerView_iPad.h */,
+				867C98911A6F840B00B4CC8A /* ContainerView_iPad.m */,
+				455DF3D21A47EB7600E9DE64 /* MenuViewController.h */,
+				455DF3D31A47EB7600E9DE64 /* MenuViewController.m */,
+				4AF9A83D1A528F2B00C77360 /* MainViewController.h */,
+				4AF9A83E1A528F2B00C77360 /* MainViewController.m */,
+				4ABB9E721A551BEF0068BB4E /* OptionsViewController.h */,
+				4ABB9E731A551BEF0068BB4E /* OptionsViewController.m */,
+				4ABB9EAC1A5567030068BB4E /* AlertsViewController.h */,
+				4ABB9EAD1A5567030068BB4E /* AlertsViewController.m */,
+				4ABB9EB21A556A850068BB4E /* CustomTextField.h */,
+				4ABB9EB31A556A850068BB4E /* CustomTextField.m */,
+				868B0C591A5FBA28002A27BC /* AddPasswordViewController.h */,
+				868B0C5A1A5FBA28002A27BC /* AddPasswordViewController.m */,
+				4AF9A8401A528FCC00C77360 /* ItemCell.h */,
+				4AF9A8411A528FCC00C77360 /* ItemCell.m */,
+				4539F8701A496E5900144B06 /* Utility.h */,
+				4539F8711A496E5900144B06 /* Utility.m */,
+				4A226C161A6D2E6E00108815 /* WarningViewController.h */,
+				4A226C171A6D2E6E00108815 /* WarningViewController.m */,
+				455DF3AD1A47EADC00E9DE64 /* Images.xcassets */,
+				868B0C561A5FA9B4002A27BC /* Main.storyboard */,
+				4ADE76C61A64E292005E6519 /* PasswordVaultTests */,
+				455DF3A01A47EADC00E9DE64 /* Supporting Files */,
+			);
+			name = PasswordVault;
+			path = PasswordManager;
+			sourceTree = "<group>";
+		};
+		455DF3A01A47EADC00E9DE64 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A3DCB1C1A52D21200A15244 /* NEASearch.gif */,
+				455DF3A11A47EADC00E9DE64 /* Info.plist */,
+				455DF3A21A47EADC00E9DE64 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		455DF3D51A47EE2C00E9DE64 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				455DF3D61A47EE2C00E9DE64 /* Constants.h */,
+				455DF3D71A47EE2C00E9DE64 /* NCLWrapper.h */,
+				455DF3D81A47EE2C00E9DE64 /* NCLWrapper.m */,
+				455DF3D91A47EE2C00E9DE64 /* PasswordManager.h */,
+				455DF3DA1A47EE2C00E9DE64 /* PasswordManager.m */,
+			);
+			name = Common;
+			path = PasswordManager/Common;
+			sourceTree = SOURCE_ROOT;
+		};
+		4A7B77351A8CE422003E4492 /* CustomLabel */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B77361A8CE44D003E4492 /* PaddingLabel.h */,
+				4A7B77371A8CE44D003E4492 /* PaddingLabel.m */,
+			);
+			name = CustomLabel;
+			sourceTree = "<group>";
+		};
+		4ABB9E761A5520940068BB4E /* ExtLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B77351A8CE422003E4492 /* CustomLabel */,
+				4ADA8A971A7176570088086A /* SegueWithoutAnimation */,
+				4ABB9E771A5520940068BB4E /* Encryption */,
+				4ABB9E801A5520940068BB4E /* Reveal */,
+			);
+			path = ExtLibraries;
+			sourceTree = "<group>";
+		};
+		4ABB9E771A5520940068BB4E /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E781A5520940068BB4E /* AESCrypt.h */,
+				4ABB9E791A5520940068BB4E /* AESCrypt.m */,
+				4ABB9E7A1A5520940068BB4E /* NSData+Base64.h */,
+				4ABB9E7B1A5520940068BB4E /* NSData+Base64.m */,
+				4ABB9E7C1A5520940068BB4E /* NSData+CommonCrypto.h */,
+				4ABB9E7D1A5520940068BB4E /* NSData+CommonCrypto.m */,
+				4ABB9E7E1A5520940068BB4E /* NSString+Base64.h */,
+				4ABB9E7F1A5520940068BB4E /* NSString+Base64.m */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		4ABB9E801A5520940068BB4E /* Reveal */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E811A5520940068BB4E /* Categories */,
+				4ABB9E8A1A5520940068BB4E /* Classes */,
+				4ABB9E8D1A5520940068BB4E /* Modules */,
+				4ABB9E991A5520940068BB4E /* PKRevealController.h */,
+				4ABB9E9A1A5520940068BB4E /* PKRevealController.m */,
+			);
+			path = Reveal;
+			sourceTree = "<group>";
+		};
+		4ABB9E811A5520940068BB4E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E821A5520940068BB4E /* CAAnimation+PKIdentifier.h */,
+				4ABB9E831A5520940068BB4E /* CAAnimation+PKIdentifier.m */,
+				4ABB9E841A5520940068BB4E /* CALayer+PKConvenienceAnimations.h */,
+				4ABB9E851A5520940068BB4E /* CALayer+PKConvenienceAnimations.m */,
+				4ABB9E861A5520940068BB4E /* NSObject+PKBlocks.h */,
+				4ABB9E871A5520940068BB4E /* NSObject+PKBlocks.m */,
+				4ABB9E881A5520940068BB4E /* UIViewController+PKRevealController.h */,
+				4ABB9E891A5520940068BB4E /* UIViewController+PKRevealController.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		4ABB9E8A1A5520940068BB4E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E8B1A5520940068BB4E /* PKRevealControllerView.h */,
+				4ABB9E8C1A5520940068BB4E /* PKRevealControllerView.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4ABB9E8D1A5520940068BB4E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E8E1A5520940068BB4E /* PKLayerAnimator */,
+				4ABB9E961A5520940068BB4E /* PKLog */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4ABB9E8E1A5520940068BB4E /* PKLayerAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E8F1A5520940068BB4E /* PKAnimating.h */,
+				4ABB9E901A5520940068BB4E /* PKAnimation.h */,
+				4ABB9E911A5520940068BB4E /* PKAnimation.m */,
+				4ABB9E921A5520940068BB4E /* PKLayerAnimator.h */,
+				4ABB9E931A5520940068BB4E /* PKLayerAnimator.m */,
+				4ABB9E941A5520940068BB4E /* PKSequentialAnimation.h */,
+				4ABB9E951A5520940068BB4E /* PKSequentialAnimation.m */,
+			);
+			path = PKLayerAnimator;
+			sourceTree = "<group>";
+		};
+		4ABB9E961A5520940068BB4E /* PKLog */ = {
+			isa = PBXGroup;
+			children = (
+				4ABB9E971A5520940068BB4E /* PKLog.h */,
+				4ABB9E981A5520940068BB4E /* PKLog.m */,
+			);
+			path = PKLog;
+			sourceTree = "<group>";
+		};
+		4ADA8A971A7176570088086A /* SegueWithoutAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				4ADA8A981A7176870088086A /* ShowNoAnimationSegue.h */,
+				4ADA8A991A7176870088086A /* ShowNoAnimationSegue.m */,
+			);
+			name = SegueWithoutAnimation;
+			sourceTree = "<group>";
+		};
+		4ADE76C61A64E292005E6519 /* PasswordVaultTests */ = {
+			isa = PBXGroup;
+			children = (
+				4ADE76C71A64E292005E6519 /* Info.plist */,
+				4ADE76C81A64E292005E6519 /* PasswordVaultTests.m */,
+			);
+			path = PasswordVaultTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		4AEB41641A693E4E008D33A0 /* Nymi */ = {
+			isa = PBXGroup;
+			children = (
+				4AEB41651A693E4E008D33A0 /* Device */,
+				4AEB41671A693E4E008D33A0 /* ncl.h */,
+				4AEB41681A693E4E008D33A0 /* Simulator */,
+			);
+			path = Nymi;
+			sourceTree = SOURCE_ROOT;
+		};
+		4AEB41651A693E4E008D33A0 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				4AEB41661A693E4E008D33A0 /* libNCLiOS.a */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+		4AEB41681A693E4E008D33A0 /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				4AEB41691A693E4E008D33A0 /* libNCLNetiOS.a */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+		84C5B5A51A5FA50C003675F5 /* AlertComponents */ = {
+			isa = PBXGroup;
+			children = (
+				84C5B5A61A5FA50C003675F5 /* PMAlertView.h */,
+				84C5B5A71A5FA50C003675F5 /* PMAlertView.m */,
+				84C5B5A81A5FA50C003675F5 /* PMAlertView.xib */,
+				84C5B5A91A5FA50C003675F5 /* PMButton.h */,
+				84C5B5AA1A5FA50C003675F5 /* PMButton.m */,
+				84C5B5AB1A5FA50C003675F5 /* PMTextField.h */,
+				84C5B5AC1A5FA50C003675F5 /* PMTextField.m */,
+			);
+			path = AlertComponents;
+			sourceTree = SOURCE_ROOT;
+		};
+		8679A0AC1A5BBA68007F6358 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A7B772F1A8CE34A003E4492 /* Apache License.txt */,
+				4A7B77301A8CE34A003E4492 /* SIL Open Font License.txt */,
+				84C5B5B11A5FADC3003675F5 /* Montserrat-Bold.ttf */,
+				84C5B5B21A5FADC3003675F5 /* Montserrat-Regular.ttf */,
+				8679A0AE1A5BBA68007F6358 /* OpenSans-Bold.ttf */,
+				8679A0AF1A5BBA68007F6358 /* OpenSans-BoldItalic.ttf */,
+				8679A0B01A5BBA68007F6358 /* OpenSans-ExtraBold.ttf */,
+				8679A0B11A5BBA68007F6358 /* OpenSans-ExtraBoldItalic.ttf */,
+				8679A0B21A5BBA68007F6358 /* OpenSans-Italic.ttf */,
+				8679A0B31A5BBA68007F6358 /* OpenSans-Light.ttf */,
+				8679A0B41A5BBA68007F6358 /* OpenSans-LightItalic.ttf */,
+				8679A0B51A5BBA68007F6358 /* OpenSans-Regular.ttf */,
+				8679A0B61A5BBA68007F6358 /* OpenSans-Semibold.ttf */,
+				8679A0B71A5BBA68007F6358 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		455DF39C1A47EADC00E9DE64 /* PasswordVault Nymulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 455DF3C01A47EADC00E9DE64 /* Build configuration list for PBXNativeTarget "PasswordVault Nymulator" */;
+			buildPhases = (
+				455DF3991A47EADC00E9DE64 /* Sources */,
+				455DF39A1A47EADC00E9DE64 /* Frameworks */,
+				455DF39B1A47EADC00E9DE64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PasswordVault Nymulator";
+			productName = PasswordManager;
+			productReference = 455DF39D1A47EADC00E9DE64 /* Password Vault.app */;
+			productType = "com.apple.product-type.application";
+		};
+		455DF3B51A47EADC00E9DE64 /* PasswordVaultTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 455DF3C31A47EADC00E9DE64 /* Build configuration list for PBXNativeTarget "PasswordVaultTests" */;
+			buildPhases = (
+				455DF3B21A47EADC00E9DE64 /* Sources */,
+				455DF3B31A47EADC00E9DE64 /* Frameworks */,
+				455DF3B41A47EADC00E9DE64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				455DF3B81A47EADC00E9DE64 /* PBXTargetDependency */,
+			);
+			name = PasswordVaultTests;
+			productName = PasswordManagerTests;
+			productReference = 455DF3B61A47EADC00E9DE64 /* PasswordVaultTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4AEB416A1A693E67008D33A0 /* PasswordVault Device */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AEB41A61A693E67008D33A0 /* Build configuration list for PBXNativeTarget "PasswordVault Device" */;
+			buildPhases = (
+				4AEB416B1A693E67008D33A0 /* Sources */,
+				4AEB41901A693E67008D33A0 /* Frameworks */,
+				4AEB41921A693E67008D33A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PasswordVault Device";
+			productName = PasswordManager;
+			productReference = 4AEB41A91A693E67008D33A0 /* Password Vault.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		455DF3951A47EADC00E9DE64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = HappiestMinds;
+				TargetAttributes = {
+					455DF39C1A47EADC00E9DE64 = {
+						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = BXUJK5Z4H2;
+					};
+					455DF3B51A47EADC00E9DE64 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 455DF39C1A47EADC00E9DE64;
+					};
+				};
+			};
+			buildConfigurationList = 455DF3981A47EADC00E9DE64 /* Build configuration list for PBXProject "PasswordVault" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 455DF3941A47EADB00E9DE64;
+			productRefGroup = 455DF39E1A47EADC00E9DE64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				455DF39C1A47EADC00E9DE64 /* PasswordVault Nymulator */,
+				455DF3B51A47EADC00E9DE64 /* PasswordVaultTests */,
+				4AEB416A1A693E67008D33A0 /* PasswordVault Device */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		455DF39B1A47EADC00E9DE64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A7B77311A8CE34A003E4492 /* Apache License.txt in Resources */,
+				84C5B5B51A5FADC3003675F5 /* Montserrat-Regular.ttf in Resources */,
+				84C5B5AE1A5FA50C003675F5 /* PMAlertView.xib in Resources */,
+				4A7B77331A8CE34A003E4492 /* SIL Open Font License.txt in Resources */,
+				8679A0C21A5BBA68007F6358 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				8679A0BC1A5BBA68007F6358 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				8679A0BF1A5BBA68007F6358 /* OpenSans-LightItalic.ttf in Resources */,
+				455DF3AE1A47EADC00E9DE64 /* Images.xcassets in Resources */,
+				8679A0BD1A5BBA68007F6358 /* OpenSans-Italic.ttf in Resources */,
+				8679A0B91A5BBA68007F6358 /* OpenSans-Bold.ttf in Resources */,
+				8679A0BB1A5BBA68007F6358 /* OpenSans-ExtraBold.ttf in Resources */,
+				8679A0BA1A5BBA68007F6358 /* OpenSans-BoldItalic.ttf in Resources */,
+				84C5B5B41A5FADC3003675F5 /* Montserrat-Bold.ttf in Resources */,
+				868B0C581A5FA9B4002A27BC /* Main.storyboard in Resources */,
+				4A3DCB1D1A52D21200A15244 /* NEASearch.gif in Resources */,
+				8679A0BE1A5BBA68007F6358 /* OpenSans-Light.ttf in Resources */,
+				8679A0C01A5BBA68007F6358 /* OpenSans-Regular.ttf in Resources */,
+				8679A0C11A5BBA68007F6358 /* OpenSans-Semibold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		455DF3B41A47EADC00E9DE64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AEB41921A693E67008D33A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A7B77321A8CE34A003E4492 /* Apache License.txt in Resources */,
+				4AEB41931A693E67008D33A0 /* Montserrat-Regular.ttf in Resources */,
+				4AEB41941A693E67008D33A0 /* PMAlertView.xib in Resources */,
+				4A7B77341A8CE34A003E4492 /* SIL Open Font License.txt in Resources */,
+				4AEB41961A693E67008D33A0 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				4AEB41971A693E67008D33A0 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				4AEB41981A693E67008D33A0 /* OpenSans-LightItalic.ttf in Resources */,
+				4AEB41991A693E67008D33A0 /* Images.xcassets in Resources */,
+				4AEB419A1A693E67008D33A0 /* OpenSans-Italic.ttf in Resources */,
+				4AEB419B1A693E67008D33A0 /* OpenSans-Bold.ttf in Resources */,
+				4AEB419C1A693E67008D33A0 /* OpenSans-ExtraBold.ttf in Resources */,
+				4AEB419D1A693E67008D33A0 /* OpenSans-BoldItalic.ttf in Resources */,
+				4AEB419E1A693E67008D33A0 /* Montserrat-Bold.ttf in Resources */,
+				4AEB41A01A693E67008D33A0 /* Main.storyboard in Resources */,
+				4AEB41A11A693E67008D33A0 /* NEASearch.gif in Resources */,
+				4AEB41A21A693E67008D33A0 /* OpenSans-Light.ttf in Resources */,
+				4AEB41A31A693E67008D33A0 /* OpenSans-Regular.ttf in Resources */,
+				4AEB41A41A693E67008D33A0 /* OpenSans-Semibold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		455DF3991A47EADC00E9DE64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4ABB9E9E1A5520940068BB4E /* NSString+Base64.m in Sources */,
+				4A7B77381A8CE44D003E4492 /* PaddingLabel.m in Sources */,
+				455DF3DC1A47EE2C00E9DE64 /* PasswordManager.m in Sources */,
+				4ABB9EA61A5520940068BB4E /* PKSequentialAnimation.m in Sources */,
+				455DF3D41A47EB7600E9DE64 /* MenuViewController.m in Sources */,
+				4ABB9EA41A5520940068BB4E /* PKAnimation.m in Sources */,
+				4AE249F81A53C61700C44C1A /* ValidateViewController.m in Sources */,
+				84C5B5B01A5FA50C003675F5 /* PMTextField.m in Sources */,
+				4ABB9EA31A5520940068BB4E /* PKRevealControllerView.m in Sources */,
+				4ABB9EA21A5520940068BB4E /* UIViewController+PKRevealController.m in Sources */,
+				455DF3A91A47EADC00E9DE64 /* SetupViewController.m in Sources */,
+				84C5B5AD1A5FA50C003675F5 /* PMAlertView.m in Sources */,
+				4AF9A83F1A528F2B00C77360 /* MainViewController.m in Sources */,
+				4ABB9E9C1A5520940068BB4E /* NSData+Base64.m in Sources */,
+				4ABB9E9D1A5520940068BB4E /* NSData+CommonCrypto.m in Sources */,
+				4ABB9EA71A5520940068BB4E /* PKLog.m in Sources */,
+				4ABB9E9F1A5520940068BB4E /* CAAnimation+PKIdentifier.m in Sources */,
+				4ABB9EA51A5520940068BB4E /* PKLayerAnimator.m in Sources */,
+				4ABB9EB41A556A850068BB4E /* CustomTextField.m in Sources */,
+				867C98921A6F840B00B4CC8A /* ContainerView_iPad.m in Sources */,
+				84C5B5AF1A5FA50C003675F5 /* PMButton.m in Sources */,
+				455DF3A61A47EADC00E9DE64 /* AppDelegate.m in Sources */,
+				4AF9A8421A528FCC00C77360 /* ItemCell.m in Sources */,
+				4ABB9E9B1A5520940068BB4E /* AESCrypt.m in Sources */,
+				4AEB41B01A695BEC008D33A0 /* WelcomeViewController.m in Sources */,
+				4ADA8A9A1A7176870088086A /* ShowNoAnimationSegue.m in Sources */,
+				4ABB9E741A551BEF0068BB4E /* OptionsViewController.m in Sources */,
+				4539F8721A496E5900144B06 /* Utility.m in Sources */,
+				455DF3DB1A47EE2C00E9DE64 /* NCLWrapper.m in Sources */,
+				4ABB9EA11A5520940068BB4E /* NSObject+PKBlocks.m in Sources */,
+				4AE24A211A53E3EE00C44C1A /* ContainerView.m in Sources */,
+				455DF3DF1A47EF1300E9DE64 /* DiscoveryViewController.m in Sources */,
+				4ABB9EA01A5520940068BB4E /* CALayer+PKConvenienceAnimations.m in Sources */,
+				4ABB9EA81A5520940068BB4E /* PKRevealController.m in Sources */,
+				455DF3A31A47EADC00E9DE64 /* main.m in Sources */,
+				868B0C5B1A5FBA28002A27BC /* AddPasswordViewController.m in Sources */,
+				4A226C181A6D2E6E00108815 /* WarningViewController.m in Sources */,
+				455DF3E21A47EF4500E9DE64 /* ConfirmViewController.m in Sources */,
+				4ABB9EAE1A5567030068BB4E /* AlertsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		455DF3B21A47EADC00E9DE64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4ADE76CA1A64E292005E6519 /* PasswordVaultTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AEB416B1A693E67008D33A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AEB416C1A693E67008D33A0 /* NSString+Base64.m in Sources */,
+				4A7B77391A8CE44D003E4492 /* PaddingLabel.m in Sources */,
+				4AEB416D1A693E67008D33A0 /* PasswordManager.m in Sources */,
+				4AEB416E1A693E67008D33A0 /* PKSequentialAnimation.m in Sources */,
+				4AEB416F1A693E67008D33A0 /* MenuViewController.m in Sources */,
+				4AEB41701A693E67008D33A0 /* PKAnimation.m in Sources */,
+				4AEB41711A693E67008D33A0 /* ValidateViewController.m in Sources */,
+				4AEB41721A693E67008D33A0 /* PMTextField.m in Sources */,
+				4AEB41741A693E67008D33A0 /* PKRevealControllerView.m in Sources */,
+				4AEB41751A693E67008D33A0 /* UIViewController+PKRevealController.m in Sources */,
+				4AEB41761A693E67008D33A0 /* SetupViewController.m in Sources */,
+				4AEB41771A693E67008D33A0 /* PMAlertView.m in Sources */,
+				4AEB41781A693E67008D33A0 /* MainViewController.m in Sources */,
+				4AEB41791A693E67008D33A0 /* NSData+Base64.m in Sources */,
+				4AEB417A1A693E67008D33A0 /* NSData+CommonCrypto.m in Sources */,
+				4AEB417B1A693E67008D33A0 /* PKLog.m in Sources */,
+				4AEB417C1A693E67008D33A0 /* CAAnimation+PKIdentifier.m in Sources */,
+				4AEB417D1A693E67008D33A0 /* PKLayerAnimator.m in Sources */,
+				4AEB417E1A693E67008D33A0 /* CustomTextField.m in Sources */,
+				867C98931A6F840B00B4CC8A /* ContainerView_iPad.m in Sources */,
+				4AEB417F1A693E67008D33A0 /* PMButton.m in Sources */,
+				4AEB41801A693E67008D33A0 /* AppDelegate.m in Sources */,
+				4AEB41821A693E67008D33A0 /* ItemCell.m in Sources */,
+				4AEB41831A693E67008D33A0 /* AESCrypt.m in Sources */,
+				4AEB41B11A695BEC008D33A0 /* WelcomeViewController.m in Sources */,
+				4ADA8A9B1A7176870088086A /* ShowNoAnimationSegue.m in Sources */,
+				4AEB41841A693E67008D33A0 /* OptionsViewController.m in Sources */,
+				4AEB41851A693E67008D33A0 /* Utility.m in Sources */,
+				4AEB41861A693E67008D33A0 /* NCLWrapper.m in Sources */,
+				4AEB41871A693E67008D33A0 /* NSObject+PKBlocks.m in Sources */,
+				4AEB41881A693E67008D33A0 /* ContainerView.m in Sources */,
+				4AEB41891A693E67008D33A0 /* DiscoveryViewController.m in Sources */,
+				4AEB418A1A693E67008D33A0 /* CALayer+PKConvenienceAnimations.m in Sources */,
+				4AEB418B1A693E67008D33A0 /* PKRevealController.m in Sources */,
+				4AEB418C1A693E67008D33A0 /* main.m in Sources */,
+				4AEB418D1A693E67008D33A0 /* AddPasswordViewController.m in Sources */,
+				4A226C191A6D2E6E00108815 /* WarningViewController.m in Sources */,
+				4AEB418E1A693E67008D33A0 /* ConfirmViewController.m in Sources */,
+				4AEB418F1A693E67008D33A0 /* AlertsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		455DF3B81A47EADC00E9DE64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 455DF39C1A47EADC00E9DE64 /* PasswordVault Nymulator */;
+			targetProxy = 455DF3B71A47EADC00E9DE64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		868B0C561A5FA9B4002A27BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				868B0C571A5FA9B4002A27BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		455DF3BE1A47EADC00E9DE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		455DF3BF1A47EADC00E9DE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		455DF3C11A47EADC00E9DE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"NYMULATOR=1",
+				);
+				INFOPLIST_FILE = PasswordManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nymi/Simulator",
+				);
+				PRODUCT_NAME = "Password Vault";
+				PROVISIONING_PROFILE = "54e34c90-4948-4950-88f3-c28242acb379";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		455DF3C21A47EADC00E9DE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NYMULATOR=1";
+				INFOPLIST_FILE = PasswordManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nymi/Simulator",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "Password Vault";
+				PROVISIONING_PROFILE = "54e34c90-4948-4950-88f3-c28242acb379";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		455DF3C41A47EADC00E9DE64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Happiest Minds Technologies Private Limited";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PasswordVaultTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nymi/Simulator",
+				);
+				PRODUCT_NAME = PasswordVaultTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Password Vault.app/Password Vault";
+			};
+			name = Debug;
+		};
+		455DF3C51A47EADC00E9DE64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Happiest Minds Technologies Private Limited";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PasswordVaultTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nymi/Simulator",
+				);
+				PRODUCT_NAME = PasswordVaultTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Password Vault.app/Password Vault";
+			};
+			name = Release;
+		};
+		4AEB41A71A693E67008D33A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				INFOPLIST_FILE = "PasswordManager/PasswordVaultDevice-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nymi/Device",
+				);
+				PRODUCT_NAME = "Password Vault";
+				PROVISIONING_PROFILE = "54e34c90-4948-4950-88f3-c28242acb379";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4AEB41A81A693E67008D33A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				INFOPLIST_FILE = "PasswordManager/PasswordVaultDevice-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Nymi/Device",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "Password Vault";
+				PROVISIONING_PROFILE = "54e34c90-4948-4950-88f3-c28242acb379";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		455DF3981A47EADC00E9DE64 /* Build configuration list for PBXProject "PasswordVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455DF3BE1A47EADC00E9DE64 /* Debug */,
+				455DF3BF1A47EADC00E9DE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		455DF3C01A47EADC00E9DE64 /* Build configuration list for PBXNativeTarget "PasswordVault Nymulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455DF3C11A47EADC00E9DE64 /* Debug */,
+				455DF3C21A47EADC00E9DE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		455DF3C31A47EADC00E9DE64 /* Build configuration list for PBXNativeTarget "PasswordVaultTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				455DF3C41A47EADC00E9DE64 /* Debug */,
+				455DF3C51A47EADC00E9DE64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AEB41A61A693E67008D33A0 /* Build configuration list for PBXNativeTarget "PasswordVault Device" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AEB41A71A693E67008D33A0 /* Debug */,
+				4AEB41A81A693E67008D33A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 455DF3951A47EADC00E9DE64 /* Project object */;
+}
