@@ -13,7 +13,7 @@ The Nymi Android API is provided in aar bundle which is a binary distribution of
 2. Copy the aar file to the libs folder (create one if it's not there already) in your project directory. For example, <your_project>/app/libs/.
 3. Open build.gradle (module) file and add a depedency to the aar files. Under `dependencies`, add the following line:
 
-    `compile(name:'api-debug', ext:'aar')`
+    `compile(name:'nymi-api-nymulator', ext:'aar')`
 
 4. Open build.gradle (project file, and add a flat filesystem directory as a repository by adding the following under `repositories`:
     
