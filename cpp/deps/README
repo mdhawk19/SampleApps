@@ -1,0 +1,4 @@
+Run get_dependencies script
+Copy config.json to 
+  api/wrappers/cpp/win/NapiCpp/NapiCpp , if on Windows
+  directory where your NapiCpp executable is , if on Mac
