@@ -15,6 +15,7 @@ void printHelp(){
     std::cout<<"  `accept [+|-]{5}` accept a provisioning pattern.\n     Pattern string has length 5, composed of '+' (led on) or '-' (led off).\n     e.g. `accept +----` to accept a pattern where only the first led is on.\n";
     std::cout<<"  `provision-getall` get all bands provisioned to this NEA.\n";
     std::cout<<"  `provision-gethere` get all bands provisioned to this NEA and are present.\n";
+    std::cout<<"  `delete-prov i` Revoke provisioning of Nymi Band i.\n";
 
 
     std::cout<<"\nCryptographic commands:\n";
