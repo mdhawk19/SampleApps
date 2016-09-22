@@ -6,14 +6,6 @@
 
 #define NCL_VERBOSITY "*"
 
-std::string get_cur_user(){
-    char* env_user;
-    env_user = getenv ("USER");
-    if (env_user == NULL) return std::string();
-    
-    return std::string(env_user);
-}
-
 void printHelp(){
 
     std::cout<<"\nProvisioning commands:\n";
@@ -23,7 +15,6 @@ void printHelp(){
     std::cout<<"  `accept [+|-]{5}` accept a provisioning pattern.\n     Pattern string has length 5, composed of '+' (led on) or '-' (led off).\n     e.g. `accept +----` to accept a pattern where only the first led is on.\n";
     std::cout<<"  `provision-getall` get all bands provisioned to this NEA.\n";
     std::cout<<"  `provision-gethere` get all bands provisioned to this NEA and are present.\n";
-	std::cout<<"  `delete-prov i` revoke provisioning of Nymi Band i\n";
 
 
     std::cout<<"\nCryptographic commands:\n";
@@ -232,8 +223,7 @@ int main() {
            On OSX, there are two different Napi libraries, one for connecting to the Nymulator (be sure to set the port),
            and one for connecting to the Nymi Band.
         */
-        int nPort = 9089;
-//        napi = NymiApi::getNymiApi(initResult,onError, "/Users/"+get_cur_user()+"/Library/Application Support/Nymi/NymiUnlock", nymi::LogLevel::debug, nPort, "127.0.0.1");
+        int nPort = 9088;
         napi = NymiApi::getNymiApi(initResult,onError, ".", nymi::LogLevel::normal, nPort, "127.0.0.1");
 
         if (initResult != nymi::ConfigOutcome::okay) {
