@@ -127,21 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\Listener.cpp" />
     <ClCompile Include="..\..\..\src\main.cpp" />
-    <ClCompile Include="..\..\..\src\NymiApi.cpp" />
-    <ClCompile Include="..\..\..\src\NymiApiEnums.cpp" />
-    <ClCompile Include="..\..\..\src\NymiProvision.cpp" />
-    <ClCompile Include="..\..\..\src\TransientNymiBandInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\src\GenJson.h" />
-    <ClInclude Include="..\..\..\src\Listener.h" />
     <ClInclude Include="..\..\..\src\NeaCallbackTypes.h" />
     <ClInclude Include="..\..\..\src\NymiApi.h" />
     <ClInclude Include="..\..\..\src\NymiApiEnums.h" />
     <ClInclude Include="..\..\..\src\NymiProvision.h" />
     <ClInclude Include="..\..\..\src\TransientNymiBandInfo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libnapicpp\libnapicpp.vcxproj">
+      <Project>{520b2e3f-f305-4046-885e-37b0e4475d67}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

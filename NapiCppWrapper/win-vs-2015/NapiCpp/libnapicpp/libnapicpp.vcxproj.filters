@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\TransientNymiBandInfo.cpp">
+      <Filter>Library Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NymiProvision.cpp">
+      <Filter>Library Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NymiApiEnums.cpp">
+      <Filter>Library Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\NymiApi.cpp">
+      <Filter>Library Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\Listener.cpp">
+      <Filter>Library Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\GenJson.h">
+      <Filter>Library Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\JsonUtilityFunctions.h">
+      <Filter>Library Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Listener.h">
+      <Filter>Library Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\NeaCallbackTypes.h">
+      <Filter>Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\NymiApi.h">
+      <Filter>Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\NymiApiEnums.h">
+      <Filter>Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\NymiProvision.h">
+      <Filter>Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\TransientNymiBandInfo.h">
+      <Filter>Shared Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shared Header Files">
+      <UniqueIdentifier>{bd61546d-762a-46d9-baa4-f8a2d790dc7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library Header Files">
+      <UniqueIdentifier>{3f7b86f4-7d9b-4351-b672-66a6bfc81e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library Source Files">
+      <UniqueIdentifier>{f06b23c5-7b2e-405d-b95d-eebd43eeada0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
