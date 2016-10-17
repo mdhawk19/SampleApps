@@ -1,3 +1,2 @@
-Copy config.json to 
-  api/wrappers/cpp/win/NapiCpp/NapiCpp , if on Windows
-  directory where your NapiCpp executable is , if on Mac
+Copy config.json to the directory where your NapiCpp executable is. 
+For details, see the Developer Quick Start.
