@@ -1,0 +1,8 @@
+﻿  dllmain.cpp
+  NapiDyn.cpp
+     Creating library C:\Users\mike\workspace\cpp\NapiDyn\x64\Release\NapiDyn.lib and object C:\Users\mike\workspace\cpp\NapiDyn\x64\Release\NapiDyn.exp
+  Generating code
+  All 101 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  NapiDyn.vcxproj -> C:\Users\mike\workspace\cpp\NapiDyn\x64\Release\NapiDyn.dll
+  NapiDyn.vcxproj -> C:\Users\mike\workspace\cpp\NapiDyn\x64\Release\NapiDyn.pdb (Full PDB)
