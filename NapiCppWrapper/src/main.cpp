@@ -186,8 +186,10 @@ int main() {
     };
 
     onProvisionRevokedCallback onProvisionRevoked = [](bool opResult, std::string pid, napiError err){
-
-        std::cout<<"Provision revoked on Nymi Band with pid "<<pid<<std::endl;
+		if (err.errorList.size() != 0)
+			std::cout << "ERROR revoking provision on Nymi Band with pid " << pid << ": " << err.errorString << std::endl;
+		else
+	        std::cout<<"Provision revoked on Nymi Band with pid " << pid << std::endl;
     };
 
     revokedKeyCallback onRevokedKey = [](bool opResult, std::string pid, KeyType keyType, napiError err){
@@ -224,7 +226,7 @@ int main() {
            On OSX, there are two different Napi libraries, one for connecting to the Nymulator (be sure to set the port),
            and one for connecting to the Nymi Band.
         */
-        int nPort = 9088;
+        int nPort = 9089;
         napi = NymiApi::getNymiApi(initResult,onError, ".", nymi::LogLevel::normal, nPort, "127.0.0.1");
 
         if (initResult != nymi::ConfigOutcome::okay) {
@@ -293,7 +295,9 @@ int main() {
 			napi->getProvisions(displayProv, NymiApi::ProvisionListType::PRESENT);
 		}
 		else if (command == "exit"){
-			delete napi;
+			if (napi)
+				delete napi;
+			exit(0);
 		}
 		else if (command == "get-random"){
             int bandIndex = -1;

@@ -72,7 +72,6 @@ namespace PrivateListener {
                 //handle any errors
                 nljson::iterator jit;
                 if (hasKey(jobj,{"errors"},jit) || isKeyValue(jobj,{"successful"},jit,false)){
-                    
                     handleNapiError(jobj);
                     continue;
                 }
@@ -177,7 +176,7 @@ namespace PrivateListener {
         //find the right callback to report this error on
         
         //if operation is a connected session operation...
-        std::array<std::string,7> secureOp = {"random","symmetricKey","sign","totp","buzz","info"};
+        std::array<std::string,8> secureOp = {"random","symmetricKey","sign","totp","buzz","info","revoke"};
         if (std::any_of(secureOp.begin(),secureOp.end(), [&](std::string op){return opVal.find(op) != std::string::npos; })) {
             //we need an exchange to look up the callback
             std::string exchange;
@@ -197,12 +196,13 @@ namespace PrivateListener {
                     else if (opVal == "totp/get") { exchangeCallback->second(failure,pid,"",nErr); }
                     else if (opVal == "sign/run") { exchangeCallback->second(failure,pid,"","",nErr); }
                     else if (opVal == "notify/run") { exchangeCallback->second(failure,pid,HapticNotification::ERROR,nErr); }
+					else if (opVal == "revoke/run") { exchangeCallback->second(failure,pid,nErr); }
                     else if (opVal == "info") {
                         //since there is an exchangeCallback, this was a request to NymiProvision::getDeviceInfo()
                         
                         //get pid from the exchange
                         size_t pidstart = exchange.find("deviceinfo") + std::strlen("deviceinfo");
-                        pid = exchange.substr(pidstart);
+						pid = exchange.substr(pidstart);
                         
                         TransientNymiBandInfo blank;
                         exchangeCallback->second(failure,pid,blank,nErr);
@@ -215,6 +215,7 @@ namespace PrivateListener {
             }
         }
         //report on general error callback
+		std::cout << "Handing error to default onError callback" << std::endl;
         onError(nErr);
     }
 
