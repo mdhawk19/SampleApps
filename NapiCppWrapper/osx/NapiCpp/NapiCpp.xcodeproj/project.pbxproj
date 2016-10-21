@@ -14,7 +14,6 @@
 		1C6CC7A01CD70022000E2947 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C6CC79E1CD70022000E2947 /* Listener.cpp */; };
 		1CA6C73C1CCA717300A2BDC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C7391CCA717300A2BDC5 /* main.cpp */; };
 		1CA6C73D1CCA717300A2BDC5 /* NymiApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C73A1CCA717300A2BDC5 /* NymiApi.cpp */; };
-		1CA6C7401CCA754300A2BDC5 /* libnapi-net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6C73F1CCA754300A2BDC5 /* libnapi-net.a */; };
 		1CA6C7431CCA7E8000A2BDC5 /* NymiProvision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C7411CCA7E8000A2BDC5 /* NymiProvision.cpp */; };
 		1CA6C7461CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C7441CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp */; };
 /* End PBXBuildFile section */
@@ -46,7 +45,6 @@
 		1CA6C7391CCA717300A2BDC5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../src/main.cpp; sourceTree = "<group>"; };
 		1CA6C73A1CCA717300A2BDC5 /* NymiApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NymiApi.cpp; path = ../../../src/NymiApi.cpp; sourceTree = "<group>"; };
 		1CA6C73B1CCA717300A2BDC5 /* NymiApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymiApi.h; path = ../../../src/NymiApi.h; sourceTree = "<group>"; };
-		1CA6C73F1CCA754300A2BDC5 /* libnapi-net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnapi-net.a"; path = "../../deps/libnapi-net.a"; sourceTree = "<group>"; };
 		1CA6C7411CCA7E8000A2BDC5 /* NymiProvision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NymiProvision.cpp; path = ../../../src/NymiProvision.cpp; sourceTree = "<group>"; };
 		1CA6C7421CCA7E8000A2BDC5 /* NymiProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymiProvision.h; path = ../../../src/NymiProvision.h; sourceTree = "<group>"; };
 		1CA6C7441CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransientNymiBandInfo.cpp; path = ../../../src/TransientNymiBandInfo.cpp; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 			files = (
 				1C4CD0261D662C510054C7C0 /* Foundation.framework in Frameworks */,
 				1C4CD0241D662C300054C7C0 /* CoreBluetooth.framework in Frameworks */,
-				1CA6C7401CCA754300A2BDC5 /* libnapi-net.a in Frameworks */,
 				1C4CD02A1D662C890054C7C0 /* libnapi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				1C4CD0291D662C890054C7C0 /* libnapi.a */,
-				1CA6C73F1CCA754300A2BDC5 /* libnapi-net.a */,
 			);
 			name = JsonNapi;
 			sourceTree = "<group>";

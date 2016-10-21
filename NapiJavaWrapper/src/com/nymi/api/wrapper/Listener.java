@@ -4,9 +4,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.util.AbstractMap;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.nymi.api.LibNapi;
@@ -54,6 +52,7 @@ public class Listener implements Runnable {
 	                    String operation = jobj.getString("operation");
 	                    
 						switch (operation) {
+/*
 							case "provision":
 								//handleOpProvision(jobj);
 								break;
@@ -84,6 +83,7 @@ public class Listener implements Runnable {
 							case "key":
 								//handleOpKey(jobj);
 								break;
+*/
 							default:
 								logMessage(jobj);
 								break;
@@ -119,6 +119,7 @@ public class Listener implements Runnable {
                 nErr.errorString += "{" + errType + ":" + "'" +errMsg + "'} ";
             }
         }
+    }
         
         //some utility functions
         //----------------------
@@ -128,9 +129,9 @@ public class Listener implements Runnable {
                 if (errorIfNoExchange) {
                     String errMsg = "Could not find JSON field \"exchange\" in the JSON obj:\n";
                     errMsg += jobj.toString();
-                    NapiError err = new NapiError;
+                    NapiError err = new NapiError();
                     err.errorString = errMsg;
-                    //onError(err);
+                    returnObject.onError(err);
                 }
                 return "";
             }
@@ -143,7 +144,7 @@ public class Listener implements Runnable {
             
         	if (jobj.has("request")) {
         		JSONObject request = jobj.getJSONObject("request");
-        		if (request.has("pid")
+        		if (request.has("pid"))
         				return request.getString("pid");
             }
             return "";

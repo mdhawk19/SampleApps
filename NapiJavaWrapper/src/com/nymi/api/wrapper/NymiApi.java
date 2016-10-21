@@ -3,9 +3,6 @@ package com.nymi.api.wrapper;
 // Singleton manager for NAPI object
 import com.nymi.api.LibNapi;
 
-import java.util.AbstractMap;
-import java.util.List;
-
 
 public class NymiApi {
 
@@ -85,50 +82,50 @@ public class NymiApi {
     	return initResult;
     }
 	
-	void startProvisioning()
+    public void startProvisioning()
 	{
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.start_prov());
 	}
 	
-	void acceptPattern(String pattern)
+    public void acceptPattern(String pattern)
 	{
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.accept_pattern(pattern));		
 	}
 	
-	void stopProvisioning()
+    public void stopProvisioning()
 	{
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.stop_prov());
 	}
 	
-	void getProvisions(ProvisionListType type)
+    public void getProvisions(ProvisionListType type)
 	{
 	    String exchange = (type == ProvisionListType.ALL) ? "provisions" : "provisionsPresent";
 	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_info(exchange));
 	}
 	
-    void enableOnFoundChange()
+    public void enableOnFoundChange()
     {
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.enable_notification(true,"onFoundChange"));
     }
     
-    void enableOnPresenceChange()
+    public void enableOnPresenceChange()
     {
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.enable_notification(true,"onPresenceChange"));
     	
     }
 
-    void disableOnFoundChange()
+    public void disableOnFoundChange()
     {
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.enable_notification(false,"onFoundChange"));
     }
     
-    void disableOnPresenceChange()
+    public void disableOnPresenceChange()
     {
 		LibNapi.INSTANCE.jsonNapiPutD(GenJson.enable_notification(false,"onPresenceChange"));
     	
     }
     
-    void getApiNotificationState()
+    public void getApiNotificationState()
     {
     	if (listener != null) {
 			LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_state_notifications());

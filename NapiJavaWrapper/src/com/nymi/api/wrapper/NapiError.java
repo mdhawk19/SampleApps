@@ -1,8 +1,6 @@
 package com.nymi.api.wrapper;
 
-import java.util.AbstractMap;
 import java.util.HashMap;
-import java.util.List;
 
 public class NapiError {
     
