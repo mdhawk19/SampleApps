@@ -17,7 +17,9 @@ import com.nymi.api.wrapper.TransientNymiBandInfo;
 public class NapiCallbacks implements NapiReturnObject {
 
 	private NymiApi napi = NymiApi.getInstance();
-	public Vector<NymiProvision> bands = new Vector<NymiProvision>();
+	private Vector<NymiProvision> bands = new Vector<NymiProvision>();
+	
+	public Vector<NymiProvision> getBands() { return bands; }
 
 	@Override
 	public void onDeviceInfo(Boolean opResult, String pid, TransientNymiBandInfo transientinfo,NapiError nErr) {
