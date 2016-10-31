@@ -11,4 +11,9 @@ public class NapiError {
     	errorString = new String("");
     	errorList = new HashMap<String,String>();
     }
+    
+    public NapiError(String msg) {
+    	errorString = msg;
+    	errorList = new HashMap<String,String>();
+    }
 };

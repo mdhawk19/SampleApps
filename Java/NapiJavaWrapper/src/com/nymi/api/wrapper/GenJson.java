@@ -1,7 +1,6 @@
 package com.nymi.api.wrapper;
 
 import org.json.JSONObject;
-import org.json.JSONArray;
 
 public class GenJson {
 
@@ -23,13 +22,13 @@ public class GenJson {
 
 	/* exchange here is expected to be non-empty, as it determines which field of info we are interested in*/
 	public static String get_info(String exchange) {
-		if (exchange == "") return "";
+		if (exchange.equals("")) return "";
 			else return("{\"path\":\"info/get\",\"exchange\":\"" + exchange + "\"}");
 	}
 	
 	public static String accept_pattern(String pattern) {
 		JSONObject json = new JSONObject();
-		json.put("path","provision/run/start");
+		json.put("path","provision/pattern");
 		json.put("exchange","*provisioning*");
 		JSONObject jsonrequest = new JSONObject(); // sub-object with request data
 		jsonrequest.put("pattern", pattern);
@@ -87,6 +86,7 @@ public class GenJson {
 		JSONObject jsonrequest = new JSONObject(); // sub-object with request data
 		jsonrequest.put("key", totpkey);
 		jsonrequest.put("guarded", guarded);
+		jsonrequest.put("pid", pid);
 		json.put ("request",jsonrequest);
 		return json.toString();
 	}
@@ -116,10 +116,9 @@ public class GenJson {
 		JSONObject json = new JSONObject();
 		json.put("path","notifications/set");
 		json.put("exchange","*notifications*");
-		JSONArray requestarr = new JSONArray();
-		requestarr.put(state);
-		requestarr.put(enable);
-		json.put("request", requestarr);
+		JSONObject request = new JSONObject();
+		request.put(state, enable);
+		json.put("request", request);
 		return json.toString();
 	}
 

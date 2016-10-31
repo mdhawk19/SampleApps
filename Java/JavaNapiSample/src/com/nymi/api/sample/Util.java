@@ -2,25 +2,37 @@ package com.nymi.api.sample;
 
 import java.util.Vector;
 
-import com.nymi.api.wrapper.NymiApi;
-import com.nymi.api.wrapper.NymiProvision;
+import com.nymi.api.wrapper.*;
 
 public class Util {
 
-	private NymiApi napi = NymiApi.getInstance();
-    private NapiCallbacks callbacks = new NapiCallbacks();
+	private NymiJavaApi napi = NymiJavaApi.getInstance();
+    private SampleAppCallbacks callbacks = new SampleAppCallbacks();
     
-    public NymiApi getNapi() { return napi; }
-    public NapiCallbacks getCallbacks() { return callbacks; }
+    public NymiJavaApi getNapi() { return napi; }
+    public com.nymi.api.wrapper.NapiCallbacks getCallbacks() { return callbacks; }
     
     public Vector<NymiProvision> getBands() { return callbacks.getBands(); }
 	
+    public Boolean initNapi(String rootDirectory, int log, int nymulatorPort, String nymulatorHost) {
+    	int retcode = napi.init(callbacks, rootDirectory, log, nymulatorPort, nymulatorHost);
+    	return retcode == 0;
+    }
+    
     public Boolean validateBandIndex (int bandIndex) {
-        if (bandIndex < 0 || bandIndex >= callbacks.getBands().size()) {
+        if (bandIndex < 0 || bandIndex >= getBands().size()) {
             System.out.println("Incorrect band index");
             return false;
         } else
         	return true;
+    };
+
+    public Boolean validatePattern(String pattern) {
+        if (pattern.length() != 5) return false;
+        for (char c : pattern.toCharArray()) {
+            if (c != '+' && c != '-') return false;
+        }
+        return true;
     };
 
 	void printHelp(){
@@ -58,14 +70,5 @@ public class Util {
 	    System.out.println("  `onpresencechange-start` receive notification when there is a change in presence status of a Nymi Band.");
 	    System.out.println("  `onpresencechange-stop` don't receive onpresencechange notifications.");
 	}
-
-    public Boolean validatePattern(String pattern) {
-
-        if (pattern.length() != 5) return false;
-        for (char c : pattern.toCharArray()) {
-            if (c != '+' && c != '-') return false;
-        }
-        return true;
-    };
 
 }

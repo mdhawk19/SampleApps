@@ -2,17 +2,14 @@ package com.nymi.api.wrapper;
 
 import java.security.SecureRandom;
 
-import com.nymi.api.LibNapi;
-import com.nymi.api.wrapper.NymiApi.HapticNotification;
+import com.nymi.api.wrapper.NymiJavaApi.HapticNotification;
 
 public class NymiProvision {
 
 	private SecureRandom rng = new SecureRandom();
 	private String pid = "";
-	NymiApi napi;
+	NymiJavaApi napi;
 	
-//	Map<String, NeaCallback> nymiProvisions = Map<String, NeaCallback>();
-
 	public NymiProvision() {
 		SeedRng();
 	}
@@ -78,7 +75,7 @@ public class NymiProvision {
 	public void sendNotification(HapticNotification notifyType) {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "notify" + getPid();
-		LibNapi.INSTANCE.jsonNapiPutD(GenJson.notify(getPid(), notifyType == NymiApi.HapticNotification.NOTIFY_POSITIVE, exchange));
+		LibNapi.INSTANCE.jsonNapiPutD(GenJson.notify(getPid(), notifyType == NymiJavaApi.HapticNotification.NOTIFY_POSITIVE, exchange));
 	}
 
 	public void getDeviceInfo() {
@@ -87,7 +84,7 @@ public class NymiProvision {
 	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_info(exchange));
 	}
 
-	public void revokeKey(NymiApi.KeyType keyType) {
+	public void revokeKey(NymiJavaApi.KeyType keyType) {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 	    exchange += "deviceinfo" + getPid();
 
@@ -100,7 +97,6 @@ public class NymiProvision {
 	        default:
 	        	break;
 	    }
-
 	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.delete_key(getPid(),keyStr,exchange));
 	}
 

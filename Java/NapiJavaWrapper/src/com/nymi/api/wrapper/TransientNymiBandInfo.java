@@ -50,19 +50,19 @@ public class TransientNymiBandInfo {
 	    }
 	}
 
-	public NymiApi.FoundStatus getFoundState(){
+	public NymiJavaApi.FoundStatus getFoundState(){
 	    try {
-	        return NymiApi.FoundStatus.valueOf(deviceInfo.getString("found"));
+	        return NymiJavaApi.FoundStatus.valueOf(deviceInfo.getString("found").toUpperCase());
 	    } catch (JSONException e) {
-	    	return NymiApi.FoundStatus.ERROR;
+	    	return NymiJavaApi.FoundStatus.ERROR;
 	    }
 	}
 
-	public NymiApi.PresenceStatus getPresenceState(){
+	public NymiJavaApi.PresenceStatus getPresenceState(){
 		try {
-			return NymiApi.PresenceStatus.valueOf(deviceInfo.getString("present"));
+			return NymiJavaApi.PresenceStatus.valueOf("DEVICE_PRESENCE_" + deviceInfo.getString("present").toUpperCase());
 		} catch(JSONException e) {
-	    	return NymiApi.PresenceStatus.ERROR;
+	    	return NymiJavaApi.PresenceStatus.ERROR;
 		}
 	}
 

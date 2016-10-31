@@ -1,11 +1,9 @@
 package com.nymi.api.sample;
 
-import java.util.Arrays;
+import java.lang.reflect.Array;
 import java.util.Scanner;
-import java.util.Vector;
 
-import com.nymi.api.LibNapi;
-import com.nymi.api.wrapper.NymiApi;
+import com.nymi.api.wrapper.NymiJavaApi;
 
 public class SampleMain {
 	
@@ -38,17 +36,20 @@ public class SampleMain {
 	           and one for connecting to the Nymi Band.
 	        */
 	        int nPort = 9089;
-	        if (util.getNapi().init(util.getCallbacks(),".", LibNapi.LogLevel.normal, nPort, "127.0.0.1") != LibNapi.ConfigOutcome.okay) {
+	        if (!util.initNapi(".", 0, nPort, "127.0.0.1")) {
 	            System.out.println("NymiApi initialization failed");
-	            return;
+	            System.exit(1);
 	        }
 
 	        System.out.println("-*-*-> NymiApi initialization succeeded. Enter `help` for list of supported commands. <-*-*-\n");
+	        System.out.println("Populating band table with any existing provisioned bands");
+	        util.getNapi().getProvisions(NymiJavaApi.ProvisionListType.ALL);
 	        util.getNapi().startProvisioning();
 
 	    }
 	    catch (Exception e) {
-	        System.out.println("NymiApi initialization failed: " + e.getMessage());
+	        System.out.println("NymiApi initialization failed: exception stack trace");
+	        e.printStackTrace();
 	        return;
 	    }
 	    
@@ -59,31 +60,40 @@ public class SampleMain {
 	    
 	    while (true) {
 
-	    	user_input = reader.next();
-	    	String[] rawcmd = user_input.split("[ ]+");
-	        Vector<String> fullcommand = new Vector<String>(Arrays.asList(rawcmd));
-	        String command = fullcommand.elementAt(0);
+	    	user_input = reader.nextLine();
+	    	String[] cmdarr = user_input.split("\\s+");
+	        String command = cmdarr[0];
 
 	        int bandIndex = -1;
             Boolean guarded = false;
             String pattern = "";
 
-            switch (fullcommand.size()) {
+            switch (Array.getLength(cmdarr)) {
             case 1:
             	break;
             case 2:
-            	try {
-            		bandIndex = new Integer(fullcommand.elementAt(1));
-            		break;
-            	} catch (Exception e) { // If it isn't an int assume it's a pattern string
-            		pattern = fullcommand.elementAt(1);
-            		break;
+            	if (command.equals("accept")) {
+            		pattern = cmdarr[1];
+            	} else {
+            		try {
+            			bandIndex = new Integer(cmdarr[1]);
+            		} catch (NumberFormatException ne) {
+            			System.out.println("Unknown band number or format");
+            			continue;
+            		}
             	}
+           		break;
             case 3:
-            	bandIndex = new Integer(fullcommand.elementAt(1));
-            	guarded = (fullcommand.elementAt(1) == "1");
+            	try {
+            		bandIndex = new Integer(cmdarr[1]);
+        		} catch (NumberFormatException ne) {
+        			System.out.println("Unknown band number or format");
+        			continue;
+        		}
+            	guarded = (cmdarr[2].equals("1"));
+            	break;
             default:
-            	System.out.println("Improper number of arguments.  Type 'help' for a list of coammnds and their syntax.");
+            	System.out.println("Improper number of arguments.  Type 'help' for a list of commands and their syntax.");
             	break;
             }
             
@@ -103,14 +113,16 @@ public class SampleMain {
 				util.getNapi().stopProvisioning();
 				break;
 			case "provision-getall":
-				util.getNapi().getProvisions(NymiApi.ProvisionListType.ALL);
+				util.getNapi().getProvisions(NymiJavaApi.ProvisionListType.ALL);
 				break;
 			case "provision-gethere":
-				util.getNapi().getProvisions(NymiApi.ProvisionListType.PRESENT);
+				util.getNapi().getProvisions(NymiJavaApi.ProvisionListType.PRESENT);
 				break;
 			case "exit":
 				reader.close();
-				return;
+				util.getNapi().terminate();
+				System.out.println("NymiApi terminated");
+				System.exit(0);
 			case "get-random":
 	            if (util.validateBandIndex(bandIndex)) {
 	                util.getBands().get(bandIndex).getRandom();
@@ -144,7 +156,7 @@ public class SampleMain {
 			case "buzz":
 				// We use the "guarded" value even though it doesn't mean guarded in this context
 	            if (util.validateBandIndex(bandIndex)) {
-	            	NymiApi.HapticNotification notval = guarded ? NymiApi.HapticNotification.NOTIFY_POSITIVE : NymiApi.HapticNotification.NOTIFY_NEGATIVE;
+	            	NymiJavaApi.HapticNotification notval = guarded ? NymiJavaApi.HapticNotification.NOTIFY_POSITIVE : NymiJavaApi.HapticNotification.NOTIFY_NEGATIVE;
                     util.getBands().get(bandIndex).sendNotification(notval);
 	            }
 				break;
@@ -175,12 +187,12 @@ public class SampleMain {
 				break;
 	        case "delete-sk":
 	            if (util.validateBandIndex(bandIndex)) {
-	                util.getBands().get(bandIndex).revokeKey(NymiApi.KeyType.SYMMETRIC);
+	                util.getBands().get(bandIndex).revokeKey(NymiJavaApi.KeyType.SYMMETRIC);
 	            }
 				break;
 	        case "delete-totp":
 	            if (util.validateBandIndex(bandIndex)) {
-	                util.getBands().get(bandIndex).revokeKey(NymiApi.KeyType.TOTP);
+	                util.getBands().get(bandIndex).revokeKey(NymiJavaApi.KeyType.TOTP);
 	            }
 				break;
 	        case "help":
