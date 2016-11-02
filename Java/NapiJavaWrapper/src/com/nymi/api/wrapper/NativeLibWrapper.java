@@ -9,7 +9,7 @@ import com.sun.jna.Platform;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-public interface LibNapi extends Library {
+public interface NativeLibWrapper extends Library {
 	
 	public class NapiReturnStruct extends Structure {
 		public Pointer message;
@@ -29,7 +29,7 @@ public interface LibNapi extends Library {
 		public boolean getQuit() { return quit; }
 	};
 	
-	LibNapi INSTANCE = (LibNapi) Native.loadLibrary(Platform.isWindows() ? "NapiDll" : "napidyn", LibNapi.class);
+	NativeLibWrapper INSTANCE = (NativeLibWrapper) Native.loadLibrary(Platform.isWindows() ? "NapiDll" : "napidyn", NativeLibWrapper.class);
 	
 	int jsonNapiConfigureD(String rootDirectory, int logLevel, int port, String host);
 	int jsonNapiPutD(String json_in);

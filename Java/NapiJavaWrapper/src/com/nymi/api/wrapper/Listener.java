@@ -38,7 +38,7 @@ public class Listener implements Runnable {
     	System.out.println("Starting new listener thread");
     	
         while (!quit.get()) {
-            LibNapi.NapiReturnStruct.ByValue result = LibNapi.INSTANCE.jsonNapiGetSD(quit.get(), 100);
+            NativeLibWrapper.NapiReturnStruct.ByValue result = NativeLibWrapper.INSTANCE.jsonNapiGetSD(quit.get(), 100);
             quit.set(result.getQuit());
             
             if (result.getOutcome() == 0) {    // 0 == LibNapi.JsonGetOutcome.okay

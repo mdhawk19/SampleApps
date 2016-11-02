@@ -67,7 +67,7 @@ public class NymiJavaApi {
 		return instance;
 	}
 	
-	private LibNapi napiInstance = LibNapi.INSTANCE;
+	private NativeLibWrapper napiInstance = NativeLibWrapper.INSTANCE;
 	
     public int init(NapiCallbacks cbobj, String rootDirectory, int log, int nymulatorPort, String nymulatorHost)
     {

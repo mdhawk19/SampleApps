@@ -37,7 +37,7 @@ public class NymiProvision {
 	public void getRandom() {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "random" + getPid();
-	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_random(getPid(),exchange));
+	    NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.get_random(getPid(),exchange));
 	}
 
 	public void createSymmetricKey(Boolean guarded) {
@@ -45,43 +45,43 @@ public class NymiProvision {
 	    exchange += "createsymkey" + getPid();
 	    String createsk = GenJson.create_symkey(getPid(),guarded,exchange);
 	    System.out.println("sending msg: " + createsk);
-	    LibNapi.INSTANCE.jsonNapiPutD(createsk);
+	    NativeLibWrapper.INSTANCE.jsonNapiPutD(createsk);
 	}
 
 	public void getSymmetricKey() {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "getsymkey" + getPid();
-		LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_symkey(getPid(),exchange));
+		NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.get_symkey(getPid(),exchange));
 	}
 
 	public void signMessage(String msghash) {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "sign" + getPid();
-		LibNapi.INSTANCE.jsonNapiPutD(GenJson.sign_msg(getPid(), msghash, exchange));
+		NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.sign_msg(getPid(), msghash, exchange));
 	}
 
 	public void createTotpKey(String totpKey, Boolean guarded) {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "createTotp" + getPid();
-		LibNapi.INSTANCE.jsonNapiPutD(GenJson.set_totp(getPid(),totpKey,guarded,exchange));
+		NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.set_totp(getPid(),totpKey,guarded,exchange));
 	}
 
 	public void getTotpKey() {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "getTotp" + getPid();
-		LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_totp(getPid(), exchange));
+		NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.get_totp(getPid(), exchange));
 	}
 
 	public void sendNotification(HapticNotification notifyType) {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 		exchange += "notify" + getPid();
-		LibNapi.INSTANCE.jsonNapiPutD(GenJson.notify(getPid(), notifyType == NymiJavaApi.HapticNotification.NOTIFY_POSITIVE, exchange));
+		NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.notify(getPid(), notifyType == NymiJavaApi.HapticNotification.NOTIFY_POSITIVE, exchange));
 	}
 
 	public void getDeviceInfo() {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 	    exchange += "deviceinfo" + getPid();
-	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.get_info(exchange));
+	    NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.get_info(exchange));
 	}
 
 	public void revokeKey(NymiJavaApi.KeyType keyType) {
@@ -97,13 +97,13 @@ public class NymiProvision {
 	        default:
 	        	break;
 	    }
-	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.delete_key(getPid(),keyStr,exchange));
+	    NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.delete_key(getPid(),keyStr,exchange));
 	}
 
 	public void revokeProvision(Boolean onlyIfAuthenticated) {
 		String exchange = ((Integer)rng.nextInt(9999)).toString();;
 	    exchange += "revokeprovision" + getPid();
-	    LibNapi.INSTANCE.jsonNapiPutD(GenJson.revoke_provision(getPid(),onlyIfAuthenticated,exchange));
+	    NativeLibWrapper.INSTANCE.jsonNapiPutD(GenJson.revoke_provision(getPid(),onlyIfAuthenticated,exchange));
 	}
 	
 }
