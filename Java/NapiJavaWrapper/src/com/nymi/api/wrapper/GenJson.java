@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class GenJson {
 
-	public static String get_init() {
+	public static String getInit() {
 	    return("{\"path\":\"init/get\",\"exchange\":\"*init*\"}");
 	}
 
@@ -12,21 +12,21 @@ public class GenJson {
 		return("{\"path\":\"finish/run\",\"exchange\":\"*finish*\"}");
 	}
 
-	public static String start_prov() {
+	public static String startProvisioning() {
 		return("{\"path\":\"provision/run/start\",\"exchange\":\"*provisioning*\"}");
 	}
 
-	public static String stop_prov() {
+	public static String stopProvisioning() {
 		return("{\"path\":\"provision/run/stop\",\"exchange\":\"*provisioning*\"}");
 	}
 
 	/* exchange here is expected to be non-empty, as it determines which field of info we are interested in*/
-	public static String get_info(String exchange) {
+	public static String getInfo(String exchange) {
 		if (exchange.equals("")) return "";
 			else return("{\"path\":\"info/get\",\"exchange\":\"" + exchange + "\"}");
 	}
 	
-	public static String accept_pattern(String pattern) {
+	public static String acceptPattern(String pattern) {
 		JSONObject json = new JSONObject();
 		json.put("path","provision/pattern");
 		json.put("exchange","*provisioning*");
@@ -37,7 +37,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String get_random(String pid, String exchange) {
+	public static String getRandom(String pid, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","random/run");
 		json.put("exchange",exchange);
@@ -47,7 +47,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String create_symkey(String pid, Boolean guarded, String exchange) {
+	public static String createSymmetricKey(String pid, Boolean guarded, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","symmetricKey/run");
 		json.put("exchange",exchange);
@@ -58,7 +58,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String get_symkey(String pid, String exchange) {
+	public static String getSymmetrickey(String pid, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","symmetricKey/get");
 		json.put("exchange",exchange);
@@ -68,7 +68,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String sign_msg(String pid, String msghash, String exchange) {
+	public static String signMessage(String pid, String msghash, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","sign/run");
 		json.put("exchange",exchange);
@@ -79,7 +79,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String set_totp(String pid, String totpkey, Boolean guarded, String exchange) {
+	public static String setTotp(String pid, String totpkey, Boolean guarded, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","totp/run");
 		json.put("exchange",exchange);
@@ -91,7 +91,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String get_totp(String pid, String exchange) {
+	public static String getTotp(String pid, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","totp/get");
 		json.put("exchange",exchange);
@@ -112,7 +112,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String enable_notification(Boolean enable, String state) {
+	public static String enableNotification(Boolean enable, String state) {
 		JSONObject json = new JSONObject();
 		json.put("path","notifications/set");
 		json.put("exchange","*notifications*");
@@ -122,11 +122,11 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String get_state_notifications(){
+	public static String getStateNotifications(){
 		return("{\"path\":\"notifications/get\",\"exchange\":\"*notifications*\"}");
 	}
 
-	public static String revoke_provision(String pid, Boolean only_if_authenticated, String exchange) {
+	public static String revokeProvision(String pid, Boolean only_if_authenticated, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","revoke/run");
 		json.put("exchange",exchange);
@@ -137,7 +137,7 @@ public class GenJson {
 		return json.toString();
 	}
 
-	public static String delete_key(String pid, String key_to_delete, String exchange) {
+	public static String deleteKey(String pid, String key_to_delete, String exchange) {
 		JSONObject json = new JSONObject();
 		json.put("path","key/delete");
 		json.put("exchange",exchange);

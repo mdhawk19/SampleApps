@@ -1,8 +1,9 @@
 package com.nymi.api.sample;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
-import java.util.Vector;
 
 import com.nymi.api.wrapper.NapiCallbacks;
 import com.nymi.api.wrapper.NapiError;
@@ -17,29 +18,28 @@ import com.nymi.api.wrapper.TransientNymiBandInfo;
 public class SampleAppCallbacks implements NapiCallbacks {
 
 	private NymiJavaApi napi = NymiJavaApi.getInstance();
-	private Vector<NymiProvision> bands = new Vector<NymiProvision>();
+	private List<NymiProvision> bands = new ArrayList<>();
 	
-	public Vector<NymiProvision> getBands() { return bands; }
+	public List<NymiProvision> getBands() { return bands; }
 
 	@Override
-	public void onDeviceInfo(Boolean opResult, String pid, TransientNymiBandInfo transientinfo,NapiError nErr) {
+	public void onDeviceInfo(boolean opResult, String pid, TransientNymiBandInfo transientInfo, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error " + nErr.errorString + " for band with pid: " + pid);
+            System.out.println("Received error " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
 
-        System.out.println("Info for Nymi band with provision id: " + transientinfo.getPid());
-        System.out.println("  Authentication status: " + transientinfo.getFoundState());
-        System.out.println("  Presence status: " + transientinfo.getPresenceState());
-        System.out.println("  Last RSSI: " + transientinfo.getRssiLast());
-        System.out.println("  Smoothed RSSI: " + transientinfo.getRssiSmoothed());
-        System.out.println("  Firmware version: " + transientinfo.getFirmwareVersion());
-        System.out.println("  Provisioned: " + transientinfo.isProvisioned().toString());
-        System.out.println("  Time since last contact: " + transientinfo.getSinceLastContact());
-        System.out.println("  Authentication window remaining: " + transientinfo.getAuthenticationWindowRemaining());
-        System.out.println("  Number of commands queued: " + transientinfo.getNumCommandsQueued());
-        Vector<String> commands;
-        commands = transientinfo.getCommandsQueued();
+        System.out.println("Info for Nymi band with provision id: " + transientInfo.getPid());
+        System.out.println("  Authentication status: " + transientInfo.getFoundState());
+        System.out.println("  Presence status: " + transientInfo.getPresenceState());
+        System.out.println("  Last RSSI: " + transientInfo.getRssiLast());
+        System.out.println("  Smoothed RSSI: " + transientInfo.getRssiSmoothed());
+        System.out.println("  Firmware version: " + transientInfo.getFirmwareVersion());
+        System.out.println("  Provisioned: " + transientInfo.isProvisioned());
+        System.out.println("  Time since last contact: " + transientInfo.getSinceLastContact());
+        System.out.println("  Authentication window remaining: " + transientInfo.getAuthenticationWindowRemaining());
+        System.out.println("  Number of commands queued: " + transientInfo.getNumCommandsQueued());
+        List<String> commands = transientInfo.getCommandsQueued();
         if (!commands.isEmpty()) {
             System.out.println("  Commands queued: ");
             for (String cmd : commands){ System.out.println("    " + cmd); }
@@ -47,16 +47,16 @@ public class SampleAppCallbacks implements NapiCallbacks {
 	}
 
 	@Override
-	public void onEcdsaSign(Boolean opResult, String pid, String sig, String vk, NapiError nErr) {
+	public void onEcdsaSign(boolean opResult, String pid, String signature, String verificationKey, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error " + nErr.errorString + " for band with pid: " + pid);
+            System.out.println("Received error " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
-        System.out.println("Received signature: "  +  sig  + ", with verification key: " + vk  + " for band with pid: " + pid);
+        System.out.println("Received signature: "  +  signature  + ", with verification key: " + verificationKey  + " for band with pid: " + pid);
 	}
 
 	@Override
-	public void onAgreement(Vector<String> patterns) {
+	public void onAgreement(List<String> patterns) {
         System.out.println("Pattern(s) discovered: ");
         for (String p : patterns) {
             System.out.print(p  +  " ");
@@ -69,19 +69,19 @@ public class SampleAppCallbacks implements NapiCallbacks {
 	}
 
 	@Override
-	public void onProvision (NymiProvision newprov) {
-        System.out.println("Successfully provisioned with pid: " + newprov.getPid());
+	public void onProvision (NymiProvision newProvision) {
+        System.out.println("Successfully provisioned with pid: " + newProvision.getPid());
         napi.stopProvisioning();
-		bands.add(newprov);
+		bands.add(newProvision);
 	}
 	
 	@Override
-	public void onError(NapiError err) {
-		System.out.println("Got unknown or unhandled ERROR: " + err.errorString);
+	public void onError(NapiError napiError) {
+		System.out.println("Got unknown or unhandled ERROR: " + napiError.errorString);
 	}
 
 	@Override
-	public void onGetProvisions(Vector<NymiProvision> provisions) {
+	public void onGetProvisions(List<NymiProvision> provisions) {
         System.out.println("Provisions:");
         for (NymiProvision p : provisions) {
             System.out.println(p.getPid() );
@@ -90,34 +90,34 @@ public class SampleAppCallbacks implements NapiCallbacks {
 	}
 
 	@Override
-	public void onKeyCreation(Boolean opResult, String pid, KeyType keyType, NapiError err) {
+	public void onKeyCreation(boolean opResult, String pid, KeyType keyType, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error in key creation " + err.errorString + " for band with pid: " + pid);
+            System.out.println("Received error in key creation " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
         System.out.println("Created key type " + keyType.toString() + " for band with pid: " + pid);
 	}
 
 	@Override
-	public void onKeyRevocation(Boolean opResult, String pid, KeyType keyType, NapiError err) {
+	public void onKeyRevocation(boolean opResult, String pid, KeyType keyType, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error in key revocation " + err.errorString + " for band with pid: " + pid);
+            System.out.println("Received error in key revocation " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
         System.out.println(keyType.toString() + " revoked on Nymi Band with pid " + pid);
 	}
 
 	@Override
-	public void onNewProvision(NymiProvision newprov) {
-        System.out.println("Successfully provisioned with pid: "  +  newprov.getPid());
+	public void onNewProvision(NymiProvision newProvision) {
+        System.out.println("Successfully provisioned with pid: "  +  newProvision.getPid());
         napi.stopProvisioning();
-		bands.add(newprov);
+		bands.add(newProvision);
 	}
 
 	@Override
-	public void onNotification(Boolean opResult, String pid, HapticNotification type, NapiError err) {
+	public void onNotification(boolean opResult, String pid, HapticNotification type, NapiError napiError) {
 		if (!opResult) {
-	        System.out.println("Received error " + err.errorString + " for band with pid: " + pid);
+	        System.out.println("Received error " + napiError.errorString + " for band with pid: " + pid);
 	        return;
 	    }
 	    System.out.println( "Notification result: "  +  opResult  +  ", Notification type: "  +  type.toString() + " for band with pid: " + pid);
@@ -137,25 +137,25 @@ public class SampleAppCallbacks implements NapiCallbacks {
 	}
 
 	@Override
-	public void onNymiBandPresenceChange(String pid, PresenceStatus before, PresenceStatus after, Boolean authenticated) {
-        System.out.println("onPresenceChange, pid: " + pid + ", before: "  +  before.toString()  +  ", after: "  +  after.toString()  + ", authenticated: " + authenticated.toString());
+	public void onNymiBandPresenceChange(String pid, PresenceStatus before, PresenceStatus after, boolean authenticated) {
+        System.out.println("onPresenceChange, pid: " + pid + ", before: "  +  before.toString()  +  ", after: "  +  after.toString()  + ", authenticated: " + authenticated);
 	}
 
 	@Override
-	public void onProvisionRevoked(Boolean opResult, String pid, NapiError err) {
-		if (err.errorList.size() != 0)
-			System.out.println("ERROR revoking provision on Nymi Band with pid "  +  pid  +  ": "  +  err.errorString );
+	public void onProvisionRevoked(boolean opResult, String pid, NapiError napiError) {
+		if (napiError.errorList.size() != 0)
+			System.out.println("ERROR revoking provision on Nymi Band with pid "  +  pid  +  ": "  +  napiError.errorString );
 		else
 	        System.out.println("Provision revoked on Nymi Band with pid "  +  pid );
 	}
 
 	@Override
-	public void onRandom(Boolean opResult, String pid,String prand, NapiError err) {
+	public void onRandom(boolean opResult, String pid,String random, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error " + err.errorString + " for band with pid: " + pid);
+            System.out.println("Received error " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
-		System.out.println("Received pseudo random number: "  +  prand  + " for band with pid: " + pid);
+		System.out.println("Received pseudo random number: "  +  random  + " for band with pid: " + pid);
 	}
 
 	@Override
@@ -164,32 +164,32 @@ public class SampleAppCallbacks implements NapiCallbacks {
 	}
 
 	@Override
-	public void onSymmetricKey(Boolean opResult, String pid,String sk, NapiError err) {
+	public void onSymmetricKey(boolean opResult, String pid,String symmetricKey, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error " + err.errorString + " for band with pid: " + pid);
+            System.out.println("Received error " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
-		System.out.println("Received symmetric key: "  +  sk  + " for band with pid: " + pid);
+		System.out.println("Received symmetric key: "  +  symmetricKey  + " for band with pid: " + pid);
 	}
 
 	@Override
-	public void onTotpGet(Boolean opResult, String pid,String totp, NapiError err) {
+	public void onTotpGet(boolean opResult, String pid,String totp, NapiError napiError) {
         if (!opResult) {
-            System.out.println("Received error " + err.errorString + " for band with pid: " + pid);
+            System.out.println("Received error " + napiError.errorString + " for band with pid: " + pid);
             return;
         }
 		System.out.println("Received totp key: "  +  totp  + " for band with pid: " + pid);
 	}
 
 	@Override
-	public void onProvisionModeChange(String provState) {
-		System.out.println("Provisioning mode is now " + provState);
+	public void onProvisionModeChange(String provisionState) {
+		System.out.println("Provisioning mode is now " + provisionState);
 	}
 	
 	@Override
-	public void getProvisionList(Vector<NymiProvision> provList) {
+	public void getProvisionList(List<NymiProvision> provisionList) {
 	       System.out.println("Provisions:");
-	        for (NymiProvision p : provList) {
+	        for (NymiProvision p : provisionList) {
 	            System.out.println(p.getPid());
 				bands.add(p);
 	        }

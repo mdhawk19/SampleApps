@@ -1,6 +1,5 @@
 package com.nymi.api.sample;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 import com.nymi.api.wrapper.NymiJavaApi;
@@ -55,28 +54,28 @@ public class SampleMain {
 	    
 
 		//console interface, wait for user command
-	    String user_input;
+	    String userInput;
 	    Scanner reader = new Scanner(System.in);
 	    
 	    while (true) {
 
-	    	user_input = reader.nextLine();
-	    	String[] cmdarr = user_input.split("\\s+");
-	        String command = cmdarr[0];
+	    	userInput = reader.nextLine();
+	    	String[] commandArguments = userInput.split("\\s+");
+	        String command = commandArguments[0];
 
 	        int bandIndex = -1;
-            Boolean guarded = false;
+            boolean guarded = false;
             String pattern = "";
 
-            switch (Array.getLength(cmdarr)) {
+            switch (commandArguments.length) {
             case 1:
             	break;
             case 2:
             	if (command.equals("accept")) {
-            		pattern = cmdarr[1];
+            		pattern = commandArguments[1];
             	} else {
             		try {
-            			bandIndex = new Integer(cmdarr[1]);
+            			bandIndex = new Integer(commandArguments[1]);
             		} catch (NumberFormatException ne) {
             			System.out.println("Unknown band number or format");
             			continue;
@@ -85,12 +84,12 @@ public class SampleMain {
            		break;
             case 3:
             	try {
-            		bandIndex = new Integer(cmdarr[1]);
+            		bandIndex = new Integer(commandArguments[1]);
         		} catch (NumberFormatException ne) {
         			System.out.println("Unknown band number or format");
         			continue;
         		}
-            	guarded = (cmdarr[2].equals("1"));
+            	guarded = (commandArguments[2].equals("1"));
             	break;
             default:
             	System.out.println("Improper number of arguments.  Type 'help' for a list of commands and their syntax.");
@@ -134,7 +133,7 @@ public class SampleMain {
                 break;
 	        case "get-sk":
 	            if (util.validateBandIndex(bandIndex)) {
-	                util.getBands().elementAt(bandIndex).getSymmetricKey();
+	                util.getBands().get(bandIndex).getSymmetricKey();
 	            }
 				break;
 			case "get-signature":
@@ -156,8 +155,8 @@ public class SampleMain {
 			case "buzz":
 				// We use the "guarded" value even though it doesn't mean guarded in this context
 	            if (util.validateBandIndex(bandIndex)) {
-	            	NymiJavaApi.HapticNotification notval = guarded ? NymiJavaApi.HapticNotification.NOTIFY_POSITIVE : NymiJavaApi.HapticNotification.NOTIFY_NEGATIVE;
-                    util.getBands().get(bandIndex).sendNotification(notval);
+	            	NymiJavaApi.HapticNotification notificationValue = guarded ? NymiJavaApi.HapticNotification.NOTIFY_POSITIVE : NymiJavaApi.HapticNotification.NOTIFY_NEGATIVE;
+                    util.getBands().get(bandIndex).sendNotification(notificationValue);
 	            }
 				break;
 	        case "info":
