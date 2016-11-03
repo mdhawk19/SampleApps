@@ -1,6 +1,7 @@
 package com.nymi.api.wrapper;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +15,7 @@ public class TransientNymiBandInfo {
 		deviceInfo = jobj;
 	}
 
-	public Integer getRssiLast(){
+	public int getRssiLast(){
 	    try {
 	        return deviceInfo.getInt("RSSI_last");
 	    } catch (JSONException e) {
@@ -22,7 +23,7 @@ public class TransientNymiBandInfo {
 	    }
 	}
 
-	public Integer getRssiSmoothed(){
+	public int getRssiSmoothed(){
 	    try {
 	        return deviceInfo.getInt("RSSI_smoothed");
 	    } catch (JSONException e) {
@@ -30,8 +31,8 @@ public class TransientNymiBandInfo {
 	    }
 	}
 
-	public Vector<String> getCommandsQueued() {
-		Vector<String> commands = new Vector<String>();
+	public List<String> getCommandsQueued() {
+		List<String> commands = new ArrayList<>();
 		try {
 	    	JSONArray cmdarr = deviceInfo.getJSONArray("commandQueue");
 	        for (int i = 0 ; i < cmdarr.length() ; i++)
@@ -66,7 +67,7 @@ public class TransientNymiBandInfo {
 		}
 	}
 
-	public Boolean isProvisioned(){		
+	public boolean isProvisioned(){
 	    if (deviceInfo.has("isProvisioned"))
 	        return true;
 	    else
@@ -90,7 +91,7 @@ public class TransientNymiBandInfo {
 		}
 	}
 
-	public Integer getNumCommandsQueued(){
+	public int getNumCommandsQueued(){
 		try {
 	    return deviceInfo.getJSONObject("provisioned").getInt("commandsQueued");
 		} catch (JSONException e) {
@@ -98,7 +99,7 @@ public class TransientNymiBandInfo {
 		}
 	}
 
-	public Boolean enabledRoamingAuthentication(){
+	public boolean enabledRoamingAuthentication(){
 		try {
 		    return deviceInfo.getJSONObject("provisioned").getBoolean("enabledRoamingAuthSetup");
 			} catch (JSONException e) {
@@ -106,7 +107,7 @@ public class TransientNymiBandInfo {
 			}
 	}
 
-	public Boolean enabledSigning(){
+	public boolean enabledSigning(){
 		try {
 		    return deviceInfo.getJSONObject("provisioned").getBoolean("enabledSigning");
 			} catch (JSONException e) {
@@ -114,7 +115,7 @@ public class TransientNymiBandInfo {
 			}
 	}
 
-	public Boolean enabledSymmetricKeys(Boolean val){
+	public boolean enabledSymmetricKeys(boolean value){
 		try {
 		    return deviceInfo.getJSONObject("provisioned").getBoolean("enabledSymmetricKeys");
 			} catch (JSONException e) {
@@ -122,7 +123,7 @@ public class TransientNymiBandInfo {
 			}
 	}
 	
-	public Boolean enabledTOTP(){
+	public boolean enabledTOTP(){
 		try {
 		    return deviceInfo.getJSONObject("provisioned").getBoolean("enabledTOTP");
 			} catch (JSONException e) {

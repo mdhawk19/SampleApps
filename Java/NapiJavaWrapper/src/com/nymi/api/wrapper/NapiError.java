@@ -9,11 +9,11 @@ public class NapiError {
     
     public NapiError() {
     	errorString = new String("");
-    	errorList = new HashMap<String,String>();
+    	errorList = new HashMap<>();
     }
     
-    public NapiError(String msg) {
-    	errorString = msg;
-    	errorList = new HashMap<String,String>();
+    public NapiError(String message) {
+    	errorString = message;
+    	errorList = new HashMap<>();
     }
 };

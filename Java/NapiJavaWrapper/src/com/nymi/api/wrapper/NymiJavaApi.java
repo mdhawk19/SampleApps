@@ -8,9 +8,9 @@ public class NymiJavaApi {
 		ERROR(-1),
 		NOTIFY_NEGATIVE(0),
 		NOTIFY_POSITIVE(1);
-		private final int val;
-		private HapticNotification(int v) { val = v; }
-		public int getVal() { return val; }
+		private final int value;
+		private HapticNotification(int v) { value = v; }
+		public int getValue() { return value; }
 	};
 
 	public enum FoundStatus {
@@ -69,14 +69,14 @@ public class NymiJavaApi {
 	
 	private NativeLibWrapper napiInstance = NativeLibWrapper.INSTANCE;
 	
-    public int init(NapiCallbacks cbobj, String rootDirectory, int log, int nymulatorPort, String nymulatorHost)
+    public int init(NapiCallbacks callbackObject, String rootDirectory, int log, int nymulatorPort, String nymulatorHost)
     {
     	System.out.println("Initializing NAPI");
     	int initResult = napiInstance.jsonNapiConfigureD(rootDirectory, log, nymulatorPort, nymulatorHost);
     	
     	if (initResult == 0) // 0 is LibNapi.ConfigOutcome.okay
     	{
-    		listener = new Listener(cbobj);
+    		listener = new Listener(callbackObject);
     		listener.start();
     	}
     	
@@ -91,51 +91,51 @@ public class NymiJavaApi {
     public void startProvisioning()
 	{
     	System.out.println("Starting provision mode");
-    	napiInstance.jsonNapiPutD(GenJson.start_prov());
+    	napiInstance.jsonNapiPutD(GenJson.startProvisioning());
 	}
 	
     public void acceptPattern(String pattern)
 	{
-    	napiInstance.jsonNapiPutD(GenJson.accept_pattern(pattern));		
+    	napiInstance.jsonNapiPutD(GenJson.acceptPattern(pattern));
 	}
 	
     public void stopProvisioning()
 	{
-		napiInstance.jsonNapiPutD(GenJson.stop_prov());
+		napiInstance.jsonNapiPutD(GenJson.stopProvisioning());
 	}
 	
     public void getProvisions(ProvisionListType type)
 	{
 	    String exchange = (type == ProvisionListType.ALL) ? "provisions" : "provisionsPresent";
-	    napiInstance.jsonNapiPutD(GenJson.get_info(exchange));
+	    napiInstance.jsonNapiPutD(GenJson.getInfo(exchange));
 	}
 	
     public void enableOnFoundChange()
     {
-		napiInstance.jsonNapiPutD(GenJson.enable_notification(true,"onFoundChange"));
+		napiInstance.jsonNapiPutD(GenJson.enableNotification(true,"onFoundChange"));
     }
     
     public void enableOnPresenceChange()
     {
-		napiInstance.jsonNapiPutD(GenJson.enable_notification(true,"onPresenceChange"));
+		napiInstance.jsonNapiPutD(GenJson.enableNotification(true,"onPresenceChange"));
     	
     }
 
     public void disableOnFoundChange()
     {
-		napiInstance.jsonNapiPutD(GenJson.enable_notification(false,"onFoundChange"));
+		napiInstance.jsonNapiPutD(GenJson.enableNotification(false,"onFoundChange"));
     }
     
     public void disableOnPresenceChange()
     {
-		napiInstance.jsonNapiPutD(GenJson.enable_notification(false,"onPresenceChange"));
+		napiInstance.jsonNapiPutD(GenJson.enableNotification(false,"onPresenceChange"));
     	
     }
     
     public void getApiNotificationState()
     {
     	if (listener != null) {
-			napiInstance.jsonNapiPutD(GenJson.get_state_notifications());
+			napiInstance.jsonNapiPutD(GenJson.getStateNotifications());
     	}
     }
 }

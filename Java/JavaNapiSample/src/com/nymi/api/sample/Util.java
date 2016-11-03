@@ -1,6 +1,6 @@
 package com.nymi.api.sample;
 
-import java.util.Vector;
+import java.util.List;
 
 import com.nymi.api.wrapper.*;
 
@@ -10,16 +10,16 @@ public class Util {
     private SampleAppCallbacks callbacks = new SampleAppCallbacks();
     
     public NymiJavaApi getNapi() { return napi; }
-    public com.nymi.api.wrapper.NapiCallbacks getCallbacks() { return callbacks; }
+    public NapiCallbacks getCallbacks() { return callbacks; }
     
-    public Vector<NymiProvision> getBands() { return callbacks.getBands(); }
+    public List<NymiProvision> getBands() { return callbacks.getBands(); }
 	
-    public Boolean initNapi(String rootDirectory, int log, int nymulatorPort, String nymulatorHost) {
+    public boolean initNapi(String rootDirectory, int log, int nymulatorPort, String nymulatorHost) {
     	int retcode = napi.init(callbacks, rootDirectory, log, nymulatorPort, nymulatorHost);
     	return retcode == 0;
     }
     
-    public Boolean validateBandIndex (int bandIndex) {
+    public boolean validateBandIndex (int bandIndex) {
         if (bandIndex < 0 || bandIndex >= getBands().size()) {
             System.out.println("Incorrect band index");
             return false;
@@ -27,7 +27,7 @@ public class Util {
         	return true;
     };
 
-    public Boolean validatePattern(String pattern) {
+    public boolean validatePattern(String pattern) {
         if (pattern.length() != 5) return false;
         for (char c : pattern.toCharArray()) {
             if (c != '+' && c != '-') return false;

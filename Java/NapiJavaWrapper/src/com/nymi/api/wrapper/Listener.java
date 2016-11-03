@@ -10,9 +10,7 @@ import com.nymi.api.wrapper.NymiJavaApi.PresenceStatus;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Listener implements Runnable {
@@ -118,13 +116,11 @@ public class Listener implements Runnable {
         //extract the array of errors
         if (jobj.has("errors")) {
             JSONArray errors = jobj.getJSONArray("errors");
-            HashMap<String,String> errorsMap = new HashMap<String,String>();
             nErr.errorString += ", Error message(s):";
             if (errors.length() > 0)
 	            for(int i=0; i < errors.length(); i++){
 	            	String errType = errors.getJSONArray(i).getString(1);
 	                String errMsg = errors.getJSONArray(i).getString(0);
-	                errorsMap.put(errMsg, errType);
 	                nErr.errorString += "{" + errType + ":" + "'" +errMsg + "'} ";
 	            }
         }
@@ -133,7 +129,7 @@ public class Listener implements Runnable {
         
         //some utility functions
         //----------------------
-        String getExchange(JSONObject jobj, Boolean errorIfNoExchange){
+        String getExchange(JSONObject jobj, boolean errorIfNoExchange){
             
             if (!jobj.has("exchange")) {
                 if (errorIfNoExchange) {
@@ -176,7 +172,7 @@ public class Listener implements Runnable {
                     //handle receipt of provisioning pattern
                 	if (jobj.has("event")) {
                 		JSONArray jsonpatterns = jobj.getJSONObject("event").getJSONArray("patterns");
-                        Vector<String> patterns = new Vector<String>();
+                        List<String> patterns = new ArrayList<>();
                         for (int i = 0; i < jsonpatterns.length(); ++i) {
                             patterns.add(jsonpatterns.getString(i));
                         }
@@ -205,7 +201,7 @@ public class Listener implements Runnable {
             String exchange = getExchange(jobj,true);
             if (exchange.isEmpty()) return;
             
-			Vector<NymiProvision> provList = new Vector<NymiProvision>();
+			List<NymiProvision> provList = new ArrayList<>();
             if (exchange.equals("provisions") || exchange.equals("provisionsPresent")) {
                 if (jobj.has("response"))
                 	if (jobj.getJSONObject("response").has(exchange)){
@@ -217,7 +213,7 @@ public class Listener implements Runnable {
                 callbacks.getProvisionList(provList);
             }
             else if (exchange.contains("deviceinfo")) {
-                int pidstart = exchange.indexOf("deviceinfo") + (new String("deviceinfo").length());
+                int pidstart = exchange.indexOf("deviceinfo") + "deviceinfo".length();
                 String pid = exchange.substring(pidstart);
                 if (jobj.has("response")) if (jobj.getJSONObject("response").has("provisionMap")) {
                 			JSONObject pmap = jobj.getJSONObject("response").getJSONObject("provisionMap");
@@ -235,7 +231,7 @@ public class Listener implements Runnable {
         }        
         
         void handleOpRandom(JSONObject jobj){
-            
+
             String pid = getPid(jobj);
             if (pid.isEmpty()) {
                 callbacks.onRandom(false,pid,"",new NapiError());
@@ -249,11 +245,10 @@ public class Listener implements Runnable {
             String rand = jobj.getJSONObject("response").getString("pseudoRandomNumber");
         
             callbacks.onRandom(true,pid,rand,new NapiError());
-            return;
         }
         
         void handleOpSymmetric(JSONObject jobj) {
-            
+
             String pid = getPid(jobj);
             if (pid.isEmpty()) {
                 callbacks.onKeyCreation(false,pid,KeyType.SYMMETRIC,new NapiError());
@@ -272,11 +267,10 @@ public class Listener implements Runnable {
             			callbacks.onSymmetricKey(true,pid,jobj.getJSONObject("response").getString("key"),new NapiError());
                 }
             }
-            return;
         }
         
         void handleOpSignature(JSONObject jobj) {
-            
+
             String pid = getPid(jobj);
             if (pid.isEmpty()) {
                 callbacks.onEcdsaSign(false,pid,"","",new NapiError());
@@ -298,7 +292,6 @@ public class Listener implements Runnable {
             String vk = jobj.getJSONObject("response").getString("verificationKey");
             
             callbacks.onEcdsaSign(true,pid,sig,vk,new NapiError());
-            return;
         }
        
         void handleOpTotp(JSONObject jobj) {
@@ -330,7 +323,6 @@ public class Listener implements Runnable {
                 String totpid = jobj.getJSONObject("response").getString("totp");
                 callbacks.onTotpGet(true,pid,totpid,new NapiError());
             }
-            return;
         }
 
         void handleOpNotified(JSONObject jobj) {
@@ -350,7 +342,6 @@ public class Listener implements Runnable {
             boolean notifyVal= jobj.getJSONObject("request").getBoolean("buzz");
             HapticNotification notifyType = (notifyVal) ? HapticNotification.NOTIFY_POSITIVE : HapticNotification.NOTIFY_NEGATIVE;
             callbacks.onNotification(true,pid,notifyType,new NapiError());
-            return;
         }
         
         void handleOpApiNotifications(JSONObject jobj) {
@@ -386,11 +377,11 @@ public class Listener implements Runnable {
             }
             else if (ops.getString(1).equals("get") && jobj.has("response")) {
             	JSONObject response = jobj.getJSONObject("response");
-                HashMap<String,Boolean> notificationsState = new HashMap<String,Boolean>();
+                HashMap<String,Boolean> notificationsState = new HashMap<>();
                 Iterator<?> keyset = response.keys();
                 while (keyset.hasNext()) {
                     String key =  (String) keyset.next();
-                    Boolean value = response.getBoolean(key);
+                    boolean value = response.getBoolean(key);
                     notificationsState.put(key, value);
                 }
                 callbacks.onNotificationsGetState(notificationsState);
@@ -406,16 +397,15 @@ public class Listener implements Runnable {
             }
 
             callbacks.onProvisionRevoked(true,pid,new NapiError());
-            return;
         }
 
         void handleOpKey(JSONObject jobj){
 
             if (!jobj.has("operation")) return;
-        	Boolean deletion = false;
+        	boolean deletion;
         	JSONArray ops = jobj.getJSONArray("operation");
         	if (ops.length() < 2) return;
-        	deletion = ops.getString(1).equals("delete") ? true : false;
+        	deletion = ops.getString(1).equals("delete");
 
             String pid = getPid(jobj);
             if (pid.isEmpty()) {
@@ -445,7 +435,6 @@ public class Listener implements Runnable {
             	callbacks.onKeyRevocation(true,pid,keyType,new NapiError());
             else
             	callbacks.onKeyCreation(true,pid,keyType,new NapiError());
-            return;
         }        
         
 }
