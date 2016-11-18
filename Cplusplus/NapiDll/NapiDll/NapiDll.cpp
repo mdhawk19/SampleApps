@@ -14,7 +14,7 @@ extern "C" NAPIDLL_API int jsonNapiConfigureD(char* rootDirectory, int logLevel,
 
 extern "C" NAPIDLL_API int jsonNapiPutD(char* json_in)
 {
-
+//	std::cout << "Sending message: " << json_in << std::endl;
 	return (int)nymi::jsonNapiPut(json_in);
 }
 
