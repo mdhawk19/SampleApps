@@ -1,4 +1,4 @@
-package com.nymi.api.wrapper;
+package com.nymi.sample.roamingnea;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +29,7 @@ public interface NativeLibWrapper extends Library {
 		public boolean getQuit() { return quit; }
 	};
 	
-	NativeLibWrapper INSTANCE = (NativeLibWrapper) Native.loadLibrary(Platform.isWindows() ? "NapiDyn.dll" : "napidyn", NativeLibWrapper.class);
+	NativeLibWrapper INSTANCE = (NativeLibWrapper) Native.loadLibrary(Platform.isWindows() ? "NapiDll.dll" : "napidyn", NativeLibWrapper.class);
 	
 	int jsonNapiConfigureD(String rootDirectory, int logLevel, int port, String host);
 	int jsonNapiPutD(String json_in);

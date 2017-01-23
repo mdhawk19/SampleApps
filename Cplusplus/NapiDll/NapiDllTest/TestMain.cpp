@@ -8,7 +8,7 @@ int main(int argv, char* argc)
 {
 	HMODULE dllHandle = NULL;
 
-	dllHandle = LoadLibraryA("NapiDyn.dll");
+	dllHandle = LoadLibraryA("NapiDll.dll");
 
 	if (!dllHandle) {
 		cout << "Unable to load NapiDyn.dll" << endl;
@@ -16,7 +16,7 @@ int main(int argv, char* argc)
 	}
 	else
 	{
-		cout << "Loaded NapiDyn.dll succesfully" << endl;
+		cout << "Loaded NapiDll.dll succesfully" << endl;
 	}
 
 	f_jsonNapiConfigureD jsonNapiConfigureD = (f_jsonNapiConfigureD)GetProcAddress(dllHandle, "jsonNapiConfigureD");
