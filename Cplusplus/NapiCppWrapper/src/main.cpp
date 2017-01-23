@@ -187,9 +187,9 @@ int main() {
 
     onProvisionRevokedCallback onProvisionRevoked = [](bool opResult, std::string pid, napiError err){
 		if (err.errorList.size() != 0)
-			std::cout << "ERROR revoking provision on Nymi Band with pid " << pid << ": " << err.errorString << std::endl;
+			std::cout << "Error revoking provision on Nymi Band with pid " << pid << ": " << err.errorString << std::endl;
 		else
-	        std::cout<<"Provision revoked on Nymi Band with pid " << pid << std::endl;
+	        std::cout<<"Provision revoked on Nymi Band with pid "<<pid<<std::endl;
     };
 
     revokedKeyCallback onRevokedKey = [](bool opResult, std::string pid, KeyType keyType, napiError err){
