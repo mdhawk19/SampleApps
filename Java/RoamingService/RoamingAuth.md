@@ -39,7 +39,7 @@ Response:
 --------------------------------------------  
 # EC Key creation commands
 `openssl ecparam -name prime256v1 -genkey -param_enc explicit -out roaming-key.pem`
-`openssl req -new -x509 -key private-key.pem -out roaming-cert.pem -days 999`
+`openssl req -new -x509 -key roaming-key.pem -out roaming-cert.pem -days 999`
 `cat roaming-key.pem roaming-cert.pem > roaming.pem`
 --------------------------------------------  
 # Roaming Service Commands
