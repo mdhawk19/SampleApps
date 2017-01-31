@@ -63,15 +63,15 @@ public class KeyHelper {
 		BigInteger keyX = key.getW().getAffineX();
 		BigInteger keyY = key.getW().getAffineY();
 		
-		System.err.println("Got Affine X of public key: " + keyX);
-		System.err.println("Got Affine Y of public key: " + keyY);
+		//System.err.println("Got Affine X of public key: " + keyX);
+		//System.err.println("Got Affine Y of public key: " + keyY);
 		
 		byte[] xComponent = toUnsignedByteArray(keyX);
 		byte[] yComponent = toUnsignedByteArray(keyY);
 		
-		System.err.println("Encoding " + (xComponent.length + yComponent.length) + " byte public key. X size == " + xComponent.length + " and Y size == " + yComponent.length);
-		System.err.println("Hex encoded X == " + DatatypeConverter.printHexBinary(xComponent));
-		System.err.println("Hex encoded Y == " + DatatypeConverter.printHexBinary(yComponent));
+		//System.err.println("Encoding " + (xComponent.length + yComponent.length) + " byte public key. X size == " + xComponent.length + " and Y size == " + yComponent.length);
+		//System.err.println("Hex encoded X == " + DatatypeConverter.printHexBinary(xComponent));
+		//System.err.println("Hex encoded Y == " + DatatypeConverter.printHexBinary(yComponent));
 		
 		byte[] complete = new byte[xComponent.length + yComponent.length];
 		System.arraycopy(xComponent, 0, complete, 0, xComponent.length);
