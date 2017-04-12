@@ -10,12 +10,13 @@
 		1C4CD0221D650B650054C7C0 /* NymiApiEnums.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C4CD0211D650B650054C7C0 /* NymiApiEnums.cpp */; };
 		1C4CD0241D662C300054C7C0 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4CD0231D662C300054C7C0 /* CoreBluetooth.framework */; };
 		1C4CD0261D662C510054C7C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4CD0251D662C510054C7C0 /* Foundation.framework */; };
-		1C4CD02A1D662C890054C7C0 /* libnapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C4CD0291D662C890054C7C0 /* libnapi.a */; };
 		1C6CC7A01CD70022000E2947 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C6CC79E1CD70022000E2947 /* Listener.cpp */; };
 		1CA6C73C1CCA717300A2BDC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C7391CCA717300A2BDC5 /* main.cpp */; };
 		1CA6C73D1CCA717300A2BDC5 /* NymiApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C73A1CCA717300A2BDC5 /* NymiApi.cpp */; };
 		1CA6C7431CCA7E8000A2BDC5 /* NymiProvision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C7411CCA7E8000A2BDC5 /* NymiProvision.cpp */; };
 		1CA6C7461CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CA6C7441CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp */; };
+		673CC7631E8F185600FD6FF4 /* ProvisionStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 673CC7611E8F185600FD6FF4 /* ProvisionStorage.cpp */; };
+		67BF9AC71E8F22000078099C /* napiNymulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67BF9AC61E8F22000078099C /* napiNymulator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,11 @@
 		1CA6C7421CCA7E8000A2BDC5 /* NymiProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymiProvision.h; path = ../../../src/NymiProvision.h; sourceTree = "<group>"; };
 		1CA6C7441CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransientNymiBandInfo.cpp; path = ../../../src/TransientNymiBandInfo.cpp; sourceTree = "<group>"; };
 		1CA6C7451CD1C00200A2BDC5 /* TransientNymiBandInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransientNymiBandInfo.h; path = ../../../src/TransientNymiBandInfo.h; sourceTree = "<group>"; };
+		673CC7611E8F185600FD6FF4 /* ProvisionStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ProvisionStorage.cpp; path = ../../../src/ProvisionStorage.cpp; sourceTree = "<group>"; };
+		673CC7621E8F185600FD6FF4 /* ProvisionStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProvisionStorage.h; path = ../../../src/ProvisionStorage.h; sourceTree = "<group>"; };
+		67BF9AC41E8F1B5C0078099C /* napi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = napi.framework; path = ../../../../../../../../../../Library/Frameworks/napi.framework; sourceTree = "<group>"; };
+		67BF9AC61E8F22000078099C /* napiNymulator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = napiNymulator.framework; path = ../../../../../../../../../../Library/Frameworks/napiNymulator.framework; sourceTree = "<group>"; };
+		67CEB0901DF779F300D2C109 /* libnapi-net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnapi-net.a"; path = "../../deps/libnapi-net.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67BF9AC71E8F22000078099C /* napiNymulator.framework in Frameworks */,
 				1C4CD0261D662C510054C7C0 /* Foundation.framework in Frameworks */,
 				1C4CD0241D662C300054C7C0 /* CoreBluetooth.framework in Frameworks */,
-				1C4CD02A1D662C890054C7C0 /* libnapi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +79,7 @@
 				1CA6C73E1CCA752500A2BDC5 /* JsonNapi */,
 				1CA6C7301CCA712500A2BDC5 /* NapiCpp */,
 				1CA6C72F1CCA712500A2BDC5 /* Products */,
+				67BF9AC31E8F1B5C0078099C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +94,8 @@
 		1CA6C7301CCA712500A2BDC5 /* NapiCpp */ = {
 			isa = PBXGroup;
 			children = (
+				673CC7611E8F185600FD6FF4 /* ProvisionStorage.cpp */,
+				673CC7621E8F185600FD6FF4 /* ProvisionStorage.h */,
 				1C45DCEE1D74CD0A00BD6038 /* JsonUtilityFunctions.h */,
 				1CA6C7381CCA717300A2BDC5 /* GenJson.h */,
 				1CA6C7391CCA717300A2BDC5 /* main.cpp */,
@@ -108,9 +117,19 @@
 		1CA6C73E1CCA752500A2BDC5 /* JsonNapi */ = {
 			isa = PBXGroup;
 			children = (
+				67CEB0901DF779F300D2C109 /* libnapi-net.a */,
 				1C4CD0291D662C890054C7C0 /* libnapi.a */,
 			);
 			name = JsonNapi;
+			sourceTree = "<group>";
+		};
+		67BF9AC31E8F1B5C0078099C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67BF9AC61E8F22000078099C /* napiNymulator.framework */,
+				67BF9AC41E8F1B5C0078099C /* napi.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +158,7 @@
 		1CA6C7261CCA712500A2BDC5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Hanieh Bastani";
 				TargetAttributes = {
 					1CA6C72D1CCA712500A2BDC5 = {
@@ -169,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				673CC7631E8F185600FD6FF4 /* ProvisionStorage.cpp in Sources */,
 				1CA6C7461CD1C00200A2BDC5 /* TransientNymiBandInfo.cpp in Sources */,
 				1CA6C73C1CCA717300A2BDC5 /* main.cpp in Sources */,
 				1C4CD0221D650B650054C7C0 /* NymiApiEnums.cpp in Sources */,
@@ -194,8 +214,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -237,8 +259,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -263,11 +287,16 @@
 		1CA6C7361CCA712500A2BDC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					../../deps,
 					../../deps/json/src,
 				);
 				LIBRARY_SEARCH_PATHS = ../../deps;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -275,11 +304,16 @@
 		1CA6C7371CCA712500A2BDC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					../../deps,
 					../../deps/json/src,
 				);
 				LIBRARY_SEARCH_PATHS = ../../deps;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

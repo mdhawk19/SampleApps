@@ -3,7 +3,7 @@
 #ifndef GenJson_hpp
 #define GenJson_hpp
 
-#include "json/src/json.hpp"
+#include "json.hpp"
 
 using nljson = nlohmann::json;
 
@@ -82,6 +82,15 @@ inline std::string get_symkey(std::string pid, std::string exchange = "") {
 	nljson j;
     j["path"]="symmetricKey/get";
 	j["request"]["pid"] = pid;
+	j["exchange"] = exchange;
+	return j.dump();
+}
+
+inline std::string sign_setup(std::string pid, std::string curve, std::string exchange = "") {
+	nljson j;
+	j["path"] = "sign/setup";
+	j["request"]["pid"] = pid;
+	j["request"]["curve"] = curve;
 	j["exchange"] = exchange;
 	return j.dump();
 }

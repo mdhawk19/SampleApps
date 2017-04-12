@@ -64,7 +64,7 @@ bool TransientNymiBandInfo::getFoundState(FoundStatus &val){
             return true;
         }
     }
-    val = FoundStatus::ERROR;
+    val = FoundStatus::NERROR;
     return false;
 }
 
@@ -78,7 +78,7 @@ bool TransientNymiBandInfo::getPresenceState(PresenceStatus &val){
             return true;
         }
     }
-    val = PresenceStatus::ERROR;
+    val = PresenceStatus::NERROR;
     return false;
 }
 

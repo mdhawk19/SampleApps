@@ -10,6 +10,7 @@
 #define Listener_hpp
 
 #include <functional>
+#include "NymiApi.h"
 #include "NeaCallbackTypes.h"
 #include "JsonUtilityFunctions.h"
 
@@ -33,7 +34,6 @@ namespace PrivateListener {
     
     /*
         Assumptions: a well constructed json object must have the following fields:
-            * "operation"
             * "successful"
             * "exchange"
             * either "response", or "errors", or "event"
@@ -44,8 +44,7 @@ namespace PrivateListener {
         auto callHasKey = std::bind(hasKey,std::ref(jobj),std::placeholders::_1,std::ref(jit));
         bool print = false;
         
-        return (printResultIfFalse(callHasKey,{"operation"},print) &&
-                (printResultIfFalse(callHasKey,{"response"},print) || printResultIfFalse(callHasKey,{"errors"},print) || printResultIfFalse(callHasKey,{"event"},print)) &&
+        return (printResultIfFalse(callHasKey,{"response"},print) || printResultIfFalse(callHasKey,{"errors"},print) || printResultIfFalse(callHasKey,{"event"},print) &&
                 printResultIfFalse(callHasKey,{"successful"},print)  &&
                 printResultIfFalse(callHasKey,{"exchange"},print)
                 );
@@ -54,6 +53,7 @@ namespace PrivateListener {
     bool getExchange(nljson &jobj, std::string &exchange, bool errorIfNoExchange);
     bool getPid(nljson &jobj, std::string &pid, napiError &nErr);
     bool getPid(nljson &jobj, std::string &pid);
+	bool getOperation(nljson jobj, std::vector<std::string> &op);
 
     //running on the thread NymiApi::listener
     void waitForMessage();
@@ -61,6 +61,7 @@ namespace PrivateListener {
     //handle operations from napi
     void handleNapiError(nljson &jobj);
     void handleOpProvision(nljson &jobj);
+	void handleOpProvisionsChanged(nljson &jobj);
     void handleOpInfo(nljson &jobj);
     void handleOpRandom(nljson &jobj);
     void handleOpSymmetric(nljson &jobj);
@@ -73,8 +74,10 @@ namespace PrivateListener {
 
     //setters for callbacks to user application, called from NymiApi.
     //needed to define the callbacks in Listener.cpp with setters here, to avoid multiply defined symbols.
-    void setOnAgreement(agreementCallback _onAgreement);
+	void setNAPI(NymiApi* napi);
+	void setOnAgreement(agreementCallback _onAgreement);
     void setOnProvision(newProvisionCallback _onProvision);
+	void setOnProvisionChange(provisionChangeCallback _onProvisionChange);
     void setOnError(errorCallback _onError);
     void setProvisionList(getProvisionsCallback _onProvisionList);
     void setOnProvisionModeChange(onStartStopProvisioning _onProvisionModeChange);
@@ -85,6 +88,7 @@ namespace PrivateListener {
     //json op to handle function mapping
     const opHandlerType opHandler = {
         {"provision",handleOpProvision},
+		{"provisions",handleOpProvisionsChanged},
         {"info",handleOpInfo},
         {"random",handleOpRandom},
         {"symmetricKey",handleOpSymmetric},

@@ -13,6 +13,9 @@
 #include <string>
 #include <map>
 #include "NeaCallbackTypes.h"
+#include "NymiApi.h"
+
+class NymiApi;
 
 class NymiProvision {
     
@@ -20,15 +23,18 @@ class NymiProvision {
 
 public:
     
-    NymiProvision();
+	NymiProvision(NymiApi* napi);
     NymiProvision(const NymiProvision &other);
-    NymiProvision(std::string pid);
+    NymiProvision(std::string pid, std::string priv);
     
     inline std::string getPid() const { return m_pid; }
-
+	inline std::string getPriv() const { return m_privkey;  }
+	std::string getProvisionString();
+	 
     bool getRandom(randomCallback onRandom);
     bool createSymmetricKey(bool guarded, createdKeyCallback onCreatedKey);
 	bool getSymmetricKey(symmetricKeyCallback onSymmetric);
+	bool signSetup(ecdsaSignSetupCallback onSignSetup);
 	bool signMessage(std::string message, ecdsaSignCallback onMessageSigned);
 	bool createTotpKey(std::string totpKey, bool guarded, createdKeyCallback onCreatedKey);
 	bool getTotpKey(totpGetCallback onTotpGet);
@@ -38,8 +44,9 @@ public:
     bool revokeProvision(bool only_if_authenticated, onProvisionRevokedCallback onProvRevoked);
 
 private:
-    
+	NymiApi* m_napi;
     std::string m_pid;
+	std::string m_privkey;
 
 	class NeaCallback {
 

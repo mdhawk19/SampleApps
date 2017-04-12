@@ -1,0 +1,2 @@
+dummy file required so I can check in the containing folder. xcode uses the containing folder to construct its target projects. 
+by default, source files are in the target project folder, but in this case, sources files are referenced from cpp/gtest/src and cpp/src.

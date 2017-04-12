@@ -1,6 +1,6 @@
 package com.nymi.api.sample;
 
-import java.util.List;
+import java.util.Vector;
 
 import com.nymi.api.wrapper.*;
 
@@ -8,18 +8,35 @@ public class Util {
 
 	private NymiJavaApi napi = NymiJavaApi.getInstance();
     private SampleAppCallbacks callbacks = new SampleAppCallbacks();
+    private ProvisionStorage storage = new ProvisionStorage("provisions.json");
     
     public NymiJavaApi getNapi() { return napi; }
-    public NapiCallbacks getCallbacks() { return callbacks; }
+    public com.nymi.api.wrapper.NapiCallbacks getCallbacks() { return callbacks; }
     
-    public List<NymiProvision> getBands() { return callbacks.getBands(); }
+    public Vector<NymiProvision> getBands() { return callbacks.getBands(); }
 	
-    public boolean initNapi(String rootDirectory, int log, int nymulatorPort, String nymulatorHost) {
-    	int retcode = napi.init(callbacks, rootDirectory, log, nymulatorPort, nymulatorHost);
+    public Boolean initNapi(String neaName, String rootDirectory, int log, int nymulatorPort, String nymulatorHost) {
+    	
+    	String provisions = storage.read();
+    	System.out.println("Got provisions:" + provisions);
+    	int retcode = napi.init(callbacks, neaName, rootDirectory, provisions, log, nymulatorPort, nymulatorHost);
     	return retcode == 0;
     }
     
-    public boolean validateBandIndex (int bandIndex) {
+    public void shutdown() {
+    	String tempout = "{\"devices\":[],\"provisions\":{";
+    	for (NymiProvision thisprov : getBands()) {
+    		tempout += thisprov.getProvisionString();
+    		tempout += ",";
+    	}
+    	if (getBands().size() > 0)
+    		tempout = tempout.substring(0,tempout.length()-1); // Get rid of extra comma
+    	tempout += "}}";
+    	storage.write(tempout);
+		getNapi().terminate();
+    }
+    
+    public Boolean validateBandIndex (int bandIndex) {
         if (bandIndex < 0 || bandIndex >= getBands().size()) {
             System.out.println("Incorrect band index");
             return false;
@@ -27,7 +44,7 @@ public class Util {
         	return true;
     };
 
-    public boolean validatePattern(String pattern) {
+    public Boolean validatePattern(String pattern) {
         if (pattern.length() != 5) return false;
         for (char c : pattern.toCharArray()) {
             if (c != '+' && c != '-') return false;
@@ -49,6 +66,7 @@ public class Util {
 	    System.out.println(" In all cmds below, i is index of the band in std::vector<NymiProvision> bands.");
 	    System.out.println("");
 	    System.out.println("  `get-random i` get a random number from Nymi Band i.");
+	    System.out.println("  `set-signature i` set up a signature signing instance on Nymi Band i");
 	    System.out.println("  `get-signature i` get a signature (of a currently hard coded msg) from Nymi Band i.");
 	    System.out.println("  `create-sk i g` create a symmetric key on Nymi Band i.\n     Guarded option: g=1 -> guarded, g=0 -> unguarded.\n     If the key is guarded, key retrieval requires user double tap.");
 	    System.out.println("  `get-sk i` get the symmetric key previously created on Nymi Band i.");

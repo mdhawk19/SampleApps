@@ -72,8 +72,12 @@ int main() {
     newProvisionCallback onProvision = [&](NymiProvision newprov) {
         std::cout << "Successfully provisioned with pid: " << newprov.getPid() << std::endl;
         napi->stopProvisioning();
-		bands.push_back(newprov);
-    };
+	};
+
+	provisionChangeCallback onProvisionChange = [&](std::vector<NymiProvision> curBands) {
+		bands = curBands;
+	};
+
     getProvisionsCallback displayProv = [&](std::vector<NymiProvision> provisions) {
         
         std::cout << "Provisions:\n";
@@ -106,12 +110,20 @@ int main() {
         std::cout << "Created key type "<<keyTypeToString(keyType)<<" for band with pid: "<<pid<< std::endl;
     };
 
+	ecdsaSignSetupCallback onSignSetup = [](bool opResult, std::string pid, napiError err) {
+		if (!opResult) {
+			std::cout << "Received error " << err.errorString << " for band with pid: " << pid << std::endl;
+			return;
+		}
+		std::cout << "Succesfully set up signature algorythm for band with pid: " << pid << std::endl;
+	};
+
 	ecdsaSignCallback onSign = [](bool opResult, std::string pid,std::string sig, std::string vk, napiError err) {
         if (!opResult) {
             std::cout<<"Received error "<<err.errorString<<" for band with pid: "<<pid<<std::endl;
             return;
         }
-        std::cout << "Received signature: " << sig <<", with verification key: "<<vk <<" for band with pid: "<<pid<<std::endl;
+        std::cout << "Received signature: " << sig <<", with verification key: "<< vk <<" for band with pid: " << pid << std::endl;
 	};
 
 	totpGetCallback onTotp = [](bool opResult, std::string pid,std::string totp, napiError err) {
@@ -202,7 +214,7 @@ int main() {
     };
     
     try {
-        nymi::ConfigOutcome initResult;
+        napi::ConfigOutcome initResult;
         /*
            If using the Nymulator 
            ----------------------
@@ -226,15 +238,16 @@ int main() {
            On OSX, there are two different Napi libraries, one for connecting to the Nymulator (be sure to set the port),
            and one for connecting to the Nymi Band.
         */
-        int nPort = 9089;
-        napi = NymiApi::getNymiApi(initResult,onError, ".", nymi::LogLevel::normal, nPort, "127.0.0.1");
+        int nPort = 9088;
+        napi = NymiApi::getNymiApi(initResult,onError, ".", napi::LogLevel::normal, nPort, "127.0.0.1");
 
-        if (initResult != nymi::ConfigOutcome::okay) {
+        if (initResult != napi::ConfigOutcome::okay) {
             std::cout << "NymiApi initialization failed\n";
             return 1;
         }
 
         std::cout << "-*-*-> NymiApi initialization succeeded. Enter `help` for list of supported commands. <-*-*-\n\n";
+		napi->setOnProvisionsChange(onProvisionChange);
         napi->setOnProvisionModeChange(onProvModeChage);
         napi->startProvisioning(onPattern, onProvision);
 
@@ -296,6 +309,7 @@ int main() {
 		}
 		else if (command == "exit"){
 			if (napi)
+				napi->save(bands);
 				delete napi;
 			exit(0);
 		}
@@ -323,11 +337,17 @@ int main() {
                 bands.at(bandIndex).getSymmetricKey(onSk);
             }
         }
+		else if (command == "set-signature") {
+			int bandIndex = -1;
+			if (validateBandIndex(bandIndex, iss)) {
+				bands.at(bandIndex).signSetup(onSignSetup);
+			}
+		}
 		else if (command == "get-signature"){
-            int bandIndex = -1;
-            if (validateBandIndex(bandIndex,iss)){
-                bands.at(bandIndex).signMessage("7a1a5ee210a9dd4fc0a12319c394862f7caa7fe513bbbc8d22032f8e87e6c307",onSign);
-            }
+			int bandIndex = -1;
+			if (validateBandIndex(bandIndex,iss)){
+				bands.at(bandIndex).signMessage("7a1a5ee210a9dd4fc0a12319c394862f7caa7fe513bbbc8d22032f8e87e6c307",onSign);
+			}
 		}
 		else if (command == "create-totp"){
             int bandIndex = -1;
@@ -386,6 +406,7 @@ int main() {
             int bandIndex = -1;
             if (validateBandIndex(bandIndex,iss)){
                 bands.at(bandIndex).revokeProvision(true,onProvisionRevoked);
+                bands.erase(bands.begin() + bandIndex);
             }
         }
         else if (command == "delete-sk"){

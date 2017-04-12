@@ -1,5 +1,6 @@
 package com.nymi.api.sample;
 
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 import com.nymi.api.wrapper.NymiJavaApi;
@@ -18,31 +19,18 @@ public class SampleMain {
 	           port which the Nymulator is running on. When you run the Nymulator, this port number 
 	           is at the top center of the app, next to "Running on Port"
 
-	           OSX: Link against libnapi-net.a
-	           Windows: Link against napi-net.lib
-
 	           If using a physical Nymi Band
 	           -----------------------------
 	           OSX: nPort is ignored.
-	                Link against libnapi.a
 	           Windows: nPort needs to be the port which the NymiBluetoothService is running on. By default, this is *9089*.
-	                Link against napi-net.lib
-
-	           Note that on Windows, there is only one Napi library, however nPort value changes depending on whether
-	           you talk to the physical band or a Nymulator band.
-
-	           On OSX, there are two different Napi libraries, one for connecting to the Nymulator (be sure to set the port),
-	           and one for connecting to the Nymi Band.
 	        */
-	        int nPort = 9089;
-	        if (!util.initNapi(".", 0, nPort, "127.0.0.1")) {
+	        int nPort = 9088;
+	        if (!util.initNapi("JavaNapiSample", ".", 0, nPort, "127.0.0.1")) {
 	            System.out.println("NymiApi initialization failed");
 	            System.exit(1);
 	        }
 
 	        System.out.println("-*-*-> NymiApi initialization succeeded. Enter `help` for list of supported commands. <-*-*-\n");
-	        System.out.println("Populating band table with any existing provisioned bands");
-	        util.getNapi().getProvisions(NymiJavaApi.ProvisionListType.ALL);
 	        util.getNapi().startProvisioning();
 
 	    }
@@ -54,28 +42,28 @@ public class SampleMain {
 	    
 
 		//console interface, wait for user command
-	    String userInput;
+	    String user_input;
 	    Scanner reader = new Scanner(System.in);
 	    
 	    while (true) {
 
-	    	userInput = reader.nextLine();
-	    	String[] commandArguments = userInput.split("\\s+");
-	        String command = commandArguments[0];
+	    	user_input = reader.nextLine();
+	    	String[] cmdarr = user_input.split("\\s+");
+	        String command = cmdarr[0];
 
 	        int bandIndex = -1;
-            boolean guarded = false;
+            Boolean guarded = false;
             String pattern = "";
 
-            switch (commandArguments.length) {
+            switch (Array.getLength(cmdarr)) {
             case 1:
             	break;
             case 2:
             	if (command.equals("accept")) {
-            		pattern = commandArguments[1];
+            		pattern = cmdarr[1];
             	} else {
             		try {
-            			bandIndex = new Integer(commandArguments[1]);
+            			bandIndex = new Integer(cmdarr[1]);
             		} catch (NumberFormatException ne) {
             			System.out.println("Unknown band number or format");
             			continue;
@@ -84,12 +72,12 @@ public class SampleMain {
            		break;
             case 3:
             	try {
-            		bandIndex = new Integer(commandArguments[1]);
+            		bandIndex = new Integer(cmdarr[1]);
         		} catch (NumberFormatException ne) {
         			System.out.println("Unknown band number or format");
         			continue;
         		}
-            	guarded = (commandArguments[2].equals("1"));
+            	guarded = (cmdarr[2].equals("1"));
             	break;
             default:
             	System.out.println("Improper number of arguments.  Type 'help' for a list of commands and their syntax.");
@@ -119,7 +107,7 @@ public class SampleMain {
 				break;
 			case "exit":
 				reader.close();
-				util.getNapi().terminate();
+				util.shutdown();
 				System.out.println("NymiApi terminated");
 				System.exit(0);
 			case "get-random":
@@ -133,7 +121,12 @@ public class SampleMain {
                 break;
 	        case "get-sk":
 	            if (util.validateBandIndex(bandIndex)) {
-	                util.getBands().get(bandIndex).getSymmetricKey();
+	                util.getBands().elementAt(bandIndex).getSymmetricKey();
+	            }
+				break;
+	        case "set-signature":
+	            if (util.validateBandIndex(bandIndex)) {
+	                util.getBands().get(bandIndex).signMessageSetup();
 	            }
 				break;
 			case "get-signature":
@@ -155,8 +148,8 @@ public class SampleMain {
 			case "buzz":
 				// We use the "guarded" value even though it doesn't mean guarded in this context
 	            if (util.validateBandIndex(bandIndex)) {
-	            	NymiJavaApi.HapticNotification notificationValue = guarded ? NymiJavaApi.HapticNotification.NOTIFY_POSITIVE : NymiJavaApi.HapticNotification.NOTIFY_NEGATIVE;
-                    util.getBands().get(bandIndex).sendNotification(notificationValue);
+	            	NymiJavaApi.HapticNotification notval = guarded ? NymiJavaApi.HapticNotification.NOTIFY_POSITIVE : NymiJavaApi.HapticNotification.NOTIFY_NEGATIVE;
+                    util.getBands().get(bandIndex).sendNotification(notval);
 	            }
 				break;
 	        case "info":

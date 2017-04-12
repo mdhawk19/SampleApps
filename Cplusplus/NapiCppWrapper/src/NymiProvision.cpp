@@ -7,7 +7,7 @@
 //
 
 #include "NymiProvision.h"
-#include "json-napi.h"
+#include "napi.h"
 #include "GenJson.h"
 #include <random>
 #include <utility>
@@ -18,9 +18,16 @@ void seed_random(){ rng.seed(std::random_device()()); }
 
 std::map<std::string, NymiProvision::NeaCallback> NymiProvision::nymiProvisions = std::map<std::string, NymiProvision::NeaCallback>();
 
-NymiProvision::NymiProvision() { seed_random(); }
-NymiProvision::NymiProvision(const NymiProvision &other) :m_pid(other.getPid()) { seed_random(); }
-NymiProvision::NymiProvision(std::string pid):m_pid(pid) { seed_random(); }
+NymiProvision::NymiProvision(NymiApi* napi):m_napi(napi) { seed_random(); }
+NymiProvision::NymiProvision(const NymiProvision &other) :m_pid(other.getPid()), m_privkey(other.getPriv()) { seed_random(); }
+NymiProvision::NymiProvision(std::string pid, std::string secret):m_pid(pid),m_privkey(secret) { seed_random(); }
+
+std::string NymiProvision::getProvisionString() {
+	std::stringstream tmpProv;
+
+	tmpProv << "\"" << m_pid << "\":{\"pid\":\"" << m_pid << "\",\"provision\":\"" << m_privkey << "\",\"provisioned\":true}";
+	return tmpProv.str();
+}
 
 bool NymiProvision::getRandom(randomCallback onRandom){
     
@@ -29,7 +36,7 @@ bool NymiProvision::getRandom(randomCallback onRandom){
 	std::string exchange = std::to_string(dist(rng));
 	exchange += "random" + getPid();
     nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onRandom)));
-    nymi::jsonNapiPut(get_random(getPid(),exchange));
+    m_napi->portable_put(get_random(getPid(),exchange));
     return true;
 }
 
@@ -42,7 +49,7 @@ bool NymiProvision::createSymmetricKey(bool guarded, createdKeyCallback onCreate
     nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onCreatedKey)));
     std::string createsk = create_symkey(getPid(),guarded,exchange);
     std::cout<<"sending msg: "<<createsk<<std::endl;
-    nymi::jsonNapiPut(createsk);
+    m_napi->portable_put(createsk);
     return true;
 }
 
@@ -53,8 +60,18 @@ bool NymiProvision::getSymmetricKey(symmetricKeyCallback onSymmetric) {
 	std::string exchange = std::to_string(dist(rng));
 	exchange += "getsymkey" + getPid();
 	nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onSymmetric)));
-	nymi::jsonNapiPut(get_symkey(getPid(),exchange));
+	m_napi->portable_put(get_symkey(getPid(),exchange));
     return true;
+}
+
+bool NymiProvision::signSetup(ecdsaSignSetupCallback onSignSetup) {
+	if (!onSignSetup) return false;
+
+	std::string exchange = std::to_string(dist(rng));
+	exchange += "sign" + getPid();
+	nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onSignSetup)));
+	m_napi->portable_put(sign_setup(getPid(), "NIST256P", exchange));
+	return true;
 }
 
 bool NymiProvision::signMessage(std::string msghash, ecdsaSignCallback onMessageSigned) {
@@ -64,7 +81,7 @@ bool NymiProvision::signMessage(std::string msghash, ecdsaSignCallback onMessage
 	std::string exchange = std::to_string(dist(rng));
 	exchange += "sign" + getPid();
 	nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onMessageSigned)));
-	nymi::jsonNapiPut(sign_msg(getPid(), msghash, exchange));
+	m_napi->portable_put(sign_msg(getPid(), msghash, exchange));
     return true;
 }
 
@@ -75,7 +92,7 @@ bool NymiProvision::createTotpKey(std::string totpKey, bool guarded, createdKeyC
 	std::string exchange = std::to_string(dist(rng));
 	exchange += "createTotp" + getPid();
 	nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onCreatedKey)));
-	nymi::jsonNapiPut(set_totp(getPid(),totpKey,guarded,exchange));
+	m_napi->portable_put(set_totp(getPid(),totpKey,guarded,exchange));
     return true;
 }
 
@@ -86,7 +103,7 @@ bool NymiProvision::getTotpKey(totpGetCallback onTotpGet) {
 	std::string exchange = std::to_string(dist(rng));
 	exchange += "getTotp" + getPid();
 	nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onTotpGet)));
-	nymi::jsonNapiPut(get_totp(getPid(), exchange));
+	m_napi->portable_put(get_totp(getPid(), exchange));
     return true;
 }
 
@@ -97,7 +114,7 @@ bool NymiProvision::sendNotification(HapticNotification notifyType, onNotificati
 	std::string exchange = std::to_string(dist(rng));
 	exchange += "notify" + getPid();
 	nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onNotified)));
-	nymi::jsonNapiPut(notify(getPid(), notifyType == HapticNotification::NOTIFY_POSITIVE, exchange));
+	m_napi->portable_put(notify(getPid(), notifyType == HapticNotification::NOTIFY_POSITIVE, exchange));
     return true;
 }
 
@@ -108,7 +125,7 @@ bool NymiProvision::getDeviceInfo(deviceInfoCallback onDeviceInfo){
     std::string exchange = std::to_string(dist(rng));
     exchange += "deviceinfo" + getPid();
     nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onDeviceInfo)));
-    nymi::jsonNapiPut(get_info(exchange));
+    m_napi->portable_put(get_info(exchange));
     return true;
 }
 
@@ -127,7 +144,7 @@ bool NymiProvision::revokeKey(KeyType keyType, revokedKeyCallback onRevokeKey){
         default: return false;
     }
 
-    nymi::jsonNapiPut(delete_key(getPid(),keyStr,exchange));
+    m_napi->portable_put(delete_key(getPid(),keyStr,exchange));
     return true;
 }
 
@@ -138,6 +155,6 @@ bool NymiProvision::revokeProvision(bool onlyIfAuthenticated, onProvisionRevoked
     std::string exchange = std::to_string(dist(rng));
     exchange += "revokeprovision" + getPid();
     nymiProvisions.insert(std::make_pair(exchange, NymiProvision::NeaCallback(onProvRevoked)));
-    nymi::jsonNapiPut(revoke_provision(getPid(),onlyIfAuthenticated,exchange));
+    m_napi->portable_put(revoke_provision(getPid(),onlyIfAuthenticated,exchange));
     return true;
 }

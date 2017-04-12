@@ -13,13 +13,17 @@
 #include <string>
 #include <ostream>
 
-enum class HapticNotification { ERROR = -1, NOTIFY_NEGATIVE = 0, NOTIFY_POSITIVE = 1 };
+#ifdef ERROR
+#undef ERROR
+#endif
 
-enum class FoundStatus { ERROR, ANONYMOUS, AUTHENTICATED, IDENTIFIED, PROVISIONING, UNCLASPED, UNDETECTED, UNPROVISIONABLE, DISCOVERED };
-enum class PresenceStatus { ERROR, DEVICE_PRESENCE_NO, DEVICE_PRESENCE_UNLIKELY, DEVICE_PRESENCE_LIKELY, DEVICE_PRESENCE_YES };
-enum class ProximityState { ERROR, PROXIMITY_STATE_NOT_READY, PROXIMITY_STATE_UNDETECTABLE, PROXIMITY_STATE_DETECTABLE,
+enum class HapticNotification { NERROR = -1, NOTIFY_NEGATIVE = 0, NOTIFY_POSITIVE = 1 };
+
+enum class FoundStatus { NERROR, ANONYMOUS, AUTHENTICATED, IDENTIFIED, PROVISIONING, UNCLASPED, UNDETECTED, UNPROVISIONABLE, DISCOVERED };
+enum class PresenceStatus { NERROR, DEVICE_PRESENCE_NO, DEVICE_PRESENCE_UNLIKELY, DEVICE_PRESENCE_LIKELY, DEVICE_PRESENCE_YES };
+enum class ProximityState { NERROR, PROXIMITY_STATE_NOT_READY, PROXIMITY_STATE_UNDETECTABLE, PROXIMITY_STATE_DETECTABLE,
     PROXIMITY_STATE_SPHERE1, PROXIMITY_STATE_SPHERE2, PROXIMITY_STATE_SPHERE3, PROXIMITY_STATE_SPHERE4};
-enum class KeyType { ERROR, SYMMETRIC, TOTP };
+enum class KeyType { NERROR, SYMMETRIC, TOTP };
 
 //string to enum mapping
 const std::map<std::string,FoundStatus> foundEnum = {
@@ -46,7 +50,7 @@ inline FoundStatus stringToFoundStatus(std::string foundStr){
     if (it != foundEnum.end()){
         return it->second;
     }
-    return FoundStatus::ERROR;
+    return FoundStatus::NERROR;
 }
 
 inline PresenceStatus stringToPresenceStatus(std::string presStr){
@@ -54,14 +58,14 @@ inline PresenceStatus stringToPresenceStatus(std::string presStr){
     if (it != presentEnum.end()){
         return it->second;
     }
-    return PresenceStatus::ERROR;
+    return PresenceStatus::NERROR;
 }
 
 inline std::string foundStatusToString(FoundStatus foundStatus){
     
     switch (foundStatus) {
             
-        case FoundStatus::ERROR: return "FoundStatus::Error";
+        case FoundStatus::NERROR: return "FoundStatus::Error";
         case FoundStatus::ANONYMOUS: return "FoundStatus::Anonymous";
         case FoundStatus::AUTHENTICATED: return "FoundStatus::Authenticated";
         case FoundStatus::IDENTIFIED: return "FoundStatus::Identified";
@@ -78,7 +82,7 @@ inline std::string presenceStatusToString(PresenceStatus presenceStatus){
     
     switch (presenceStatus) {
             
-        case PresenceStatus::ERROR: return "Error";
+        case PresenceStatus::NERROR: return "Error";
         case PresenceStatus::DEVICE_PRESENCE_NO: return "Present::No";
         case PresenceStatus::DEVICE_PRESENCE_UNLIKELY: return "Present::Unlikely";
         case PresenceStatus::DEVICE_PRESENCE_LIKELY: return "Present::Likely";

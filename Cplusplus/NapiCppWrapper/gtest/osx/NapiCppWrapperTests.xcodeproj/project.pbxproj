@@ -1,0 +1,365 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C03EAC21D5E577E0044A3DF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EABB1D5E577E0044A3DF /* main.cpp */; };
+		1C03EAC31D5E577E0044A3DF /* NymulatorHooks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EABC1D5E577E0044A3DF /* NymulatorHooks.cpp */; };
+		1C03EAC41D5E577E0044A3DF /* TestsNotifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EABE1D5E577E0044A3DF /* TestsNotifications.cpp */; };
+		1C03EAC51D5E577E0044A3DF /* TestsProvision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAC01D5E577E0044A3DF /* TestsProvision.cpp */; };
+		1C03EADB1D5E57C20044A3DF /* libnapi-net.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C03EADA1D5E57C20044A3DF /* libnapi-net.a */; };
+		1C03EB111D5E68ED0044A3DF /* GenJson.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAE91D5E59150044A3DF /* GenJson.h */; };
+		1C03EB121D5E68ED0044A3DF /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAEA1D5E59150044A3DF /* Listener.cpp */; };
+		1C03EB131D5E68ED0044A3DF /* Listener.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAEB1D5E59150044A3DF /* Listener.h */; };
+		1C03EB151D5E68ED0044A3DF /* NeaCallbackTypes.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAED1D5E59150044A3DF /* NeaCallbackTypes.h */; };
+		1C03EB161D5E68ED0044A3DF /* NymiApi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAEE1D5E59150044A3DF /* NymiApi.cpp */; };
+		1C03EB171D5E68ED0044A3DF /* NymiApi.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAEF1D5E59150044A3DF /* NymiApi.h */; };
+		1C03EB181D5E68ED0044A3DF /* NymiApiEnums.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAF01D5E59150044A3DF /* NymiApiEnums.h */; };
+		1C03EB191D5E68ED0044A3DF /* NymiProvision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAF11D5E59150044A3DF /* NymiProvision.cpp */; };
+		1C03EB1A1D5E68ED0044A3DF /* NymiProvision.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAF21D5E59150044A3DF /* NymiProvision.h */; };
+		1C03EB1B1D5E68ED0044A3DF /* TransientNymiBandInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAF31D5E59150044A3DF /* TransientNymiBandInfo.cpp */; };
+		1C03EB1C1D5E68ED0044A3DF /* TransientNymiBandInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = 1C03EAF41D5E59150044A3DF /* TransientNymiBandInfo.h */; };
+		1C58A7211D5E883300D97F5B /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58A7201D5E883300D97F5B /* gtest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C03EAAF1D5E57100044A3DF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1C03EAB11D5E57100044A3DF /* NapiCppWrapperTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NapiCppWrapperTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C03EABB1D5E577E0044A3DF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../src/main.cpp; sourceTree = "<group>"; };
+		1C03EABC1D5E577E0044A3DF /* NymulatorHooks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NymulatorHooks.cpp; path = ../../src/NymulatorHooks.cpp; sourceTree = "<group>"; };
+		1C03EABD1D5E577E0044A3DF /* NymulatorHooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymulatorHooks.h; path = ../../src/NymulatorHooks.h; sourceTree = "<group>"; };
+		1C03EABE1D5E577E0044A3DF /* TestsNotifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestsNotifications.cpp; path = ../../src/TestsNotifications.cpp; sourceTree = "<group>"; };
+		1C03EABF1D5E577E0044A3DF /* TestsNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestsNotifications.h; path = ../../src/TestsNotifications.h; sourceTree = "<group>"; };
+		1C03EAC01D5E577E0044A3DF /* TestsProvision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestsProvision.cpp; path = ../../src/TestsProvision.cpp; sourceTree = "<group>"; };
+		1C03EAC11D5E577E0044A3DF /* TestsProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestsProvision.h; path = ../../src/TestsProvision.h; sourceTree = "<group>"; };
+		1C03EADA1D5E57C20044A3DF /* libnapi-net.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libnapi-net.a"; path = "../../deps/libnapi-net.a"; sourceTree = "<group>"; };
+		1C03EAE91D5E59150044A3DF /* GenJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenJson.h; path = ../../../src/GenJson.h; sourceTree = "<group>"; };
+		1C03EAEA1D5E59150044A3DF /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listener.cpp; path = ../../../src/Listener.cpp; sourceTree = "<group>"; };
+		1C03EAEB1D5E59150044A3DF /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../../src/Listener.h; sourceTree = "<group>"; };
+		1C03EAEC1D5E59150044A3DF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../src/main.cpp; sourceTree = "<group>"; };
+		1C03EAED1D5E59150044A3DF /* NeaCallbackTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NeaCallbackTypes.h; path = ../../../src/NeaCallbackTypes.h; sourceTree = "<group>"; };
+		1C03EAEE1D5E59150044A3DF /* NymiApi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NymiApi.cpp; path = ../../../src/NymiApi.cpp; sourceTree = "<group>"; };
+		1C03EAEF1D5E59150044A3DF /* NymiApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymiApi.h; path = ../../../src/NymiApi.h; sourceTree = "<group>"; };
+		1C03EAF01D5E59150044A3DF /* NymiApiEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymiApiEnums.h; path = ../../../src/NymiApiEnums.h; sourceTree = "<group>"; };
+		1C03EAF11D5E59150044A3DF /* NymiProvision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NymiProvision.cpp; path = ../../../src/NymiProvision.cpp; sourceTree = "<group>"; };
+		1C03EAF21D5E59150044A3DF /* NymiProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NymiProvision.h; path = ../../../src/NymiProvision.h; sourceTree = "<group>"; };
+		1C03EAF31D5E59150044A3DF /* TransientNymiBandInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TransientNymiBandInfo.cpp; path = ../../../src/TransientNymiBandInfo.cpp; sourceTree = "<group>"; };
+		1C03EAF41D5E59150044A3DF /* TransientNymiBandInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransientNymiBandInfo.h; path = ../../../src/TransientNymiBandInfo.h; sourceTree = "<group>"; };
+		1C58A7201D5E883300D97F5B /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../libs/osx/gtest.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C03EAAE1D5E57100044A3DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C58A7211D5E883300D97F5B /* gtest.framework in Frameworks */,
+				1C03EADB1D5E57C20044A3DF /* libnapi-net.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C03EAA81D5E57100044A3DF = {
+			isa = PBXGroup;
+			children = (
+				1C58A7201D5E883300D97F5B /* gtest.framework */,
+				1C03EAD91D5E57A60044A3DF /* JsonNapi */,
+				1C03EAB31D5E57100044A3DF /* NapiCppWrapperTests */,
+				1C03EAE31D5E58F30044A3DF /* NapiCppWrapper */,
+				1C03EAB21D5E57100044A3DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1C03EAB21D5E57100044A3DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C03EAB11D5E57100044A3DF /* NapiCppWrapperTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C03EAB31D5E57100044A3DF /* NapiCppWrapperTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C03EABB1D5E577E0044A3DF /* main.cpp */,
+				1C03EABC1D5E577E0044A3DF /* NymulatorHooks.cpp */,
+				1C03EABD1D5E577E0044A3DF /* NymulatorHooks.h */,
+				1C03EABE1D5E577E0044A3DF /* TestsNotifications.cpp */,
+				1C03EABF1D5E577E0044A3DF /* TestsNotifications.h */,
+				1C03EAC01D5E577E0044A3DF /* TestsProvision.cpp */,
+				1C03EAC11D5E577E0044A3DF /* TestsProvision.h */,
+			);
+			path = NapiCppWrapperTests;
+			sourceTree = "<group>";
+		};
+		1C03EAD91D5E57A60044A3DF /* JsonNapi */ = {
+			isa = PBXGroup;
+			children = (
+				1C03EADA1D5E57C20044A3DF /* libnapi-net.a */,
+			);
+			name = JsonNapi;
+			sourceTree = "<group>";
+		};
+		1C03EAE31D5E58F30044A3DF /* NapiCppWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				1C03EAE91D5E59150044A3DF /* GenJson.h */,
+				1C03EAEA1D5E59150044A3DF /* Listener.cpp */,
+				1C03EAEB1D5E59150044A3DF /* Listener.h */,
+				1C03EAEC1D5E59150044A3DF /* main.cpp */,
+				1C03EAED1D5E59150044A3DF /* NeaCallbackTypes.h */,
+				1C03EAEE1D5E59150044A3DF /* NymiApi.cpp */,
+				1C03EAEF1D5E59150044A3DF /* NymiApi.h */,
+				1C03EAF01D5E59150044A3DF /* NymiApiEnums.h */,
+				1C03EAF11D5E59150044A3DF /* NymiProvision.cpp */,
+				1C03EAF21D5E59150044A3DF /* NymiProvision.h */,
+				1C03EAF31D5E59150044A3DF /* TransientNymiBandInfo.cpp */,
+				1C03EAF41D5E59150044A3DF /* TransientNymiBandInfo.h */,
+			);
+			path = NapiCppWrapper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C03EAB01D5E57100044A3DF /* NapiCppWrapperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C03EAB81D5E57100044A3DF /* Build configuration list for PBXNativeTarget "NapiCppWrapperTests" */;
+			buildPhases = (
+				1C03EAAD1D5E57100044A3DF /* Sources */,
+				1C03EAAE1D5E57100044A3DF /* Frameworks */,
+				1C03EAAF1D5E57100044A3DF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NapiCppWrapperTests;
+			productName = NapiCppWrapperTests;
+			productReference = 1C03EAB11D5E57100044A3DF /* NapiCppWrapperTests */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C03EAA91D5E57100044A3DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Hanieh Bastani";
+				TargetAttributes = {
+					1C03EAB01D5E57100044A3DF = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 1C03EAAC1D5E57100044A3DF /* Build configuration list for PBXProject "NapiCppWrapperTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1C03EAA81D5E57100044A3DF;
+			productRefGroup = 1C03EAB21D5E57100044A3DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C03EAB01D5E57100044A3DF /* NapiCppWrapperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C03EAAD1D5E57100044A3DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C03EB111D5E68ED0044A3DF /* GenJson.h in Sources */,
+				1C03EB121D5E68ED0044A3DF /* Listener.cpp in Sources */,
+				1C03EB131D5E68ED0044A3DF /* Listener.h in Sources */,
+				1C03EB151D5E68ED0044A3DF /* NeaCallbackTypes.h in Sources */,
+				1C03EB161D5E68ED0044A3DF /* NymiApi.cpp in Sources */,
+				1C03EB171D5E68ED0044A3DF /* NymiApi.h in Sources */,
+				1C03EB181D5E68ED0044A3DF /* NymiApiEnums.h in Sources */,
+				1C03EB191D5E68ED0044A3DF /* NymiProvision.cpp in Sources */,
+				1C03EB1A1D5E68ED0044A3DF /* NymiProvision.h in Sources */,
+				1C03EB1B1D5E68ED0044A3DF /* TransientNymiBandInfo.cpp in Sources */,
+				1C03EB1C1D5E68ED0044A3DF /* TransientNymiBandInfo.h in Sources */,
+				1C03EAC41D5E577E0044A3DF /* TestsNotifications.cpp in Sources */,
+				1C03EAC31D5E577E0044A3DF /* NymulatorHooks.cpp in Sources */,
+				1C03EAC21D5E577E0044A3DF /* main.cpp in Sources */,
+				1C03EAC51D5E577E0044A3DF /* TestsProvision.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C03EAB61D5E57100044A3DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1C03EAB71D5E57100044A3DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1C03EAB91D5E57100044A3DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					../libs/osx,
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					../../deps,
+					../../../../../libs/ecolib,
+					../../../../../libs,
+					../include,
+					../../src,
+					../src,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					../../deps,
+					../libs/osx,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1C03EABA1D5E57100044A3DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					../libs/osx,
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					../../deps,
+					../../../../../libs/ecolib,
+					../../../../../libs,
+					../include,
+					../../src,
+					../src,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					../../deps,
+					../libs/osx,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C03EAAC1D5E57100044A3DF /* Build configuration list for PBXProject "NapiCppWrapperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C03EAB61D5E57100044A3DF /* Debug */,
+				1C03EAB71D5E57100044A3DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C03EAB81D5E57100044A3DF /* Build configuration list for PBXNativeTarget "NapiCppWrapperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C03EAB91D5E57100044A3DF /* Debug */,
+				1C03EABA1D5E57100044A3DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1C03EAA91D5E57100044A3DF /* Project object */;
+}

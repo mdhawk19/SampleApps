@@ -1,0 +1,8 @@
+sdk*
+*.pyc
+__pycache__
+napi.log
+ncl.log
+provisions.json
+python-rubenesque
+roaming_auth_server_database.txt

@@ -6,10 +6,11 @@
 //  Copyright © 2016 Hanieh Bastani. All rights reserved.
 //
 
+#include "Listener.h"
 #include <mutex>
 #include <condition_variable>
-#include "Listener.h"
-#include "json-napi.h"
+#include <Vector>
+#include "napi.h"
 #include "NymiProvision.h"
 #include "TransientNymiBandInfo.h"
 
@@ -33,9 +34,11 @@ namespace PrivateListener {
     bool apiFinish;
     void setApiFinish(bool _apiFinish){ apiFinish = _apiFinish; }
     bool getApiFinish(){ return apiFinish; }
-        
+    
+	NymiApi* nApi = nullptr;
     agreementCallback onAgreement = nullptr;
     newProvisionCallback onProvision = nullptr;
+	provisionChangeCallback onProvisionChange = nullptr;
     errorCallback onError = nullptr;
     getProvisionsCallback getProvisionList = nullptr;
     onStartStopProvisioning onProvisionModeChange = nullptr;
@@ -43,44 +46,55 @@ namespace PrivateListener {
     onNymiBandPresenceChange onPresenceChange = nullptr;
     onNotificationsGetState onNotificationsGet = nullptr;
         
+	void setNAPI(NymiApi* napi) { nApi = napi; }
     void setOnAgreement(agreementCallback _onAgreement){ onAgreement = _onAgreement; }
     void setOnProvision(newProvisionCallback _onProvision){ onProvision = _onProvision; }
+	void setOnProvisionChange(provisionChangeCallback _onProvisionChange) { onProvisionChange = _onProvisionChange; }
     void setOnError(errorCallback _onError){ onError = _onError; }
     void setProvisionList(getProvisionsCallback _onProvisionList){ getProvisionList = _onProvisionList; }
     void setOnProvisionModeChange(onStartStopProvisioning _onProvisionModeChange){ onProvisionModeChange = _onProvisionModeChange; }
     void setOnFoundChange(onNymiBandFoundStatusChange _onFoundChange){ onFoundChange = _onFoundChange; }
     void setOnPresenceChange(onNymiBandPresenceChange _onPresenceChange){ onPresenceChange = _onPresenceChange; }
     void setOnNotificationsGet(onNotificationsGetState _onNotificationGet){ onNotificationsGet = _onNotificationGet; }
-        
+
 
     void waitForMessage() {
         
         while (!quit.load()) {
-            //this is a blocking call. Returns only if napi has sent a message, or quit is set to true
-            std::string message;
-            nymi::JsonGetOutcome res = nymi::jsonNapiGet(message,quit,50);
-
-            if (res == nymi::JsonGetOutcome::okay) {
+            char message[2048];
+			unsigned long long reqbufsize = 0;
+			//this is a blocking call. Returns only if napi has sent a message or the API is terminated
+#ifdef _WIN32
+			napi::GetOutcome res = nApi->get(&message[0], 2048, &reqbufsize);
+#else
+			napi::GetOutcome res = napi::get(&message[0], 2048, &reqbufsize);
+#endif
+            if (res == napi::GetOutcome::okay) {
                 std::cout << "received message: " << message << std::endl;
                 
                 nljson jobj = nljson::parse(message);
                 
                 if (!wellConstructedJson(jobj)){
-                    return;
+					std::cout << "ERROR: Received malformed JSON object from NAPI. Fatal - terminating" << std::endl;
+#ifdef _WIN32
+                    nApi->terminate();
+#else
+                    napi::terminate();
+#endif
+					exit(1);
                 }
                 
                 //handle any errors
                 nljson::iterator jit;
                 if (hasKey(jobj,{"errors"},jit) || isKeyValue(jobj,{"successful"},jit,false)){
-                    handleNapiError(jobj);
+						handleNapiError(jobj);
                     continue;
                 }
                 
                 //delegate to proper op handler
-                if (hasKey(jobj,{"operation"},jit)) {
-                    
-                    std::string operation = jit.value()[0];
-                    
+				std::vector<std::string> op;
+				if (getOperation(jobj, op)) {
+					std::string operation = op[0];
                     //call operation handler for this operation
                     opHandlerType::const_iterator oit;
                     if ((oit = opHandler.find(operation)) != opHandler.end()) {
@@ -89,6 +103,7 @@ namespace PrivateListener {
                 }
             }
         }
+		std::cout << "Exiting listener thread" << std::endl;
     }
 
     //some utility functions
@@ -146,6 +161,22 @@ namespace PrivateListener {
         return nErr;
     }
 
+	bool getOperation(nljson jobj, std::vector<std::string> &op) {
+		nljson::iterator jit;
+		if (hasKey(jobj, { "path" }, jit)) {
+			std::string path = jit.value();
+			std::stringstream ss(path);
+			while (ss.good())
+			{
+				std::string element;
+				getline(ss, element, '/');
+				op.push_back(element);
+			}
+			return true;
+		}
+		return false;
+	}
+
     //operation handlers
     //------------------
     void handleNapiError(nljson &jobj) {
@@ -156,7 +187,7 @@ namespace PrivateListener {
         //error message specifies the operation
         if (hasKey(jobj, {"path"}, jit)) {
             opVal = jit.value();
-            nErr.errorString += " Operation: " + opVal;
+            nErr.errorString += " Path: " + opVal;
         }
         
         //extract the array of errors
@@ -195,7 +226,7 @@ namespace PrivateListener {
                     else if (opVal == "totp/run") { exchangeCallback->second(failure,pid,nErr); }
                     else if (opVal == "totp/get") { exchangeCallback->second(failure,pid,"",nErr); }
                     else if (opVal == "sign/run") { exchangeCallback->second(failure,pid,"","",nErr); }
-                    else if (opVal == "notify/run") { exchangeCallback->second(failure,pid,HapticNotification::ERROR,nErr); }
+                    else if (opVal == "notify/run") { exchangeCallback->second(failure,pid, HapticNotification::NERROR,nErr); }
 					else if (opVal == "revoke/run") { exchangeCallback->second(failure,pid,nErr); }
                     else if (opVal == "info") {
                         //since there is an exchangeCallback, this was a request to NymiProvision::getDeviceInfo()
@@ -221,39 +252,82 @@ namespace PrivateListener {
 
     void handleOpProvision(nljson &jobj) {
         
-        nljson::iterator jit;
-        hasKey(jobj,{"operation"},jit);
-        if (jit.value()[1] == "report"){
-            
-            if (jit.value()[2] == "patterns"){
-                //handle receipt of provisioning pattern
-                if (hasKey(jobj,{"event","patterns"},jit)){
+		nljson::iterator jit;
+		std::vector<std::string> op;
+		if (getOperation(jobj, op)) {
+			if (op[1] == "report") {
+				if (op[2] == "patterns") {
+					//handle receipt of provisioning pattern
+					if (hasKey(jobj, { "event","patterns" }, jit)) {
 
-                    size_t num_patterns = jit.value().size();
-                    std::vector<std::string> patterns;
-                    
-                    for (unsigned int i = 0; i < num_patterns; ++i) {
-                        patterns.push_back(jit.value()[i]);
-                    }
-                    onAgreement(patterns);
-                }
-            }
-            else if (jit.value()[2] == "provisioned"){
-                //handle provisioned device
-                if (hasKey(jobj,{"event","kind"},jit) && jit.value() == "provisioned"){
-                    if (hasKey(jobj,{"event","info","pid"},jit)){
-                        std::string pid = jit.value();
-                        onProvision(NymiProvision(pid));
-                    }
-                }
-            }
-        }
-        else if (jit.value()[1] == "run" && (jit.value()[2] == "start" || jit.value()[2] == "stop")){
-            
-            std::string provState = jit.value()[2];
-            if (onProvisionModeChange){ onProvisionModeChange(provState); }
-        }
+						size_t num_patterns = jit.value().size();
+						std::vector<std::string> patterns;
+
+						for (unsigned int i = 0; i < num_patterns; ++i) {
+							patterns.push_back(jit.value()[i]);
+						}
+						onAgreement(patterns);
+					}
+				}
+				else if (op[2] == "provisioned") {
+					//handle provisioned device
+					if (hasKey(jobj, { "event","kind" }, jit) && jit.value() == "provisioned") {
+						if (hasKey(jobj, { "event","info","pid" }, jit)) {
+							std::string pid = jit.value();
+							onProvision(NymiProvision(pid,""));
+						}
+					}
+				}
+			}
+			else if (op[1] == "run" && (op[2] == "start" || op[2] == "stop")) {
+
+				std::string provState = op[2];
+				if (onProvisionModeChange) { onProvisionModeChange(provState); }
+			}
+		}
     }
+
+	void handleOpProvisionsChanged(nljson &jobj) {
+		std::vector<std::string> op;
+		if (getOperation(jobj, op)) {
+			if (op[1] == "changed") {
+				// Got an updated list of known provisions from the API
+				nljson::iterator jit;
+				if (hasKey(jobj, { "response","provisions","provisions" }, jit)) {
+					std::vector<NymiProvision> tempbands;
+					for (auto prov : (nljson)jit.value()) {
+						nljson::iterator tjit;
+						std::string pid, provision;
+						if (hasKey(prov, { "pid" }, tjit))
+							pid = tjit.value();
+						else
+							pid = "";
+						if (hasKey(prov, { "provision" }, tjit))
+							provision = tjit.value();
+						else
+							provision = "";
+						NymiProvision newprov(pid, provision);
+						tempbands.push_back(newprov);
+					}
+					if (onProvisionChange)
+						onProvisionChange(tempbands);
+					else {
+						std::string errMsg = "ERROR: onProvisionChange callback not set, ignoring.\n";
+						napiError nErr = { errMsg,{} };
+						onError(nErr);
+						return;
+					}
+				}
+				return;
+			} else {
+				std::string errMsg = "ERROR: Got a provisions message with unknown path field. Json response follows:\n";
+				errMsg += jobj.dump();
+				napiError nErr = { errMsg,{} };
+				onError(nErr);
+				return;
+			}
+		}
+	}
 
     void handleOpInfo(nljson &jobj) {
         
@@ -269,7 +343,7 @@ namespace PrivateListener {
 				auto napiProvList = jit.value();
 				for (auto p : napiProvList) {
 					std::string pid = p;
-					provList.push_back(NymiProvision(pid));
+					provList.push_back(NymiProvision(pid,""));
 				}
 			}
             getProvisionList(provList);
@@ -309,6 +383,10 @@ namespace PrivateListener {
 
     void handleOpRandom(nljson &jobj){
         
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
+
         //we need an exchange to look up the callback
         std::string exchange;
         if (!getExchange(jobj,exchange,true)) return;
@@ -327,8 +405,6 @@ namespace PrivateListener {
                 callbackFn(failure,pid,"",nErr);   //pid is empty string
                 return;
             }
-            
-            nljson::iterator jit;
             
             //get the value we want
             if (!hasKey(jobj, {"response","pseudoRandomNumber"}, jit)) {
@@ -350,7 +426,10 @@ namespace PrivateListener {
     }
 
     void handleOpSymmetric(nljson &jobj) {
-        
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
+
         //we need an exchange to look up the callback
         std::string exchange;
         if (!getExchange(jobj,exchange,true)) return;
@@ -370,14 +449,13 @@ namespace PrivateListener {
                 return;
             }
         
-            nljson::iterator jit;
-            
-            hasKey(jobj,{"operation"},jit);
-            if (jit.value()[1] == "run"){
+			std::vector<std::string> op;
+            getOperation(jobj,op);
+            if (op[1] == "run"){
                 KeyType keyType = KeyType::SYMMETRIC;
                 callbackFn(isKeyValue(jobj, {"successful"}, jit, true),pid,keyType,noErr);
             }
-            else if (jit.value()[1] == "get"){
+            else if (op[1] == "get"){
                 if (hasKey(jobj,{"response","key"},jit)){
                     std::string key = jit.value();
                     callbackFn(success,pid,key,noErr);
@@ -395,6 +473,9 @@ namespace PrivateListener {
     }
 
     void handleOpSignature(nljson&jobj) {
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
         
         //we need an exchange to look up the callback
         std::string exchange;
@@ -414,27 +495,37 @@ namespace PrivateListener {
                 callbackFn(failure,pid,"","",nErr);   //pid is empty string
                 return;
             }
-        
-            nljson::iterator jit;
-            
-            //get the value we want
-            if (!hasKey(jobj, {"response","signature"}, jit)) {
 
-                callbackFn(failure,pid,"","",genMissingJsonKeyErr("signature",jobj));
-                return;
-            }
-            std::string sig = jit.value();
-            
-            if (!hasKey(jobj, {"response","verificationKey"}, jit)) {
-                
-                callbackFn(failure,pid,"","",genMissingJsonKeyErr("verificationKey",jobj));
-                return;
-            }
-            std::string vk = jit.value();
-            
-            //send value to the callback associated with the exchange
-            callbackFn(success,pid,sig,vk,noErr);
-            return;
+			// Is this setup or a signing response?
+			std::vector<std::string> op;
+			getOperation(jobj, op);
+			if (op[1] == "setup") {
+				if (isKeyValue(jobj, { "successful" }, jit, true)) {
+					callbackFn(success, pid, noErr);
+				} else {
+					callbackFn(failure, pid, nErr);
+				}
+			}
+			else if (op[1] == "run") {
+				//get the value we want
+				if (!hasKey(jobj, { "response","signature" }, jit)) {
+
+					callbackFn(failure, pid, "", "", genMissingJsonKeyErr("signature", jobj));
+					return;
+				}
+				std::string sig = jit.value();
+
+				if (!hasKey(jobj, { "response","verificationKey" }, jit)) {
+
+					callbackFn(failure, pid, "", "", genMissingJsonKeyErr("verificationKey", jobj));
+					return;
+				}
+				std::string vk = jit.value();
+
+				//send value to the callback associated with the exchange
+				callbackFn(success, pid, sig, vk, noErr);
+				return;
+			}
         }
         else {
             std::string errMsg = "ERROR. Received signature. No callback to NEA found. Json response follows:\n";
@@ -446,7 +537,10 @@ namespace PrivateListener {
     }
 
     void handleOpTotp(nljson&jobj) {
-        
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
+
         //we need an exchange to look up the callback
         std::string exchange;
         if (!getExchange(jobj,exchange,true)) return;
@@ -466,8 +560,6 @@ namespace PrivateListener {
                 return;
             }
             
-            nljson::iterator jit;
-            
             //get the value we want
             if (!isKeyValue(jobj, {"successful"}, jit, true)) {
                 std::string errMsg = "Could not complete CreateTOTP request. JSON response follows:\n";
@@ -477,14 +569,14 @@ namespace PrivateListener {
                 return;
             }
             
-            hasKey(jobj,{"operation"},jit);
-            if (jit.value()[1] == "run"){
+			std::vector<std::string> op;
+			getOperation(jobj, op);
+            if (op[1] == "run"){
                 KeyType keyType = KeyType::TOTP;
                 callbackFn(isKeyValue(jobj, {"successful"}, jit, true),pid,keyType,noErr);
             }
-            else if (jit.value()[1] == "get"){
+            else if (op[1] == "get"){
                 if (!hasKey(jobj, {"response","totp"}, jit)) {
-
                     callbackFn(failure,pid,"",genMissingJsonKeyErr("response/totp",jobj));
                     return;
                 }
@@ -504,7 +596,10 @@ namespace PrivateListener {
     }
 
     void handleOpNotified(nljson&jobj) {
-        
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
+
         //we need an exchange to look up the callback
         std::string exchange;
         if (!getExchange(jobj,exchange,true)) return;
@@ -524,11 +619,9 @@ namespace PrivateListener {
                 return;
             }
         
-            nljson::iterator jit;
-
             if (!hasKey(jobj, {"request","buzz"}, jit)) {
 
-                callbackFn(failure,pid,HapticNotification::ERROR,genMissingJsonKeyErr("request/buzz",jobj));
+                callbackFn(failure,pid,HapticNotification::NERROR,genMissingJsonKeyErr("request/buzz",jobj));
                 return;
             }
             
@@ -550,11 +643,12 @@ namespace PrivateListener {
 
     void handleOpApiNotifications(nljson &jobj) {
         
+		std::vector<std::string> op;
         nljson::iterator jit;
-        hasKey(jobj, {"operation"},jit);
+        getOperation(jobj, op);
         
-        if (jit.value()[1] == "set"){/*response of set is received here, not handling it for now*/}
-        else if (jit.value()[1] == "report") {
+        if (op[1] == "set"){/*response of set is received here, not handling it for now*/}
+        else if (op[1] == "report") {
             
             if (hasKey(jobj, {"event","kind"},jit)){
                 
@@ -580,7 +674,7 @@ namespace PrivateListener {
                 }
             }
         }
-        else if (jit.value()[1] == "get" && hasKey(jobj,{"response"},jit)) {
+        else if (op[1] == "get" && hasKey(jobj,{"response"},jit)) {
             
             std::map<std::string,bool> notificationsState = jit.value();
             onNotificationsGet(notificationsState);
@@ -588,6 +682,9 @@ namespace PrivateListener {
     }
     
     void handleOpRevokeProvision(nljson &jobj) {
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
 
         //we need an exchange to look up the callback
         std::string exchange;
@@ -622,6 +719,9 @@ namespace PrivateListener {
     }
 
     void handleOpKey(nljson &jobj){
+		// Check if this is the final response ("completed":true)
+		nljson::iterator jit;
+		if (!isKeyValue(jobj, { "completed" }, jit, true)) return;
 
         //we need an exchange to look up the callback
         std::string exchange;
@@ -638,14 +738,13 @@ namespace PrivateListener {
             std::string pid;
             napiError nErr;
             if (!getPid(jobj,pid,nErr)) {
-                KeyType keyType = KeyType::ERROR;
+                KeyType keyType = KeyType::NERROR;
                 callbackFn(failure,pid,keyType,nErr);   //pid is empty string
                 return;
             }
 
             //send value to the callback associated with the exchange
-            KeyType keyType = KeyType::ERROR;
-            nljson::iterator jit;
+            KeyType keyType = KeyType::NERROR;
             if (isKeyValue(jobj, {"request","symmetric"},jit,true) && isKeyValue(jobj, {"response","symmetric"},jit,false)){
                 keyType = KeyType::SYMMETRIC;
             }

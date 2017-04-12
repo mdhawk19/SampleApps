@@ -31,6 +31,7 @@ using errorCallback = std::function<void(napiError nErr)>;
 //callbacks for provisioning a new band
 using agreementCallback = std::function<void(std::vector<std::string> patterns)>;
 using newProvisionCallback = std::function<void(NymiProvision newprov)>;
+using provisionChangeCallback = std::function<void(std::vector<NymiProvision> curBands)>;
 
 //callbacks for getting api state
 using getProvisionsCallback = std::function<void(std::vector<NymiProvision> provisions)>;
@@ -41,6 +42,7 @@ using onStartStopProvisioning = std::function<void(std::string newState)>;
 using randomCallback =              std::function<void(bool opResult, std::string pid, std::string rand,                napiError)>;
 using symmetricKeyCallback =        std::function<void(bool opResult, std::string pid, std::string sk,                  napiError)>;
 using ecdsaSignCallback =           std::function<void(bool opResult, std::string pid, std::string sig, std::string vk, napiError)>;
+using ecdsaSignSetupCallback =		std::function<void(bool opResult, std::string pid,									napiError)>;
 using totpGetCallback =             std::function<void(bool opResult, std::string pid, std::string totp,                napiError)>;
 using onNotificationCallback =      std::function<void(bool opResult, std::string pid, HapticNotification,              napiError)>;
 using deviceInfoCallback =          std::function<void(bool opResult, std::string pid, TransientNymiBandInfo&,          napiError)>;

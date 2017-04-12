@@ -9,7 +9,7 @@
 #ifndef NymiDeviceInfo_hpp
 #define NymiDeviceInfo_hpp
 
-#include "json/src/json.hpp"
+#include "json.hpp"
 #include "NymiApiEnums.h"
 
 using nljson = nlohmann::json;

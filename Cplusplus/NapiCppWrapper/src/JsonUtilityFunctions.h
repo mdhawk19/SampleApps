@@ -10,7 +10,7 @@
 #define JsonUtilityFunctions_h
 
 #include <vector>
-#include "json/src/json.hpp"
+#include "json.hpp"
 
 using nljson = nlohmann::json;
 
