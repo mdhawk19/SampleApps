@@ -1,0 +1,9 @@
+﻿2017-06-05 11:25:47.973 WARN  [1840] [Nymi::provision_dhkey_state_exit@1241] nymi_band0: provision cancelled, remote disconnection
+2017-06-05 11:28:47.024 WARN  [1840] [Nymi::prov_advertising_state_exit@1021] nymi_band0: provision timeout
+2017-06-05 11:31:31.036 WARN  [1840] [Nymi::prov_advertising_state_exit@1021] nymi_band0: provision timeout
+2017-06-05 11:32:04.085 WARN  [1840] [Nymi::prov_advertising_state_exit@1021] nymi_band0: provision timeout
+2017-06-05 11:48:07.067 WARN  [1840] [Nymi::prov_advertising_state_exit@1021] nymi_band0: provision timeout
+2017-06-05 11:48:45.078 WARN  [1840] [Nymi::prov_advertising_state_exit@1021] nymi_band1: provision timeout
+2017-06-06 13:13:20.091 WARN  [3516] [Nymi::prov_advertising_state_exit@1021] nymi_band0: provision timeout
+2017-06-06 13:13:32.046 WARN  [3516] [Nymi::prov_advertising_state_exit@1021] nymi_band1: provision timeout
+2017-06-06 13:13:34.054 WARN  [3516] [Nymi::prov_advertising_state_exit@1021] nymi_band2: provision timeout

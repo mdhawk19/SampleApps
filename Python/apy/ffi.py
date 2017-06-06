@@ -24,6 +24,7 @@ for i in locations:
 	try:
 		_napi=ctypes.CDLL(i)
 		print('loaded '+i)
+		print('#^^above from ffi.py')
 		break
 	except: pass
 else:
@@ -70,6 +71,7 @@ def configure(
 	port=-1,
 	host=''
 ):
+	print('#configuring in ffi.py, line 74')
 	assert(len(nea_name)>=6)
 	if port==-1:
 		if 'APY_REAL' not in os.environ: port=9088
@@ -86,7 +88,10 @@ def configure(
 
 def put(**kwargs):
 	r=_napi.napiPut(json.dumps(kwargs).encode())
+	print('# r var equal to _napi.napiPut, line 91 of ffi.py')
 	if r: raise Exception('abnormal put outcome {}'.format(r))
+	else:
+		print ('#r does not have a value, line 94 of ffi.py, which is good, goes back to apy.info')
 
 get_history=[]
 
@@ -107,9 +112,13 @@ def get():
 		global get_history
 		get_history.append(j)
 		if j==None: continue
+		else:
+			print("# j does not == None here, ffi.get line 116")
+			print("##########j: " + str(bool(j)))
 		p=j.get('path', '')
 		if p=='notifications/report/general-error': raise Exception(j['event']['err'])
 		if p=='provisions/changed':
 			with open(provisions_file_name, 'w') as file:
 				file.write(json.dumps(j['response']['provisions']))
+		print("##################################j: " + str(bool(j)))
 		return j

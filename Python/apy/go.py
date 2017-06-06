@@ -42,4 +42,6 @@ else:
 if args.real: os.environ['APY_REAL']='1'
 if args.debug: os.environ['APY_LOG_LEVEL']='2'
 print('running app')
+print('#subprocess call to app.py, line 45 of go.py') #debugging
 subprocess.check_call('python -i app.py', shell=True)
+print('end of program')

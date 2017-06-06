@@ -3,9 +3,20 @@ import ffi, roaming_auth_server
 from ffi import configure
 
 def wait(path, condition=lambda j: True, timeout=15, resolution=0.01):
+	print ('#in apy.wait, line 6')
 	for i in range(int(timeout/resolution)):
 		j=ffi.get()
+		#print('#ffi.get succesful, line 9 of apy.py')
+		#print('********j:' + str(bool(j)))
 		if j and j.get('path', None)==path and condition(j): return j
+		else:
+			print ('#conditions on line 10 in apy.wait not satisfied')	
+		#	print('\t #j: ' + str(bool(j)) + " need to be a true value")
+		#	if j:
+		#		print("\t #j.get('path',None)==path: " + str(j.get('path', None)==path) + " ,needs to be a true value")
+		#	else:
+		#		print("\t \t #no j value so also not j.get('path.... value")
+		#	print('\t #condition(j):' + str(condition(j)) + ' ,needs to be a true value')
 		import time
 		time.sleep(resolution)
 	raise Exception('timed out')
@@ -16,13 +27,21 @@ def create_exchange(name, pid=''):
 	import random
 	r+=' '+hex(random.getrandbits(128))[2:-1]
 	return r
-
+#info() returns a dict
 def info():
+	print('#call to info  in apy.py line 32')
 	ffi.put(path='info/get', exchange=create_exchange('info'))
-	return wait('info/get')
+	#changed code here used to be:
+	#return wait('info/get')
+	dict1 = wait ('info/get')
+	if dict1:
+		print("dict is not empty")
+	else:
+		print("dict is empty")
+	return dict1
 
 def closest():
-	return max(info()['response']['nymiband'], key=lambda x: x['RSSI_smoothed'])
+	return max(info()['response']['nymiband'], key=lambda x: x['RSSI_smoed'])
 
 def provision():
 	ffi.put(path='provision/run/start', exchange=create_exchange('provision_start'))
