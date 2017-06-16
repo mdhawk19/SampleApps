@@ -39,9 +39,10 @@ else:
 			with tarfile.open(archive) as file: file.extractall()
 		os.rename([i for i in os.listdir('.') if i.startswith('sdk') and os.path.isdir(i)][0], 'sdk')
 
-if args.real: os.environ['APY_REAL']='1'
+if args.real: os.environ['APY_REAL']='1' #used to help determine what to do, just is a map object, key value pair, if 
 if args.debug: os.environ['APY_LOG_LEVEL']='2'
 print('running app')
-print('#subprocess call to app.py, line 45 of go.py') #debugging
+#print('#subprocess call to app.py, line 45 of go.py') #debugging
 subprocess.check_call('python -i app.py', shell=True)
+#subprocess.check_call('python -i app.py', shell=True)
 print('end of program')

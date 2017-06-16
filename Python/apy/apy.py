@@ -1,16 +1,15 @@
 import ffi, roaming_auth_server
 
 from ffi import configure
-
+#returns long dict (json)
 def wait(path, condition=lambda j: True, timeout=15, resolution=0.01):
-	print ('#in apy.wait, line 6')
-	for i in range(int(timeout/resolution)):
+	for i in range(int(timeout/resolution)): #range(1500)
 		j=ffi.get()
 		#print('#ffi.get succesful, line 9 of apy.py')
 		#print('********j:' + str(bool(j)))
 		if j and j.get('path', None)==path and condition(j): return j
-		else:
-			print ('#conditions on line 10 in apy.wait not satisfied')	
+		#else:
+			#print ('#conditions on line 10 in apy.wait not satisfied')	
 		#	print('\t #j: ' + str(bool(j)) + " need to be a true value")
 		#	if j:
 		#		print("\t #j.get('path',None)==path: " + str(j.get('path', None)==path) + " ,needs to be a true value")
@@ -27,17 +26,18 @@ def create_exchange(name, pid=''):
 	import random
 	r+=' '+hex(random.getrandbits(128))[2:-1]
 	return r
+	
+	
 #info() returns a dict
 def info():
-	print('#call to info  in apy.py line 32')
-	ffi.put(path='info/get', exchange=create_exchange('info'))
-	#changed code here used to be:
-	#return wait('info/get')
+	ffi.put(path='info/get', exchange=create_exchange('info')) #in put **kwargs is used to handle path= 'info/get'
+
 	dict1 = wait ('info/get')
-	if dict1:
-		print("dict is not empty")
-	else:
-		print("dict is empty")
+	#print("DEBUG2: " , dict1, )
+	#if dict1:
+	#	print("#dict is not empty")
+	#else:
+	#	print("#dict is empty")
 	return dict1
 
 def closest():

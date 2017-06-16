@@ -6,8 +6,11 @@ start=os.getcwd()
 
 class Database:
 	def __init__(self, file_name):
+		print("Debug: created a data base")
 		self._file_name=file_name
 		self._read()
+		self.__setitem__("key2","value") #debug, this created a a roaming_auth_server_database file :)
+		#self._write() #debug
 
 	def __setitem__(self, key, value):
 		self.items[key]=value

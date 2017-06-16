@@ -11,13 +11,19 @@ q=Quitter()
 
 sys.path.append('.')
 import apy
-print ('#line 14 of app.py')
+#print ('#line 14 of app.py')
 apy.configure('sample', log_level=int(os.environ.get('APY_LOG_LEVEL', 0)))
-print ('#in app.py after apy.configure, line 15')
+#print ('#in app.py after apy.configure, line 15')
+
 
 #apy.info is a dict
-if len(apy.info()['response']['provisions'])==0:
-	print("GOOD CONDTION HERE....GOOD CONDITION HERE...")
+while len(apy.info()['response']['provisions']) == 0: #dosent add more than one info to privisons.json
+														#why?:
+														#where does it write provisions to provisions.json?:
+															#in ffi.py, the var is provisons_file_name
+															
+															
+	#print("DEBUG " , apy.info()) #result in apy.info() document
 	print('looking for a band to provision')
 	pattern=apy.provision()
 	print('found a band to provision; pattern is '+pattern)
@@ -25,10 +31,7 @@ if len(apy.info()['response']['provisions'])==0:
 	if input()!='y': raise Exception('user rejected pattern')
 	print('saving provision')
 	apy.accept(pattern)
-else:
-	print('#something did not equal 0, problem in if statement, line 18 of app.py')
-	print( len(apy.info()['response']['provisions']))
-	print('#^^^should needs to be equal to 0')
+
 
 pid=apy.info()['response']['provisions'][0]
 
