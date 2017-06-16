@@ -1,0 +1,66 @@
+DEBUG  {'config': 
+	{'commit': '---\nncl 797987e8e2935be984c03e2efea23ba000d002ba\nnymi-security-library fec3f7816c0ca1e9aaaf154c8fe77c767c572e78\nlibs cda6cc6e3968b04176a965025893b19ecfa6d710\nnsp 5f8c857c243e0385433ea2275f935f4d09302218\n---', 'detecting': True, 'discovering': True, 'ecodaemon': 'Nymi Bluetooth Service', 'finding': False, 'net': True, 'running': True, 'version': 'dev 2017-Mar-31 14:17:14'}
+
+	, 'nymiband': [{'RSSI_last': -63, 'RSSI_smoothed': -63.00000000000001, 'firmwareVersion': 'unknown', 'found': 'anonymous', 'isProvisioned': False, 'present': 'yes', 'sinceLastContact': 0.015, 'tid': 0}
+
+			, {'RSSI_last': -66, 'RSSI_smoothed': -66.0, 'firmwareVersion': 'unknown', 'found': 'anonymous', 'isProvisioned': False, 'present': 'yes', 'sinceLastContact': 0.02, 'tid': 1}]
+
+
+	, 'provisionMap': {}, 'provisions': [], 'provisionsPresent': [], 'tidIndex': [0, 1]}
+
+//form apy.info()
+	DEBUG  {'completed': True, 
+			'exchange': 'apy info 837863923fc47adb880003b5037d408',  //changes each time go.py is called
+			'path': 'info/get', 
+			'response': 
+				{'config': 
+					{'commit': '---\nncl 797987e8e2935be984c03e2efea23ba000d002ba\nnymi-security-library fec3f7816c0ca1e9aaaf154c8fe77c767c572e78\nlibs cda6cc6e3968b04176a965025893b19ecfa6d710\nnsp 5f8c857c243e0385433ea2275f935f4d09302218\n---', 
+					'detecting': True, 
+					'discovering': True, 
+					'ecodaemon': 'Nymi Bluetooth Service', 
+					'finding': True, 
+					'net': True, 
+					'running': True, 
+					'version': 'dev 2017-Mar-31 14:17:14'}, 
+				'nymiband': [
+						{'RSSI_last': -63, 
+						'RSSI_smoothed': -63.00000000000001, 
+						'firmwareVersion': 'unknown', 
+						'found': 'anonymous', 
+						'isProvisioned': False, 
+						'present': 'yes', 
+						'sinceLastContact': 0.126, 'tid': 0}, 
+						
+						{'RSSI_last': -59, 
+						'RSSI_smoothed': -59.0, 
+						'commandQueue': [], 
+						'firmwareVersion': 'unknown', 
+						'found': 'authenticated', 
+						'isProvisioned': True, 
+						'present': 'yes', 
+						'provisioned': {'authenticationWindowRemaining': 59.884, 
+							'commandsQueued': 0, 
+							'enabledCDF': False, 
+							'enabledRoamingAuthSetup': False, 
+							'enabledSigning': False, 
+							'enabledSymmetricKeys': False, 
+							'enabledTOTP': False, 
+							'pid': '55350c3debbf25217c28c9268451cb0d'}, 
+						'sinceLastContact': 0.115, 
+						'tid': 1}], 
+				'provisionMap': {'55350c3debbf25217c28c9268451cb0d': 1}, 'provisions': ['55350c3debbf25217c28c9268451cb0d'], 'provisionsPresent': ['55350c3debbf25217c28c9268451cb0d'], 'tidIndex': [0, 1]}, 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			'successful': True}
+	
